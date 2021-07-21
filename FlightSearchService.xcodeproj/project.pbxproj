@@ -1,0 +1,593 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		1627FC0726A86663001385FE /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1627FC0626A86663001385FE /* AppDelegate.m */; };
+		1627FC0A26A86663001385FE /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1627FC0926A86663001385FE /* SceneDelegate.m */; };
+		1627FC0D26A86663001385FE /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1627FC0C26A86663001385FE /* ViewController.m */; };
+		1627FC1026A86663001385FE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1627FC0E26A86663001385FE /* Main.storyboard */; };
+		1627FC1226A86668001385FE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1627FC1126A86668001385FE /* Assets.xcassets */; };
+		1627FC1526A86668001385FE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1627FC1326A86668001385FE /* LaunchScreen.storyboard */; };
+		1627FC1826A86668001385FE /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1627FC1726A86668001385FE /* main.m */; };
+		1627FC2226A86668001385FE /* FlightSearchServiceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1627FC2126A86668001385FE /* FlightSearchServiceTests.m */; };
+		1627FC2D26A86668001385FE /* FlightSearchServiceUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1627FC2C26A86668001385FE /* FlightSearchServiceUITests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		1627FC1E26A86668001385FE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1627FBFA26A86663001385FE /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 1627FC0126A86663001385FE;
+			remoteInfo = FlightSearchService;
+		};
+		1627FC2926A86668001385FE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1627FBFA26A86663001385FE /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 1627FC0126A86663001385FE;
+			remoteInfo = FlightSearchService;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		1627FC0226A86663001385FE /* FlightSearchService.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FlightSearchService.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		1627FC0526A86663001385FE /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		1627FC0626A86663001385FE /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		1627FC0826A86663001385FE /* SceneDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SceneDelegate.h; sourceTree = "<group>"; };
+		1627FC0926A86663001385FE /* SceneDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SceneDelegate.m; sourceTree = "<group>"; };
+		1627FC0B26A86663001385FE /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		1627FC0C26A86663001385FE /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		1627FC0F26A86663001385FE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		1627FC1126A86668001385FE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		1627FC1426A86668001385FE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		1627FC1626A86668001385FE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1627FC1726A86668001385FE /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		1627FC1D26A86668001385FE /* FlightSearchServiceTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FlightSearchServiceTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		1627FC2126A86668001385FE /* FlightSearchServiceTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FlightSearchServiceTests.m; sourceTree = "<group>"; };
+		1627FC2326A86668001385FE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1627FC2826A86668001385FE /* FlightSearchServiceUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FlightSearchServiceUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		1627FC2C26A86668001385FE /* FlightSearchServiceUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FlightSearchServiceUITests.m; sourceTree = "<group>"; };
+		1627FC2E26A86668001385FE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		1627FBFF26A86663001385FE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1627FC1A26A86668001385FE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1627FC2526A86668001385FE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		1627FBF926A86663001385FE = {
+			isa = PBXGroup;
+			children = (
+				1627FC0426A86663001385FE /* FlightSearchService */,
+				1627FC2026A86668001385FE /* FlightSearchServiceTests */,
+				1627FC2B26A86668001385FE /* FlightSearchServiceUITests */,
+				1627FC0326A86663001385FE /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		1627FC0326A86663001385FE /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				1627FC0226A86663001385FE /* FlightSearchService.app */,
+				1627FC1D26A86668001385FE /* FlightSearchServiceTests.xctest */,
+				1627FC2826A86668001385FE /* FlightSearchServiceUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		1627FC0426A86663001385FE /* FlightSearchService */ = {
+			isa = PBXGroup;
+			children = (
+				1627FC0526A86663001385FE /* AppDelegate.h */,
+				1627FC0626A86663001385FE /* AppDelegate.m */,
+				1627FC0826A86663001385FE /* SceneDelegate.h */,
+				1627FC0926A86663001385FE /* SceneDelegate.m */,
+				1627FC0B26A86663001385FE /* ViewController.h */,
+				1627FC0C26A86663001385FE /* ViewController.m */,
+				1627FC0E26A86663001385FE /* Main.storyboard */,
+				1627FC1126A86668001385FE /* Assets.xcassets */,
+				1627FC1326A86668001385FE /* LaunchScreen.storyboard */,
+				1627FC1626A86668001385FE /* Info.plist */,
+				1627FC1726A86668001385FE /* main.m */,
+			);
+			path = FlightSearchService;
+			sourceTree = "<group>";
+		};
+		1627FC2026A86668001385FE /* FlightSearchServiceTests */ = {
+			isa = PBXGroup;
+			children = (
+				1627FC2126A86668001385FE /* FlightSearchServiceTests.m */,
+				1627FC2326A86668001385FE /* Info.plist */,
+			);
+			path = FlightSearchServiceTests;
+			sourceTree = "<group>";
+		};
+		1627FC2B26A86668001385FE /* FlightSearchServiceUITests */ = {
+			isa = PBXGroup;
+			children = (
+				1627FC2C26A86668001385FE /* FlightSearchServiceUITests.m */,
+				1627FC2E26A86668001385FE /* Info.plist */,
+			);
+			path = FlightSearchServiceUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		1627FC0126A86663001385FE /* FlightSearchService */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1627FC3126A86668001385FE /* Build configuration list for PBXNativeTarget "FlightSearchService" */;
+			buildPhases = (
+				1627FBFE26A86663001385FE /* Sources */,
+				1627FBFF26A86663001385FE /* Frameworks */,
+				1627FC0026A86663001385FE /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = FlightSearchService;
+			productName = FlightSearchService;
+			productReference = 1627FC0226A86663001385FE /* FlightSearchService.app */;
+			productType = "com.apple.product-type.application";
+		};
+		1627FC1C26A86668001385FE /* FlightSearchServiceTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1627FC3426A86668001385FE /* Build configuration list for PBXNativeTarget "FlightSearchServiceTests" */;
+			buildPhases = (
+				1627FC1926A86668001385FE /* Sources */,
+				1627FC1A26A86668001385FE /* Frameworks */,
+				1627FC1B26A86668001385FE /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				1627FC1F26A86668001385FE /* PBXTargetDependency */,
+			);
+			name = FlightSearchServiceTests;
+			productName = FlightSearchServiceTests;
+			productReference = 1627FC1D26A86668001385FE /* FlightSearchServiceTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		1627FC2726A86668001385FE /* FlightSearchServiceUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1627FC3726A86668001385FE /* Build configuration list for PBXNativeTarget "FlightSearchServiceUITests" */;
+			buildPhases = (
+				1627FC2426A86668001385FE /* Sources */,
+				1627FC2526A86668001385FE /* Frameworks */,
+				1627FC2626A86668001385FE /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				1627FC2A26A86668001385FE /* PBXTargetDependency */,
+			);
+			name = FlightSearchServiceUITests;
+			productName = FlightSearchServiceUITests;
+			productReference = 1627FC2826A86668001385FE /* FlightSearchServiceUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		1627FBFA26A86663001385FE /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 1250;
+				TargetAttributes = {
+					1627FC0126A86663001385FE = {
+						CreatedOnToolsVersion = 12.5;
+					};
+					1627FC1C26A86668001385FE = {
+						CreatedOnToolsVersion = 12.5;
+						TestTargetID = 1627FC0126A86663001385FE;
+					};
+					1627FC2726A86668001385FE = {
+						CreatedOnToolsVersion = 12.5;
+						TestTargetID = 1627FC0126A86663001385FE;
+					};
+				};
+			};
+			buildConfigurationList = 1627FBFD26A86663001385FE /* Build configuration list for PBXProject "FlightSearchService" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 1627FBF926A86663001385FE;
+			productRefGroup = 1627FC0326A86663001385FE /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				1627FC0126A86663001385FE /* FlightSearchService */,
+				1627FC1C26A86668001385FE /* FlightSearchServiceTests */,
+				1627FC2726A86668001385FE /* FlightSearchServiceUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		1627FC0026A86663001385FE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1627FC1526A86668001385FE /* LaunchScreen.storyboard in Resources */,
+				1627FC1226A86668001385FE /* Assets.xcassets in Resources */,
+				1627FC1026A86663001385FE /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1627FC1B26A86668001385FE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1627FC2626A86668001385FE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		1627FBFE26A86663001385FE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1627FC0D26A86663001385FE /* ViewController.m in Sources */,
+				1627FC0726A86663001385FE /* AppDelegate.m in Sources */,
+				1627FC1826A86668001385FE /* main.m in Sources */,
+				1627FC0A26A86663001385FE /* SceneDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1627FC1926A86668001385FE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1627FC2226A86668001385FE /* FlightSearchServiceTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1627FC2426A86668001385FE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1627FC2D26A86668001385FE /* FlightSearchServiceUITests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		1627FC1F26A86668001385FE /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 1627FC0126A86663001385FE /* FlightSearchService */;
+			targetProxy = 1627FC1E26A86668001385FE /* PBXContainerItemProxy */;
+		};
+		1627FC2A26A86668001385FE /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 1627FC0126A86663001385FE /* FlightSearchService */;
+			targetProxy = 1627FC2926A86668001385FE /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		1627FC0E26A86663001385FE /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1627FC0F26A86663001385FE /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		1627FC1326A86668001385FE /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1627FC1426A86668001385FE /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		1627FC2F26A86668001385FE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		1627FC3026A86668001385FE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		1627FC3226A86668001385FE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 97WCP8NGSS;
+				INFOPLIST_FILE = FlightSearchService/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.AndNasPlay.FlightSearchService;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		1627FC3326A86668001385FE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 97WCP8NGSS;
+				INFOPLIST_FILE = FlightSearchService/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.AndNasPlay.FlightSearchService;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		1627FC3526A86668001385FE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 97WCP8NGSS;
+				INFOPLIST_FILE = FlightSearchServiceTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.AndNasPlay.FlightSearchServiceTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FlightSearchService.app/FlightSearchService";
+			};
+			name = Debug;
+		};
+		1627FC3626A86668001385FE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 97WCP8NGSS;
+				INFOPLIST_FILE = FlightSearchServiceTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.AndNasPlay.FlightSearchServiceTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FlightSearchService.app/FlightSearchService";
+			};
+			name = Release;
+		};
+		1627FC3826A86668001385FE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 97WCP8NGSS;
+				INFOPLIST_FILE = FlightSearchServiceUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.AndNasPlay.FlightSearchServiceUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = FlightSearchService;
+			};
+			name = Debug;
+		};
+		1627FC3926A86668001385FE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 97WCP8NGSS;
+				INFOPLIST_FILE = FlightSearchServiceUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.AndNasPlay.FlightSearchServiceUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = FlightSearchService;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1627FBFD26A86663001385FE /* Build configuration list for PBXProject "FlightSearchService" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1627FC2F26A86668001385FE /* Debug */,
+				1627FC3026A86668001385FE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1627FC3126A86668001385FE /* Build configuration list for PBXNativeTarget "FlightSearchService" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1627FC3226A86668001385FE /* Debug */,
+				1627FC3326A86668001385FE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1627FC3426A86668001385FE /* Build configuration list for PBXNativeTarget "FlightSearchServiceTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1627FC3526A86668001385FE /* Debug */,
+				1627FC3626A86668001385FE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1627FC3726A86668001385FE /* Build configuration list for PBXNativeTarget "FlightSearchServiceUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1627FC3826A86668001385FE /* Debug */,
+				1627FC3926A86668001385FE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 1627FBFA26A86663001385FE /* Project object */;
+}
