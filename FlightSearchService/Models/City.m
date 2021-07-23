@@ -12,22 +12,23 @@
 - (instancetype)initWithDictionary:(NSDictionary *)dictionary {
 	self = [super init];
 	if (self) {
-		_timezone = [dictionary valueForKey:@"timezone"];
-		_translations =  [dictionary valueForKey:@"translations"];
+		_timezone = [dictionary valueForKey:@"time_zone"];
+		_translations = [dictionary valueForKey:@"name_translations"];
 		_name = [dictionary valueForKey:@"name"];
-		_countryCode = [dictionary valueForKey:@"countryCode"];
+		_countryCode = [dictionary valueForKey:@"country_code"];
 		_code = [dictionary valueForKey:@"code"];
-
-		NSDictionary *coordinates = [dictionary valueForKey:@"coordinate"];
-		if (coordinates && ![coordinates isEqual:[NSNull null]]) {
-			NSNumber *lon = [coordinates valueForKey:@"lon"];
-			NSNumber *lat = [coordinates valueForKey:@"lat"];
+		NSDictionary *coords = [dictionary valueForKey:@"coordinates"];
+		if (coords && ![coords isEqual:[NSNull null]]) {
+			NSNumber *lon = [coords valueForKey:@"lon"];
+			NSNumber *lat = [coords valueForKey:@"lat"];
 			if (![lon isEqual:[NSNull null]] && ![lat isEqual:[NSNull null]]) {
 				_coordinate = CLLocationCoordinate2DMake([lat doubleValue], [lon doubleValue]);
 			}
 		}
 	}
-	return  self;
+	return self;
 }
 
+
 @end
+

@@ -1,5 +1,5 @@
 //
-//  County.h
+//  Country.h
 //  FlightSearchService
 //
 //  Created by Андрей Щекатунов on 21.07.2021.
@@ -7,7 +7,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface County : NSObject
+@interface Country : NSObject
 
 @property (nonatomic, strong) NSString *name;
 @property (nonatomic, strong) NSString *currency;

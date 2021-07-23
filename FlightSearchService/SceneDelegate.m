@@ -6,7 +6,7 @@
 //
 
 #import "SceneDelegate.h"
-#import "PlaceViewController.h"
+#import "MainViewController.h"
 
 @interface SceneDelegate ()
 
@@ -20,7 +20,7 @@
 	self.window = [[UIWindow alloc] initWithFrame: windowFrame];
 	[self.window makeKeyAndVisible];
 
-	PlaceViewController *mainViewController = [[PlaceViewController alloc] init];
+	MainViewController *mainViewController = [[MainViewController alloc] init];
 	UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController: mainViewController];
 	self.window.rootViewController = navigationController;
 	UIWindowScene *windowScene = (UIWindowScene *)scene;

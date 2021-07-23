@@ -6,6 +6,9 @@
 //
 
 #import "DataManager.h"
+#import "Country.h"
+#import "City.h"
+#import "Airport.h"
 
 @interface DataManager()
 
@@ -28,16 +31,16 @@
 
 - (void)loadData {
 	dispatch_async(dispatch_get_global_queue(QOS_CLASS_UTILITY, 0), ^{
-
-		NSArray *countriesJSONArray = [self arrayFromFileName:@"countries" ofType:@"json"];
-		self -> _countriesArray = [self createObjectsFromArray:countriesJSONArray withType:DataSourceTypeCountry];
-
+		
+		NSArray *countriesJsonArray = [self arrayFromFileName:@"countries" ofType:@"json"];
+		self -> _countriesArray = [self createObjectsFromArray:countriesJsonArray withType:DataSourceTypeCountry];
+		
 		NSArray *citiesJSONArray = [self arrayFromFileName:@"cities" ofType:@"json"];
-		self -> _countriesArray = [self createObjectsFromArray:citiesJSONArray withType:DataSourceTypeCity];
-
+		self -> _citiesArray = [self createObjectsFromArray:citiesJSONArray withType:DataSourceTypeCity];
+		
 		NSArray *airportsJSONArray = [self arrayFromFileName:@"airports" ofType:@"json"];
-		self -> _countriesArray = [self createObjectsFromArray:airportsJSONArray withType:DataSourceTypeAirport];
-
+		self -> _airportsArray = [self createObjectsFromArray:airportsJSONArray withType:DataSourceTypeAirport];
+		
 		dispatch_async(dispatch_get_main_queue(), ^ {
 			[[NSNotificationCenter defaultCenter] postNotificationName:kDataManagerLoadDataDidComplete object:nil];
 		});
@@ -49,7 +52,7 @@
 	NSMutableArray *results = [NSMutableArray new];
 	for (NSDictionary *jsonObject in array) {
 		if (type == DataSourceTypeCountry) {
-			County *country = [[County alloc] initWithDictionary:jsonObject];
+			Country *country = [[Country alloc] initWithDictionary:jsonObject];
 			[results addObject: country];
 		}
 		else if (type == DataSourceTypeCity) {
@@ -69,6 +72,18 @@
 	NSString *path = [[NSBundle mainBundle] pathForResource:fileName ofType:type];
 	NSData *data = [NSData dataWithContentsOfFile:path];
 	return  [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
+}
+
+- (NSArray *)countries {
+	return _countriesArray;
+}
+
+- (NSArray *)cities {
+	return _citiesArray;
+}
+
+- (NSArray *)airports {
+	return _airportsArray;
 }
 
 @end

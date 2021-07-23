@@ -17,7 +17,7 @@
 		1627FC2D26A86668001385FE /* FlightSearchServiceUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1627FC2C26A86668001385FE /* FlightSearchServiceUITests.m */; };
 		164311D826A9BFD3004E7B6A /* TicketsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 164311D726A9BFD3004E7B6A /* TicketsTableViewCell.m */; };
 		16B274FC26A873DB004B89A7 /* PlaceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 16B274FB26A873DB004B89A7 /* PlaceViewController.m */; };
-		16B2750126A889B6004B89A7 /* County.m in Sources */ = {isa = PBXBuildFile; fileRef = 16B2750026A889B6004B89A7 /* County.m */; };
+		16B2750126A889B6004B89A7 /* Country.m in Sources */ = {isa = PBXBuildFile; fileRef = 16B2750026A889B6004B89A7 /* Country.m */; };
 		16B2750426A88B47004B89A7 /* City.m in Sources */ = {isa = PBXBuildFile; fileRef = 16B2750326A88B47004B89A7 /* City.m */; };
 		16B2750726A88E80004B89A7 /* Airport.m in Sources */ = {isa = PBXBuildFile; fileRef = 16B2750626A88E80004B89A7 /* Airport.m */; };
 		16B2750A26A8905A004B89A7 /* DataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 16B2750926A8905A004B89A7 /* DataManager.m */; };
@@ -65,8 +65,8 @@
 		164311D726A9BFD3004E7B6A /* TicketsTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TicketsTableViewCell.m; sourceTree = "<group>"; };
 		16B274FA26A873DB004B89A7 /* PlaceViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PlaceViewController.h; sourceTree = "<group>"; };
 		16B274FB26A873DB004B89A7 /* PlaceViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PlaceViewController.m; sourceTree = "<group>"; };
-		16B274FF26A889B6004B89A7 /* County.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = County.h; sourceTree = "<group>"; };
-		16B2750026A889B6004B89A7 /* County.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = County.m; sourceTree = "<group>"; };
+		16B274FF26A889B6004B89A7 /* Country.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Country.h; sourceTree = "<group>"; };
+		16B2750026A889B6004B89A7 /* Country.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Country.m; sourceTree = "<group>"; };
 		16B2750226A88B47004B89A7 /* City.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = City.h; sourceTree = "<group>"; };
 		16B2750326A88B47004B89A7 /* City.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = City.m; sourceTree = "<group>"; };
 		16B2750526A88E80004B89A7 /* Airport.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Airport.h; sourceTree = "<group>"; };
@@ -185,8 +185,8 @@
 		16B274FE26A8898F004B89A7 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				16B274FF26A889B6004B89A7 /* County.h */,
-				16B2750026A889B6004B89A7 /* County.m */,
+				16B274FF26A889B6004B89A7 /* Country.h */,
+				16B2750026A889B6004B89A7 /* Country.m */,
 				16B2750226A88B47004B89A7 /* City.h */,
 				16B2750326A88B47004B89A7 /* City.m */,
 				16B2750526A88E80004B89A7 /* Airport.h */,
@@ -341,7 +341,7 @@
 				16B274FC26A873DB004B89A7 /* PlaceViewController.m in Sources */,
 				164311D826A9BFD3004E7B6A /* TicketsTableViewCell.m in Sources */,
 				1627FC0726A86663001385FE /* AppDelegate.m in Sources */,
-				16B2750126A889B6004B89A7 /* County.m in Sources */,
+				16B2750126A889B6004B89A7 /* Country.m in Sources */,
 				1627FC1826A86668001385FE /* main.m in Sources */,
 				16B2750426A88B47004B89A7 /* City.m in Sources */,
 				16B2750A26A8905A004B89A7 /* DataManager.m in Sources */,

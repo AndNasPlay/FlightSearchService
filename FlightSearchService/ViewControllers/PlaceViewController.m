@@ -31,8 +31,10 @@
 - (void)viewDidLoad {
 	[super viewDidLoad];
 	self.navigationController.navigationBar.tintColor = [UIColor blackColor];
+
 	self.tableView = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStylePlain];
 	self.tableView.delegate = self;
+	self.tableView.dataSource = self;
 	[self.view addSubview:self.tableView];
 
 	self.segmentControl = [[UISegmentedControl alloc] initWithItems:@[@"Cities", @"Airports"]];
@@ -40,6 +42,13 @@
 	self.segmentControl.tintColor = [UIColor blackColor];
 	self.navigationItem.titleView = self.segmentControl;
 	self.segmentControl.selectedSegmentIndex = 0;
+	[self changeSource];
+	
+	if (self.placeType == PlaceTypeDeparture) {
+		self.title = @"From";
+	} else {
+		self.title = @"Where";
+	}
 }
 
 - (void)changeSource {
@@ -54,13 +63,6 @@
 			break;
 	}
 	[self.tableView reloadData];
-	[self changeSource];
-
-	if (self.placeType == PlaceTypeDeparture) {
-		self.title = @"From";
-	} else {
-		self.title = @"Where";
-	}
 }
 
 - (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
