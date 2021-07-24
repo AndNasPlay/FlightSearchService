@@ -9,6 +9,7 @@
 #import "PlaceViewController.h"
 #import "DataManager.h"
 #import "ApiManager.h"
+#import "TicketsTableViewController.h"
 
 @interface MainViewController () <PlaceViewControllerDelegate>
 
@@ -43,11 +44,6 @@
 	}];
 }
 
-//- (void)correctApiCreated {
-//	[[ApiManager sharedInstance] ticketsWithRequest:<#(SearchRequest)#> withCompletion:<#^(NSArray * _Nonnull tickets)completion#> {
-//
-//}
-
 - (void)createSubViews {
 	self.placeContainerView = [[UIView alloc] initWithFrame: CGRectMake(20.0, 140.0, [UIScreen mainScreen].bounds.size.width - 40.0, 170.0)];
 	self.placeContainerView.backgroundColor = [UIColor whiteColor];
@@ -81,8 +77,21 @@
 	self.searchButton.backgroundColor = [UIColor blackColor];
 	self.searchButton.layer.cornerRadius = 8.0;
 	self.searchButton.titleLabel.font = [UIFont systemFontOfSize:20.0 weight:UIFontWeightBold];
-//	[self.searchButton addTarget:self action:@selector(correctApiCreated) forControlEvents:UIControlEventTouchUpInside];
+	[self.searchButton addTarget:self action:@selector(searchButtonDidTap:) forControlEvents:UIControlEventTouchUpInside];
 	[self.view addSubview:self.searchButton];
+}
+
+- (void)searchButtonDidTap:(UIButton *)sender {
+	[[ApiManager sharedInstance] ticketsWithRequest:self.searchRequest withCompletion:^(NSArray *tickets) {
+		if (tickets.count > 0) {
+			NSLog(@"@d", tickets.count);
+			TicketsTableViewController *ticketsVC = [[TicketsTableViewController alloc] initWithTickets:tickets];
+			[self.navigationController showViewController:ticketsVC sender:self];
+		} else {
+			UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Sorry!" message:@"No tickets" preferredStyle:UIAlertControllerStyleAlert];
+			[alertController addAction:[UIAlertAction actionWithTitle:@"close" style:UIAlertActionStyleDefault handler:nil]];
+		}
+	}];
 }
 
 - (void)placeButtonDidTap:(UIButton *)sender {

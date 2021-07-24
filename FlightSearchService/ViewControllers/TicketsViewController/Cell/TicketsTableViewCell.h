@@ -6,12 +6,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "DataManager.h"
+#import "ApiManager.h"
+#import "Ticket.h"
 
 
 @interface TicketsTableViewCell : UITableViewCell
 
-@property (nonatomic, strong) UILabel *leftLable;
-@property (nonatomic, strong) UILabel *rightLable;
+@property (nonatomic, strong) Ticket *tiket;
 
 @end
 
