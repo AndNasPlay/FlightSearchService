@@ -6,6 +6,7 @@
 //
 
 #import "TicketsTableViewCell.h"
+#import "Ticket.h"
 
 @interface TicketsTableViewCell()
 
@@ -59,18 +60,17 @@
 	self.dateLable.frame = CGRectMake(10.0, CGRectGetMaxY(self.placesLable.frame) + 8.0, self.contentView.frame.size.width - 20.0, 20.0);
 }
 
--(void)setTiket:(Ticket *)tiket {
-	self.tiket = tiket;
+- (void)setTicket:(Ticket *)ticket {
+	_ticket = ticket;
 
-	self.priceLable.text = [NSString stringWithFormat:@"%@ руб.", tiket.price];
-	self.placesLable.text = [NSString stringWithFormat:@"%@ - %@", tiket.from, tiket.to];
-	NSDateFormatter *dateFormator = [[NSDateFormatter alloc] init];
-	dateFormator.dateFormat = @"dd MMMMM yyyy hh:mm";
-	self.dateLable.text = [dateFormator stringFromDate:tiket.departure];
+	self.priceLable.text = [NSString stringWithFormat:@"%@ руб.", ticket.price];
+	self.placesLable.text = [NSString stringWithFormat:@"%@ - %@", ticket.from, ticket.to];
+
+	NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+	dateFormatter.dateFormat = @"dd MMMM yyyy hh:mm";
+	self.dateLable.text = [dateFormatter stringFromDate:ticket.departure];
+	NSData *data = [NSData dataWithContentsOfURL:[NSURL URLWithString:ticket.airline]];
+	[self.airlineLogoView setImage:[UIImage imageWithData:data]];
 }
-
-//- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
-//    [super setSelected:selected animated:animated];
-//}
 
 @end

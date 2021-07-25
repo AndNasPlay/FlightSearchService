@@ -45,7 +45,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     TicketsTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:TicketsCellReuseIdentifier forIndexPath:indexPath];
-	cell.tiket = [self.ticketsArray objectAtIndex:indexPath.row];
+	cell.ticket = [self.ticketsArray objectAtIndex:indexPath.row];
     return cell;
 }
 

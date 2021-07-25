@@ -84,12 +84,12 @@
 - (void)searchButtonDidTap:(UIButton *)sender {
 	[[ApiManager sharedInstance] ticketsWithRequest:self.searchRequest withCompletion:^(NSArray *tickets) {
 		if (tickets.count > 0) {
-			NSLog(@"@d", tickets.count);
 			TicketsTableViewController *ticketsVC = [[TicketsTableViewController alloc] initWithTickets:tickets];
 			[self.navigationController showViewController:ticketsVC sender:self];
 		} else {
 			UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Sorry!" message:@"No tickets" preferredStyle:UIAlertControllerStyleAlert];
 			[alertController addAction:[UIAlertAction actionWithTitle:@"close" style:UIAlertActionStyleDefault handler:nil]];
+			[self presentViewController:alertController animated:YES completion:nil];
 		}
 	}];
 }

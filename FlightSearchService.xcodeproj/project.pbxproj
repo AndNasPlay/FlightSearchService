@@ -16,6 +16,9 @@
 		1627FC1826A86668001385FE /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1627FC1726A86668001385FE /* main.m */; };
 		1627FC2226A86668001385FE /* FlightSearchServiceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1627FC2126A86668001385FE /* FlightSearchServiceTests.m */; };
 		1627FC2D26A86668001385FE /* FlightSearchServiceUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1627FC2C26A86668001385FE /* FlightSearchServiceUITests.m */; };
+		1637256426AD82B600F05D8B /* LocationService.m in Sources */ = {isa = PBXBuildFile; fileRef = 1637256326AD82B600F05D8B /* LocationService.m */; };
+		1637256726AD897E00F05D8B /* MapWithPrice.m in Sources */ = {isa = PBXBuildFile; fileRef = 1637256626AD897E00F05D8B /* MapWithPrice.m */; };
+		1637256B26ADAE5100F05D8B /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1637256A26ADAE5100F05D8B /* MapViewController.m */; };
 		164311D826A9BFD3004E7B6A /* TicketsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 164311D726A9BFD3004E7B6A /* TicketsTableViewCell.m */; };
 		164311DE26AAFE4E004E7B6A /* ApiManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 164311DD26AAFE4E004E7B6A /* ApiManager.m */; };
 		164311E126AB4CAF004E7B6A /* Ticket.m in Sources */ = {isa = PBXBuildFile; fileRef = 164311E026AB4CAF004E7B6A /* Ticket.m */; };
@@ -66,6 +69,12 @@
 		1627FC2826A86668001385FE /* FlightSearchServiceUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FlightSearchServiceUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1627FC2C26A86668001385FE /* FlightSearchServiceUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FlightSearchServiceUITests.m; sourceTree = "<group>"; };
 		1627FC2E26A86668001385FE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1637256226AD82B600F05D8B /* LocationService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LocationService.h; sourceTree = "<group>"; };
+		1637256326AD82B600F05D8B /* LocationService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LocationService.m; sourceTree = "<group>"; };
+		1637256526AD897E00F05D8B /* MapWithPrice.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MapWithPrice.h; sourceTree = "<group>"; };
+		1637256626AD897E00F05D8B /* MapWithPrice.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MapWithPrice.m; sourceTree = "<group>"; };
+		1637256926ADAE5100F05D8B /* MapViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
+		1637256A26ADAE5100F05D8B /* MapViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
 		164311D626A9BFD3004E7B6A /* TicketsTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TicketsTableViewCell.h; sourceTree = "<group>"; };
 		164311D726A9BFD3004E7B6A /* TicketsTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TicketsTableViewCell.m; sourceTree = "<group>"; };
 		164311DC26AAFE4E004E7B6A /* ApiManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ApiManager.h; sourceTree = "<group>"; };
@@ -145,6 +154,7 @@
 		1627FC0426A86663001385FE /* FlightSearchService */ = {
 			isa = PBXGroup;
 			children = (
+				1637256126AD826F00F05D8B /* Service */,
 				164311DB26AAFD24004E7B6A /* Managers */,
 				16B274FE26A8898F004B89A7 /* Models */,
 				16BA767726A8BB9300E269B2 /* JSON */,
@@ -177,6 +187,24 @@
 				1627FC2E26A86668001385FE /* Info.plist */,
 			);
 			path = FlightSearchServiceUITests;
+			sourceTree = "<group>";
+		};
+		1637256126AD826F00F05D8B /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				1637256226AD82B600F05D8B /* LocationService.h */,
+				1637256326AD82B600F05D8B /* LocationService.m */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		1637256826ADAE3500F05D8B /* MapViewController */ = {
+			isa = PBXGroup;
+			children = (
+				1637256926ADAE5100F05D8B /* MapViewController.h */,
+				1637256A26ADAE5100F05D8B /* MapViewController.m */,
+			);
+			path = MapViewController;
 			sourceTree = "<group>";
 		};
 		164311D526A9BFB9004E7B6A /* Cell */ = {
@@ -220,6 +248,7 @@
 		16B274FD26A873E2004B89A7 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				1637256826ADAE3500F05D8B /* MapViewController */,
 				164311D926AAEECE004E7B6A /* MainViewController */,
 				1627CA9626AC9ED700D64136 /* TicketsViewController */,
 				164311DA26AAEEDC004E7B6A /* PlaceViewController */,
@@ -230,6 +259,8 @@
 		16B274FE26A8898F004B89A7 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				1637256526AD897E00F05D8B /* MapWithPrice.h */,
+				1637256626AD897E00F05D8B /* MapWithPrice.m */,
 				16B274FF26A889B6004B89A7 /* Country.h */,
 				16B2750026A889B6004B89A7 /* Country.m */,
 				16B2750226A88B47004B89A7 /* City.h */,
@@ -392,9 +423,12 @@
 				1627FC1826A86668001385FE /* main.m in Sources */,
 				16B2750426A88B47004B89A7 /* City.m in Sources */,
 				164311DE26AAFE4E004E7B6A /* ApiManager.m in Sources */,
+				1637256726AD897E00F05D8B /* MapWithPrice.m in Sources */,
 				16B2750A26A8905A004B89A7 /* DataManager.m in Sources */,
+				1637256B26ADAE5100F05D8B /* MapViewController.m in Sources */,
 				1627CA9926AC9F0700D64136 /* TicketsTableViewController.m in Sources */,
 				1627FC0A26A86663001385FE /* SceneDelegate.m in Sources */,
+				1637256426AD82B600F05D8B /* LocationService.m in Sources */,
 				164311E126AB4CAF004E7B6A /* Ticket.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

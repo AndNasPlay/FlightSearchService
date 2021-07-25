@@ -13,7 +13,7 @@
 
 @interface TicketsTableViewCell : UITableViewCell
 
-@property (nonatomic, strong) Ticket *tiket;
+@property (nonatomic, strong) Ticket *ticket;
 
 @end
 
