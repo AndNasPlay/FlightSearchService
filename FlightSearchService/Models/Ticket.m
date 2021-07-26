@@ -13,6 +13,7 @@
 	self = [super init];
 	if (self) {
 		self.airline = [dictionary valueForKey:@"airline"];
+		NSLog(@"%@", self.airline);
 		self.expires = dateFromString([dictionary valueForKey:@"expires_at"]);
 		self.departure = dateFromString([dictionary valueForKey:@"departure_at"]);
 		self.flightNumber = [dictionary valueForKey:@"flight_number"];

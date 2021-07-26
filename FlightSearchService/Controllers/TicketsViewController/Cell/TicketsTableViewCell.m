@@ -53,7 +53,7 @@
 - (void)layoutSubviews {
 	[super layoutSubviews];
 
-	self.contentView.frame = CGRectMake(10.0, 10.0, [UIScreen mainScreen].bounds.size.width - 110.0, self.frame.size.height - 20.0);
+	self.contentView.frame = CGRectMake(10.0, 10.0, [UIScreen mainScreen].bounds.size.width - 20.0, self.frame.size.height - 20.0);
 	self.priceLable.frame = CGRectMake(10.0, 10.0, self.contentView.frame.size.width - 100.0, 40.0);
 	self.airlineLogoView.frame = CGRectMake(CGRectGetMaxX(self.priceLable.frame) + 10.0, 10.0, 80.0, 80.0);
 	self.placesLable.frame = CGRectMake(10.0, CGRectGetMaxY(self.priceLable.frame) + 16.0, 100.0, 20.0);
@@ -70,7 +70,9 @@
 	dateFormatter.dateFormat = @"dd MMMM yyyy hh:mm";
 	self.dateLable.text = [dateFormatter stringFromDate:ticket.departure];
 	NSData *data = [NSData dataWithContentsOfURL:[NSURL URLWithString:ticket.airline]];
-	[self.airlineLogoView setImage:[UIImage imageWithData:data]];
+//	[self.airlineLogoView setImage:[UIImage imageWithData:data]];
+//	self.airlineLogoView.image = [UIImage imageWithData:data];
+	self.airlineLogoView.image = [UIImage imageNamed:@"Ducati"];
 }
 
 @end
