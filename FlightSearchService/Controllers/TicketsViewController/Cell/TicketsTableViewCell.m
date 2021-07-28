@@ -69,9 +69,7 @@
 	NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
 	dateFormatter.dateFormat = @"dd MMMM yyyy hh:mm";
 	self.dateLable.text = [dateFormatter stringFromDate:ticket.departure];
-	NSData *data = [NSData dataWithContentsOfURL:[NSURL URLWithString:ticket.airline]];
-//	[self.airlineLogoView setImage:[UIImage imageWithData:data]];
-//	self.airlineLogoView.image = [UIImage imageWithData:data];
+	NSLog(@"%@", ticket.airline);
 	self.airlineLogoView.image = [UIImage imageNamed:@"Ducati"];
 }
 

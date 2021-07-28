@@ -22,6 +22,7 @@
 	self = [super init];
 	if (self) {
 		self.ticketsArray = tickets;
+		self.navigationController.navigationBar.prefersLargeTitles = YES;
 		self.title = @"Tickets";
 		self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
 		[self.tableView registerClass:[TicketsTableViewCell class] forCellReuseIdentifier:TicketsCellReuseIdentifier];
@@ -31,7 +32,16 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+}
 
+- (void)viewWillAppear:(BOOL)animated {
+	[super viewWillAppear:YES];
+	self.navigationController.navigationBar.hidden = NO;
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+	[super viewWillDisappear:YES];
+	self.navigationController.navigationBar.hidden = YES;
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {

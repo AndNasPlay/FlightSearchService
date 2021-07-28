@@ -33,6 +33,7 @@
 - (void)viewDidLoad {
 	[super viewDidLoad];
 	self.navigationController.navigationBar.tintColor = [UIColor blackColor];
+	self.navigationController.navigationBar.hidden = NO;
 
 	self.searchController = [[UISearchController alloc] initWithSearchResultsController:nil];
 	self.searchController.obscuresBackgroundDuringPresentation = NO;
@@ -57,6 +58,10 @@
 	} else {
 		self.title = @"Where";
 	}
+}
+- (void)viewWillDisappear:(BOOL)animated {
+	[super viewWillDisappear:YES];
+	self.navigationController.navigationBar.hidden = YES;
 }
 
 - (void)changeSource {

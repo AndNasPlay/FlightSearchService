@@ -13,11 +13,13 @@
 
 @interface MainViewController () <PlaceViewControllerDelegate>
 
-@property (nonatomic, strong) UIButton *departureButton;
-@property (nonatomic, strong) UIButton *arrivalButton;
-@property (nonatomic) SearchRequest searchRequest;
-@property (nonatomic, strong) UIView *placeContainerView;
-@property (nonatomic, strong) UIButton *searchButton;
+	@property (nonatomic, strong) UIButton *departureButton;
+	@property (nonatomic, strong) UIButton *arrivalButton;
+	@property (nonatomic) SearchRequest searchRequest;
+	@property (nonatomic, strong) UIView *placeContainerView;
+	@property (nonatomic, strong) UIButton *searchButton;
+	@property (nonatomic, strong) UIImageView *backgroundImage;
+	@property (nonatomic, strong) UIImageView *logoImage;
 
 @end
 
@@ -27,9 +29,7 @@
 	[super viewDidLoad];
 	[[DataManager sharedInstance] loadData];
 	[self createSubViews];
-	self.view.backgroundColor = [UIColor whiteColor];
-	self.navigationController.navigationBar.prefersLargeTitles = YES;
-	self.title = @"Search";
+	self.navigationController.navigationBar.hidden = YES;
 
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(dataLoadedSuccessfully) name:kDataManagerLoadDataDidComplete object:nil];
 }
@@ -45,8 +45,16 @@
 }
 
 - (void)createSubViews {
-	self.placeContainerView = [[UIView alloc] initWithFrame: CGRectMake(20.0, 140.0, [UIScreen mainScreen].bounds.size.width - 40.0, 170.0)];
-	self.placeContainerView.backgroundColor = [UIColor whiteColor];
+	self.backgroundImage = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height)];
+	self.backgroundImage.image = [UIImage imageNamed:@"bigBG"];
+	[self.view addSubview:self.backgroundImage];
+
+	self.logoImage = [[UIImageView alloc] initWithFrame:CGRectMake(60, 80, [UIScreen mainScreen].bounds.size.width - 120, 80)];
+	self.logoImage.image = [UIImage imageNamed:@"logo"];
+	[self.view addSubview:self.logoImage];
+
+	self.placeContainerView = [[UIView alloc] initWithFrame: CGRectMake(20.0, 200.0, [UIScreen mainScreen].bounds.size.width - 40.0, 170.0)];
+	self.placeContainerView.backgroundColor = [[UIColor whiteColor] colorWithAlphaComponent:0.3];
 	self.placeContainerView.layer.shadowColor = [[[UIColor blackColor] colorWithAlphaComponent:0.1] CGColor];
 	self.placeContainerView.layer.shadowOffset = CGSizeZero;
 	self.placeContainerView.layer.shadowRadius = 20.0;
@@ -58,7 +66,7 @@
 	[self.departureButton setTitle:@"From" forState:UIControlStateNormal];
 	self.departureButton.tintColor = [UIColor blackColor];
 	self.departureButton.frame = CGRectMake(10.0, 20.0, self.placeContainerView.frame.size.width - 20.0, 60.0);
-	self.departureButton.backgroundColor = [[UIColor lightGrayColor] colorWithAlphaComponent:0.3];
+	self.departureButton.backgroundColor = [[UIColor lightGrayColor] colorWithAlphaComponent:0.2];
 	[self.departureButton addTarget:self action:@selector(placeButtonDidTap:) forControlEvents:UIControlEventTouchUpInside];
 	[self.placeContainerView addSubview:self.departureButton];
 
@@ -66,7 +74,7 @@
 	[self.arrivalButton setTitle:@"Where" forState:UIControlStateNormal];
 	self.arrivalButton.tintColor = [UIColor blackColor];
 	self.arrivalButton.frame = CGRectMake(10.0, CGRectGetMaxY(self.departureButton.frame) + 10.0, self.placeContainerView.frame.size.width - 20.0, 60.0);
-	self.arrivalButton.backgroundColor = [[UIColor lightGrayColor] colorWithAlphaComponent:0.3];
+	self.arrivalButton.backgroundColor = [[UIColor lightGrayColor] colorWithAlphaComponent:0.2];
 	[self.arrivalButton addTarget:self action:@selector(placeButtonDidTap:) forControlEvents:UIControlEventTouchUpInside];
 	[self.placeContainerView addSubview:self.arrivalButton];
 
@@ -74,8 +82,8 @@
 	[self.searchButton setTitle:@"Search" forState:UIControlStateNormal];
 	self.searchButton.tintColor = [UIColor whiteColor];
 	self.searchButton.frame = CGRectMake(30.0, CGRectGetMaxY(self.placeContainerView.frame) + 30.0, [UIScreen mainScreen].bounds.size.width - 60.0, 60.0);
-	self.searchButton.backgroundColor = [UIColor blackColor];
-	self.searchButton.layer.cornerRadius = 8.0;
+	self.searchButton.backgroundColor = [UIColor colorNamed:@"buttonColor"];
+//	self.searchButton.layer.cornerRadius = 8.0;
 	self.searchButton.titleLabel.font = [UIFont systemFontOfSize:20.0 weight:UIFontWeightBold];
 	[self.searchButton addTarget:self action:@selector(searchButtonDidTap:) forControlEvents:UIControlEventTouchUpInside];
 	[self.view addSubview:self.searchButton];

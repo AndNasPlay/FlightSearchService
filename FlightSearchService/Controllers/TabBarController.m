@@ -8,6 +8,7 @@
 #import "TabBarController.h"
 #import "MainViewController.h"
 #import "MapViewController.h"
+#import <UIKit/UIKit.h>
 
 @interface TabBarController ()
 
@@ -20,6 +21,7 @@
 	if (self) {
 		self.viewControllers = [self createViewControllers];
 		self.tabBar.tintColor = [UIColor blackColor];
+		self.tabBar.backgroundColor = [[UIColor lightGrayColor] colorWithAlphaComponent:0.2];
 	}
 	return self;
 }
@@ -28,12 +30,12 @@
 	NSMutableArray<UIViewController *> *viewControllers = [NSMutableArray new];
 
 	MainViewController *mainViewController = [[MainViewController alloc] init];
-	mainViewController.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"Search" image:[UIImage systemImageNamed:@"search"] selectedImage:[UIImage imageNamed:@"search_selected"]];
+	mainViewController.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"Search" image:[UIImage systemImageNamed:@"magnifyingglass"] selectedImage:[UIImage imageNamed:@"search_selected"]];
 	UINavigationController *mainNavigationController = [[UINavigationController alloc] initWithRootViewController:mainViewController];
 	[viewControllers addObject:mainNavigationController];
 
 	MapViewController *mapViewController = [[MapViewController alloc] init];
-	mapViewController.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"Map" image:[UIImage imageNamed:@"map"] selectedImage:[UIImage imageNamed:@"map_selected"]];
+	mapViewController.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"Map Prices" image:[UIImage systemImageNamed:@"map"] selectedImage:[UIImage imageNamed:@"map_selected"]];
 	UINavigationController *mapNavigationController = [[UINavigationController alloc] initWithRootViewController:mapViewController];
 	[viewControllers addObject:mapNavigationController];
 

@@ -23,6 +23,10 @@
 		164311DE26AAFE4E004E7B6A /* ApiManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 164311DD26AAFE4E004E7B6A /* ApiManager.m */; };
 		164311E126AB4CAF004E7B6A /* Ticket.m in Sources */ = {isa = PBXBuildFile; fileRef = 164311E026AB4CAF004E7B6A /* Ticket.m */; };
 		166085AB26AF366F00375847 /* TabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 166085AA26AF366F00375847 /* TabBarController.m */; };
+		16AB05A226B1AAFC00C1864A /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 16AB05A026B1AAFC00C1864A /* Model.xcdatamodeld */; };
+		16AB05A626B1ACAA00C1864A /* FavoriteTicket+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16AB05A426B1ACAA00C1864A /* FavoriteTicket+CoreDataClass.swift */; };
+		16AB05A726B1ACAA00C1864A /* FavoriteTicket+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16AB05A526B1ACAA00C1864A /* FavoriteTicket+CoreDataProperties.swift */; };
+		16AB05AB26B1AD0200C1864A /* CoreDataHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 16AB05AA26B1AD0200C1864A /* CoreDataHelper.m */; };
 		16B274FC26A873DB004B89A7 /* PlaceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 16B274FB26A873DB004B89A7 /* PlaceViewController.m */; };
 		16B2750126A889B6004B89A7 /* Country.m in Sources */ = {isa = PBXBuildFile; fileRef = 16B2750026A889B6004B89A7 /* Country.m */; };
 		16B2750426A88B47004B89A7 /* City.m in Sources */ = {isa = PBXBuildFile; fileRef = 16B2750326A88B47004B89A7 /* City.m */; };
@@ -84,6 +88,12 @@
 		164311E026AB4CAF004E7B6A /* Ticket.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Ticket.m; sourceTree = "<group>"; };
 		166085A926AF366F00375847 /* TabBarController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TabBarController.h; sourceTree = "<group>"; };
 		166085AA26AF366F00375847 /* TabBarController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TabBarController.m; sourceTree = "<group>"; };
+		16AB05A126B1AAFC00C1864A /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
+		16AB05A326B1ACAA00C1864A /* FlightSearchService-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "FlightSearchService-Bridging-Header.h"; sourceTree = "<group>"; };
+		16AB05A426B1ACAA00C1864A /* FavoriteTicket+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FavoriteTicket+CoreDataClass.swift"; sourceTree = "<group>"; };
+		16AB05A526B1ACAA00C1864A /* FavoriteTicket+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FavoriteTicket+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		16AB05A926B1AD0200C1864A /* CoreDataHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CoreDataHelper.h; sourceTree = "<group>"; };
+		16AB05AA26B1AD0200C1864A /* CoreDataHelper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CoreDataHelper.m; sourceTree = "<group>"; };
 		16B274FA26A873DB004B89A7 /* PlaceViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PlaceViewController.h; sourceTree = "<group>"; };
 		16B274FB26A873DB004B89A7 /* PlaceViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PlaceViewController.m; sourceTree = "<group>"; };
 		16B274FF26A889B6004B89A7 /* Country.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Country.h; sourceTree = "<group>"; };
@@ -137,6 +147,7 @@
 		1627FBF926A86663001385FE = {
 			isa = PBXGroup;
 			children = (
+				16AB05A326B1ACAA00C1864A /* FlightSearchService-Bridging-Header.h */,
 				1627FC0426A86663001385FE /* FlightSearchService */,
 				1627FC2026A86668001385FE /* FlightSearchServiceTests */,
 				1627FC2B26A86668001385FE /* FlightSearchServiceUITests */,
@@ -157,6 +168,7 @@
 		1627FC0426A86663001385FE /* FlightSearchService */ = {
 			isa = PBXGroup;
 			children = (
+				16AB05A826B1ACB800C1864A /* CoreDate */,
 				1637256126AD826F00F05D8B /* Service */,
 				164311DB26AAFD24004E7B6A /* Managers */,
 				16B274FE26A8898F004B89A7 /* Models */,
@@ -248,6 +260,17 @@
 			path = Managers;
 			sourceTree = "<group>";
 		};
+		16AB05A826B1ACB800C1864A /* CoreDate */ = {
+			isa = PBXGroup;
+			children = (
+				16AB05A426B1ACAA00C1864A /* FavoriteTicket+CoreDataClass.swift */,
+				16AB05A526B1ACAA00C1864A /* FavoriteTicket+CoreDataProperties.swift */,
+				16AB05A926B1AD0200C1864A /* CoreDataHelper.h */,
+				16AB05AA26B1AD0200C1864A /* CoreDataHelper.m */,
+			);
+			path = CoreDate;
+			sourceTree = "<group>";
+		};
 		16B274FD26A873E2004B89A7 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -274,6 +297,7 @@
 				16B2750626A88E80004B89A7 /* Airport.m */,
 				164311DF26AB4CAF004E7B6A /* Ticket.h */,
 				164311E026AB4CAF004E7B6A /* Ticket.m */,
+				16AB05A026B1AAFC00C1864A /* Model.xcdatamodeld */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -354,6 +378,7 @@
 				TargetAttributes = {
 					1627FC0126A86663001385FE = {
 						CreatedOnToolsVersion = 12.5;
+						LastSwiftMigration = 1250;
 					};
 					1627FC1C26A86668001385FE = {
 						CreatedOnToolsVersion = 12.5;
@@ -424,8 +449,12 @@
 				16B274FC26A873DB004B89A7 /* PlaceViewController.m in Sources */,
 				164311D826A9BFD3004E7B6A /* TicketsTableViewCell.m in Sources */,
 				1627FC0726A86663001385FE /* AppDelegate.m in Sources */,
+				16AB05A226B1AAFC00C1864A /* Model.xcdatamodeld in Sources */,
+				16AB05AB26B1AD0200C1864A /* CoreDataHelper.m in Sources */,
 				16B2750126A889B6004B89A7 /* Country.m in Sources */,
+				16AB05A626B1ACAA00C1864A /* FavoriteTicket+CoreDataClass.swift in Sources */,
 				1627FC1826A86668001385FE /* main.m in Sources */,
+				16AB05A726B1ACAA00C1864A /* FavoriteTicket+CoreDataProperties.swift in Sources */,
 				16B2750426A88B47004B89A7 /* City.m in Sources */,
 				164311DE26AAFE4E004E7B6A /* ApiManager.m in Sources */,
 				1637256726AD897E00F05D8B /* MapWithPrice.m in Sources */,
@@ -599,6 +628,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 97WCP8NGSS;
 				INFOPLIST_FILE = FlightSearchService/Info.plist;
@@ -608,6 +638,9 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.AndNasPlay.FlightSearchService;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "FlightSearchService-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -617,6 +650,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 97WCP8NGSS;
 				INFOPLIST_FILE = FlightSearchService/Info.plist;
@@ -626,6 +660,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.AndNasPlay.FlightSearchService;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "FlightSearchService-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -633,6 +669,7 @@
 		1627FC3526A86668001385FE /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 97WCP8NGSS;
@@ -653,6 +690,7 @@
 		1627FC3626A86668001385FE /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 97WCP8NGSS;
@@ -673,6 +711,7 @@
 		1627FC3826A86668001385FE /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 97WCP8NGSS;
 				INFOPLIST_FILE = FlightSearchServiceUITests/Info.plist;
@@ -691,6 +730,7 @@
 		1627FC3926A86668001385FE /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 97WCP8NGSS;
 				INFOPLIST_FILE = FlightSearchServiceUITests/Info.plist;
@@ -746,6 +786,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		16AB05A026B1AAFC00C1864A /* Model.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				16AB05A126B1AAFC00C1864A /* Model.xcdatamodel */,
+			);
+			currentVersion = 16AB05A126B1AAFC00C1864A /* Model.xcdatamodel */;
+			path = Model.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 1627FBFA26A86663001385FE /* Project object */;
 }

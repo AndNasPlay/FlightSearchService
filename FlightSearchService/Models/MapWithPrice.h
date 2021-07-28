@@ -11,14 +11,14 @@
 
 @interface MapWithPrice : NSObject
 
-@property (nonatomic, strong) City *destination;
-@property (nonatomic, strong) City *origin;
-@property (nonatomic, strong) NSDate *departure;
-@property (nonatomic, strong) NSDate *returnDate;
-@property (nonatomic) NSInteger *numberOfchanges;
-@property (nonatomic) NSInteger *value;
-@property (nonatomic) NSInteger *distance;
-@property (nonatomic) BOOL *actual;
+	@property (nonatomic, strong) City *destination;
+	@property (nonatomic, strong) City *origin;
+	@property (nonatomic, strong) NSDate *departure;
+	@property (nonatomic, strong) NSDate *returnDate;
+	@property (nonatomic) NSInteger numberOfchanges;
+	@property (nonatomic) NSInteger value;
+	@property (nonatomic) NSInteger distance;
+	@property (nonatomic) BOOL actual;
 
 - (instancetype)initWithDicrionary: (NSDictionary *)dictionary withOrigin: (City *)origin;
 
