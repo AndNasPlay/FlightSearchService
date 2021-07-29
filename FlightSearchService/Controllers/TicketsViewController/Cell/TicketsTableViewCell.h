@@ -9,11 +9,13 @@
 #import "DataManager.h"
 #import "ApiManager.h"
 #import "Ticket.h"
+#import "FlightSearchService-Swift.h"
 
 
 @interface TicketsTableViewCell : UITableViewCell
 
 @property (nonatomic, strong) Ticket *ticket;
+@property (nonatomic, strong) FavoriteTicket *favoriteTicket;
 
 @end
 

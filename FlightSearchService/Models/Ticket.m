@@ -18,6 +18,8 @@
 		self.flightNumber = [dictionary valueForKey:@"flight_number"];
 		self.price = [dictionary valueForKey:@"price"];
 		self.returnDate = dateFromString([dictionary valueForKey:@"return_at"]);
+		NSLog(@"%@ ticket model", self.departure);
+		NSLog(@"%@ ticket model", self.returnDate);
 	}
 	return self;
 }

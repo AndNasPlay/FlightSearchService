@@ -10,9 +10,9 @@
 
 @interface CoreDataHelper ()
 
-	@property (nonatomic, strong) NSPersistentStoreCoordinator *persistentStoreCoordinator;
-	@property (nonatomic, strong) NSManagedObjectContext *managedObjectContext;
-	@property (nonatomic, strong) NSManagedObjectModel *managedObjectModel;
+@property (nonatomic, strong) NSPersistentStoreCoordinator *persistentStoreCoordinator;
+@property (nonatomic, strong) NSManagedObjectContext *managedObjectContext;
+@property (nonatomic, strong) NSManagedObjectModel *managedObjectModel;
 
 @end
 
@@ -63,6 +63,39 @@
 	return [[self.managedObjectContext executeFetchRequest:reqest error:nil] firstObject];
 }
 
+- (BOOL)isFavorite:(Ticket *)ticket {
+	return [self favoriteFromTicket:ticket] != nil;
+}
+
+- (void)addToFavorite:(Ticket *)ticket {
+
+	FavoriteTicket *favorite = [NSEntityDescription insertNewObjectForEntityForName:@"FavoriteTicket" inManagedObjectContext:self.managedObjectContext];
+	favorite.price = ticket.price.intValue;
+	favorite.airline = ticket.airline;
+	favorite.departure = ticket.departure;
+	favorite.expires = ticket.expires;
+	favorite.flightNumber = ticket.flightNumber.intValue;
+	favorite.from = ticket.from;
+	favorite.to = ticket.to;
+	favorite.returnDate = ticket.returnDate;
+	favorite.created = [NSDate date];
+
+	[self save];
+}
+
+- (void)removeFromFavorite:(Ticket *)ticket {
+	FavoriteTicket *favorite = [self favoriteFromTicket:ticket];
+	if (favorite) {
+		[self.managedObjectContext deleteObject:favorite];
+		[self save];
+	}
+}
+
+- (NSArray *)favorites {
+	NSFetchRequest *reqest = [NSFetchRequest fetchRequestWithEntityName:@"FavoriteTicket"];
+	reqest.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"created" ascending:NO]];
+	return [self.managedObjectContext executeFetchRequest:reqest error:nil];
+}
 
 
 @end

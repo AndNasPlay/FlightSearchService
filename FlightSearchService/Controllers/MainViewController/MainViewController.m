@@ -131,10 +131,27 @@
 		title = airport.name;
 		iata = airport.cityCode;
 	}
+
 	
 	if (placeType == PlaceTypeDeparture) {
+		NSString *departDateString = @"2021-11";
+		NSString *returnDateString = @"2021-12";
+		NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+		dateFormatter.dateFormat = @"yyyy-MM";
+		NSDate *departDate = [dateFormatter dateFromString:departDateString];
+		NSDate *returnDate = [dateFormatter dateFromString:returnDateString];
+		_searchRequest.departDate = departDate;
+		_searchRequest.returnDate = returnDate;
 		_searchRequest.origin = iata;
 	} else {
+		NSString *departDateString = @"2021-11";
+		NSString *returnDateString = @"2021-12";
+		NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+		dateFormatter.dateFormat = @"yyyy-MM";
+		NSDate *departDate = [dateFormatter dateFromString:departDateString];
+		NSDate *returnDate = [dateFormatter dateFromString:returnDateString];
+		_searchRequest.departDate = departDate;
+		_searchRequest.returnDate = returnDate;
 		_searchRequest.destination = iata;
 	}
 	[button setTitle:title forState:UIControlStateNormal];

@@ -12,8 +12,8 @@
 
 @interface LocationService() <CLLocationManagerDelegate>
 
-@property(nonatomic, strong) CLLocationManager *locationManager;
-@property(nonatomic, strong) CLLocation *currentLocation;
+	@property(nonatomic, strong) CLLocationManager *locationManager;
+	@property(nonatomic, strong) CLLocation *currentLocation;
 
 @end
 
@@ -35,7 +35,7 @@
 	} else if (status != kCLAuthorizationStatusNotDetermined) {
 		UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Mistake" message:@"Unable to determine the current city" preferredStyle:UIAlertControllerStyleAlert];
 		[alertController addAction:[UIAlertAction actionWithTitle:@"Close" style:UIAlertActionStyleDefault handler:nil]];
-		[[UIApplication sharedApplication].keyWindow.rootViewController presentViewController:alertController animated:YES completion:nil];
+		[[UIApplication sharedApplication].windows.firstObject.rootViewController presentViewController:alertController animated:YES completion:nil];
 	}
 }
 

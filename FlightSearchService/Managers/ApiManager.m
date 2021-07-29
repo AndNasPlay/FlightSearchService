@@ -83,8 +83,9 @@ NSString *SearchRequestQuery(SearchRequest request) {
 	if (request.departDate && request.returnDate) {
 		NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
 		dateFormatter.dateFormat = @"yyyy-MM";
-		result = [NSString stringWithFormat:@"%@&depart_date=%@&return_date=%@", result, [dateFormatter stringFromDate:request.departDate], [dateFormatter stringFromDate:request.returnDate]];
+		result = [NSString stringWithFormat:@"%@&depart_date=%@&return_date=%@", result, [dateFormatter stringFromDate:request.departDate ], [dateFormatter stringFromDate:request.returnDate]];
 	}
+	NSLog(@"%@, result", result);
 	return result;
 }
 

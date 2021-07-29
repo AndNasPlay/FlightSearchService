@@ -70,6 +70,7 @@
 			annotation.title = [NSString stringWithFormat:@"%@ (%@)", price.destination.name, price.destination.code];
 			annotation.subtitle = [NSString stringWithFormat:@"%ld руб.", (long)price.value];
 			annotation.coordinate = price.destination.coordinate;
+
 			[self->_mapView addAnnotation: annotation];
 		});
 	}

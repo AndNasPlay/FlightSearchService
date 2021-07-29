@@ -69,8 +69,26 @@
 	NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
 	dateFormatter.dateFormat = @"dd MMMM yyyy hh:mm";
 	self.dateLable.text = [dateFormatter stringFromDate:ticket.departure];
+	NSLog(@"%@", ticket.departure);
+	NSLog(@"%@", ticket.returnDate);
+	NSLog(@"%@", ticket.expires);
+	NSLog(@"%@", ticket.flightNumber);
 	NSLog(@"%@", ticket.airline);
+	NSLog(@"%@", ticket.from);
+	NSLog(@"%@", ticket.price);
+	NSLog(@"%@", ticket.to);
 	self.airlineLogoView.image = [UIImage imageNamed:@"Ducati"];
+}
+
+- (void)setFavoriteTicket:(FavoriteTicket *)favoriteTicket {
+	self.favoriteTicket = favoriteTicket;
+
+	self.priceLable.text = [NSString stringWithFormat:@"%lld руб.", favoriteTicket.price];
+	self.placesLable.text = [NSString stringWithFormat:@"%@ - %@", favoriteTicket.from, favoriteTicket.to];
+
+	NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+	dateFormatter.dateFormat = @"dd MMMM yyyy hh:mm";
+	self.dateLable.text = [dateFormatter stringFromDate:favoriteTicket.departure];
 }
 
 @end
