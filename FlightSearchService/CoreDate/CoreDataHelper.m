@@ -31,22 +31,21 @@
 - (void)setup {
 
 	NSURL *modelURL = [[NSBundle mainBundle] URLForResource:@"Model" withExtension:@"momd"];
+	_managedObjectModel = [[NSManagedObjectModel alloc] initWithContentsOfURL:modelURL];
 
-	self.managedObjectModel = [[NSManagedObjectModel alloc] initWithContentsOfURL:modelURL];
-	self.persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel: self.managedObjectModel];
+	_persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:_managedObjectModel];
 
-	NSURL *docsURL = [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentationDirectory inDomains:NSUserDomainMask] lastObject];
-
+	NSURL *docsURL = [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
 	NSURL *storeURL = [docsURL URLByAppendingPathComponent:@"base.sqlite"];
 
-	NSPersistentStore *store = [self.persistentStoreCoordinator addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:storeURL options:nil error:nil];
+	NSPersistentStore* store = [_persistentStoreCoordinator addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:storeURL options:nil error:nil];
 
 	if (!store) {
 		abort();
 	}
 
-	self.managedObjectContext = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSMainQueueConcurrencyType];
-	self.managedObjectContext.persistentStoreCoordinator = self.persistentStoreCoordinator;
+	_managedObjectContext = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSMainQueueConcurrencyType];
+	_managedObjectContext.persistentStoreCoordinator = _persistentStoreCoordinator;
 }
 
 - (void)save {
@@ -58,9 +57,9 @@
 }
 
 - (FavoriteTicket *)favoriteFromTicket:(Ticket *)ticket {
-	NSFetchRequest *reqest = [NSFetchRequest fetchRequestWithEntityName:@"FavoriteTecket"];
-	reqest.predicate = [NSPredicate predicateWithFormat:@"price == %ld AND airline == %@ AND from == %@ AND departure == %@ AND expires == %@ AND flightNumer == %ld", (long)ticket.price.integerValue, ticket.airline, ticket.from, ticket.to, ticket.departure, ticket.expires, (long)ticket.flightNumber.integerValue];
-	return [[self.managedObjectContext executeFetchRequest:reqest error:nil] firstObject];
+	NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"FavoriteTicket"];
+	request.predicate = [NSPredicate predicateWithFormat:@"price == %ld AND airline == %@ AND from == %@ AND to == %@ AND departure == %@ AND expires == %@ AND flightNumber == %ld", (long)ticket.price.integerValue, ticket.airline, ticket.from, ticket.to, ticket.departure, ticket.expires, (long)ticket.flightNumber.integerValue];
+	return [[_managedObjectContext executeFetchRequest:request error:nil] firstObject];
 }
 
 - (BOOL)isFavorite:(Ticket *)ticket {
@@ -69,15 +68,15 @@
 
 - (void)addToFavorite:(Ticket *)ticket {
 
-	FavoriteTicket *favorite = [NSEntityDescription insertNewObjectForEntityForName:@"FavoriteTicket" inManagedObjectContext:self.managedObjectContext];
+	FavoriteTicket *favorite = [NSEntityDescription insertNewObjectForEntityForName:@"FavoriteTicket" inManagedObjectContext:_managedObjectContext];
 	favorite.price = ticket.price.intValue;
 	favorite.airline = ticket.airline;
 	favorite.departure = ticket.departure;
 	favorite.expires = ticket.expires;
 	favorite.flightNumber = ticket.flightNumber.intValue;
+	favorite.returnDate = ticket.returnDate;
 	favorite.from = ticket.from;
 	favorite.to = ticket.to;
-	favorite.returnDate = ticket.returnDate;
 	favorite.created = [NSDate date];
 
 	[self save];
@@ -86,16 +85,15 @@
 - (void)removeFromFavorite:(Ticket *)ticket {
 	FavoriteTicket *favorite = [self favoriteFromTicket:ticket];
 	if (favorite) {
-		[self.managedObjectContext deleteObject:favorite];
+		[_managedObjectContext deleteObject:favorite];
 		[self save];
 	}
 }
 
 - (NSArray *)favorites {
-	NSFetchRequest *reqest = [NSFetchRequest fetchRequestWithEntityName:@"FavoriteTicket"];
-	reqest.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"created" ascending:NO]];
-	return [self.managedObjectContext executeFetchRequest:reqest error:nil];
+	NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"FavoriteTicket"];
+	request.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"created" ascending:NO]];
+	return [_managedObjectContext executeFetchRequest:request error:nil];
 }
-
 
 @end

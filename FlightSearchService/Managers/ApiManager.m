@@ -69,6 +69,8 @@
 				Ticket *ticket = [[Ticket alloc] initWithDictionary:value];
 				ticket.from = request.origin;
 				ticket.to = request.destination;
+				ticket.returnDate = request.returnDate;
+				ticket.departure = request.departDate;
 				[array addObject:ticket];
 			}
 			dispatch_async(dispatch_get_main_queue(), ^{
@@ -85,7 +87,6 @@ NSString *SearchRequestQuery(SearchRequest request) {
 		dateFormatter.dateFormat = @"yyyy-MM";
 		result = [NSString stringWithFormat:@"%@&depart_date=%@&return_date=%@", result, [dateFormatter stringFromDate:request.departDate ], [dateFormatter stringFromDate:request.returnDate]];
 	}
-	NSLog(@"%@, result", result);
 	return result;
 }
 

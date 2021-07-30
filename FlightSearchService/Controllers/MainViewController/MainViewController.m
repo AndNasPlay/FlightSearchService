@@ -83,7 +83,6 @@
 	self.searchButton.tintColor = [UIColor whiteColor];
 	self.searchButton.frame = CGRectMake(30.0, CGRectGetMaxY(self.placeContainerView.frame) + 30.0, [UIScreen mainScreen].bounds.size.width - 60.0, 60.0);
 	self.searchButton.backgroundColor = [UIColor colorNamed:@"buttonColor"];
-//	self.searchButton.layer.cornerRadius = 8.0;
 	self.searchButton.titleLabel.font = [UIFont systemFontOfSize:20.0 weight:UIFontWeightBold];
 	[self.searchButton addTarget:self action:@selector(searchButtonDidTap:) forControlEvents:UIControlEventTouchUpInside];
 	[self.view addSubview:self.searchButton];

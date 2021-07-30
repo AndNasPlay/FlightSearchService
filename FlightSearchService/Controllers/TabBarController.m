@@ -8,6 +8,7 @@
 #import "TabBarController.h"
 #import "MainViewController.h"
 #import "MapViewController.h"
+#import "TicketsTableViewController.h"
 #import <UIKit/UIKit.h>
 
 @interface TabBarController ()
@@ -39,12 +40,16 @@
 	UINavigationController *mapNavigationController = [[UINavigationController alloc] initWithRootViewController:mapViewController];
 	[viewControllers addObject:mapNavigationController];
 
+	TicketsTableViewController *ticketsViewController = [[TicketsTableViewController alloc] initFavoriteTicketsController];
+	ticketsViewController.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"Favorite Tickets" image:[UIImage systemImageNamed:@"star"] selectedImage:[UIImage imageNamed:@"star_fill"]];
+	UINavigationController *ticketsNavigationController = [[UINavigationController alloc] initWithRootViewController:ticketsViewController];
+	[viewControllers addObject:ticketsNavigationController];
+
 	return viewControllers;
 }
 
 - (void)viewDidLoad {
 	[super viewDidLoad];
-
 }
 
 @end

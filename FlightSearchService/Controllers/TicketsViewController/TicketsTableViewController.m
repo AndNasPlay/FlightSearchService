@@ -8,6 +8,8 @@
 #import "TicketsTableViewController.h"
 #import "TicketsTableViewCell.h"
 #import "CoreDataHelper.h"
+#import "FlightSearchService-Swift.h"
+#import "Ticket.h"
 
 #define TicketsCellReuseIdentifier @"TicketsCellReuseIdentifier"
 
@@ -97,9 +99,9 @@
 
 	if (isFavorite) return;
 
-	UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Действия с билетом" message:@"Что сделать с билетом?" preferredStyle:UIAlertControllerStyleActionSheet];
+	UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Действия с билетом" message:@"Что необходимо сделать с выбранным билетом?" preferredStyle:UIAlertControllerStyleActionSheet];
 	UIAlertAction *favoriteAction;
-	if ([[CoreDataHelper sharedInstance] isFavorite:[self.ticketsArray objectAtIndex:indexPath.row]]) {
+	if ([[CoreDataHelper sharedInstance] isFavorite: [self.ticketsArray objectAtIndex:indexPath.row]]) {
 		favoriteAction = [UIAlertAction actionWithTitle:@"Удалить из избранного" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
 			[[CoreDataHelper sharedInstance] removeFromFavorite:[self.ticketsArray objectAtIndex:indexPath.row]];
 		}];
@@ -108,10 +110,23 @@
 			[[CoreDataHelper sharedInstance] addToFavorite:[self.ticketsArray objectAtIndex:indexPath.row]];
 		}];
 	}
+
 	UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Закрыть" style:UIAlertActionStyleCancel handler:nil];
 	[alertController addAction:favoriteAction];
 	[alertController addAction:cancelAction];
 	[self presentViewController:alertController animated:YES completion:nil];
+}
+
+- (BOOL) tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
+	return YES;
+}
+
+- (void) tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *) indexPath {
+	if(editingStyle == UITableViewCellEditingStyleDelete) {
+//		[[CoreDataHelper sharedInstance] removeFromFavorite:[_ticketsArray objectAtIndex:indexPath.row]];
+//		[tableView deleteRowsAtIndexPaths: @[indexPath] withRowAnimation: UITableViewRowAnimationLeft];
+//		[self.tableView reloadData];
+	}
 }
 
 @end

@@ -12,6 +12,7 @@
 #import "DataManager.h"
 #import "MapWithPrice.h"
 #import <CoreLocation/CoreLocation.h>
+#import "CoreDataHelper.h"
 
 @interface MapViewController ()
 
@@ -25,12 +26,13 @@
 @implementation MapViewController
 
 - (void)viewDidLoad {
-    [super viewDidLoad];
+	[super viewDidLoad];
 	self.title = @"Map Prices";
 
 	self.mapView = [[MKMapView alloc] initWithFrame:self.view.bounds];
 	self.mapView.showsUserLocation = YES;
-	[self.view addSubview:self.mapView];
+	[self.view addSubview:_mapView];
+	[_mapView setDelegate: self];
 
 	[[DataManager sharedInstance] loadData];
 
@@ -66,15 +68,70 @@
 
 	for (MapWithPrice *price in prices) {
 		dispatch_async(dispatch_get_main_queue(), ^{
+
 			MKPointAnnotation *annotation = [[MKPointAnnotation alloc] init];
 			annotation.title = [NSString stringWithFormat:@"%@ (%@)", price.destination.name, price.destination.code];
 			annotation.subtitle = [NSString stringWithFormat:@"%ld руб.", (long)price.value];
 			annotation.coordinate = price.destination.coordinate;
-
-			[self->_mapView addAnnotation: annotation];
+			[self->_mapView addAnnotation:annotation];
 		});
 	}
 }
+
+- (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation {
+	static NSString *identifier = @"MarkerIdentifier";
+	MKMarkerAnnotationView *annotationView = (MKMarkerAnnotationView *)[mapView dequeueReusableAnnotationViewWithIdentifier:identifier];
+	if (!annotationView) {
+		annotationView = [[MKMarkerAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:identifier];
+		annotationView.canShowCallout = YES;
+		annotationView.calloutOffset = CGPointMake(-5.0, 5.0);
+		annotationView.rightCalloutAccessoryView = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
+		annotationView.glyphImage = [UIImage imageNamed:@"MapMarker"];
+	}
+	annotationView.annotation = annotation;
+	return annotationView;
+}
+
+//- (void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control {
+//
+//	NSUInteger index = [mapView.annotations indexOfObject:view.annotation];
+//
+//	UIAlertController *alertController = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"actions_with_tickets", "") message:NSLocalizedString(@"actions_with_tickets_describe", "") preferredStyle:UIAlertControllerStyleActionSheet];
+//
+//	UIAlertAction *favoriteAction;
+//
+//	if ([[CoreDataHelper sharedInstance] isFavoriteMapPrice: [_prices objectAtIndex:index]]) {
+//		favoriteAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"remove_from_favorite", "") style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
+//
+//			[[CoreDataHelper sharedInstance] removeFromFavoriteMapPrice:[self->_prices objectAtIndex:index]];
+//
+//		}];
+//	} else {
+//		favoriteAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"add_to_favorite", "") style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+//
+//			// Add MapPrice to Favorite
+//			[[CoreDataHelper sharedInstance] addToFavoriteMapPrice: [self->_prices objectAtIndex:index]];
+//
+//
+//			// Get IATA from annotation title text
+//			NSArray *words = [view.annotation.title componentsSeparatedByCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+//			NSMutableArray *iata = [NSMutableArray new];
+//			for (NSString * word in words){
+//				if ([word length] > 1 && [word characterAtIndex:0] == '('){
+//					NSString * editedWord = [word substringFromIndex:1];
+//					[iata addObject:editedWord];
+//				}
+//			}
+//
+//			//Set arrival button title
+//			[self->_arrivalButton setTitle: view.annotation.title forState: UIControlStateNormal];
+//
+//			//Set searchrequest from IATA
+//			self->_searchRequest.destination = iata[0];
+//
+//		}];
+//	}
+//}
 
 
 @end
