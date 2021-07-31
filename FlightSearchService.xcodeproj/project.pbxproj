@@ -23,6 +23,7 @@
 		164311D826A9BFD3004E7B6A /* TicketsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 164311D726A9BFD3004E7B6A /* TicketsTableViewCell.m */; };
 		164311DE26AAFE4E004E7B6A /* ApiManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 164311DD26AAFE4E004E7B6A /* ApiManager.m */; };
 		164311E126AB4CAF004E7B6A /* Ticket.m in Sources */ = {isa = PBXBuildFile; fileRef = 164311E026AB4CAF004E7B6A /* Ticket.m */; };
+		1648E85B26B57538005D87B9 /* packmanAnimation.json in Resources */ = {isa = PBXBuildFile; fileRef = 1648E85A26B57538005D87B9 /* packmanAnimation.json */; };
 		166085AB26AF366F00375847 /* TabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 166085AA26AF366F00375847 /* TabBarController.m */; };
 		16AB05A626B1ACAA00C1864A /* FavoriteTicket+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16AB05A426B1ACAA00C1864A /* FavoriteTicket+CoreDataClass.swift */; };
 		16AB05A726B1ACAA00C1864A /* FavoriteTicket+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16AB05A526B1ACAA00C1864A /* FavoriteTicket+CoreDataProperties.swift */; };
@@ -86,6 +87,7 @@
 		164311DD26AAFE4E004E7B6A /* ApiManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ApiManager.m; sourceTree = "<group>"; };
 		164311DF26AB4CAF004E7B6A /* Ticket.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Ticket.h; sourceTree = "<group>"; };
 		164311E026AB4CAF004E7B6A /* Ticket.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Ticket.m; sourceTree = "<group>"; };
+		1648E85A26B57538005D87B9 /* packmanAnimation.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = packmanAnimation.json; sourceTree = "<group>"; };
 		166085A926AF366F00375847 /* TabBarController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TabBarController.h; sourceTree = "<group>"; };
 		166085AA26AF366F00375847 /* TabBarController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TabBarController.m; sourceTree = "<group>"; };
 		16AB05A126B1AAFC00C1864A /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
@@ -305,6 +307,7 @@
 		16BA767726A8BB9300E269B2 /* JSON */ = {
 			isa = PBXGroup;
 			children = (
+				1648E85A26B57538005D87B9 /* packmanAnimation.json */,
 				16BA767A26A8BBB000E269B2 /* airports.json */,
 				16BA767826A8BBAF00E269B2 /* cities.json */,
 				16BA767926A8BBB000E269B2 /* countries.json */,
@@ -419,6 +422,7 @@
 				1627FC1526A86668001385FE /* LaunchScreen.storyboard in Resources */,
 				16BA767C26A8BBB000E269B2 /* countries.json in Resources */,
 				1627FC1226A86668001385FE /* Assets.xcassets in Resources */,
+				1648E85B26B57538005D87B9 /* packmanAnimation.json in Resources */,
 				16BA767D26A8BBB000E269B2 /* airports.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

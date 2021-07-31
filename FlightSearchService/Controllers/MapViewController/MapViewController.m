@@ -32,7 +32,7 @@
 	self.mapView = [[MKMapView alloc] initWithFrame:self.view.bounds];
 	self.mapView.showsUserLocation = YES;
 	[self.view addSubview:_mapView];
-	[_mapView setDelegate: self];
+	[self.mapView setDelegate: self];
 
 	[[DataManager sharedInstance] loadData];
 
@@ -92,46 +92,63 @@
 	return annotationView;
 }
 
-//- (void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control {
-//
-//	NSUInteger index = [mapView.annotations indexOfObject:view.annotation];
-//
-//	UIAlertController *alertController = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"actions_with_tickets", "") message:NSLocalizedString(@"actions_with_tickets_describe", "") preferredStyle:UIAlertControllerStyleActionSheet];
-//
-//	UIAlertAction *favoriteAction;
-//
+- (void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control {
+	NSUInteger index = [mapView.annotations indexOfObject:view.annotation];
+	NSLog(@"%lu", (unsigned long)index);
+
+	UIAlertController *alertController = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"actions_with_tickets", "") message:NSLocalizedString(@"actions_with_tickets_describe", "") preferredStyle:UIAlertControllerStyleActionSheet];
+
+	UIAlertAction *favoriteAction;
+}
+
 //	if ([[CoreDataHelper sharedInstance] isFavoriteMapPrice: [_prices objectAtIndex:index]]) {
 //		favoriteAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"remove_from_favorite", "") style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
 //
 //			[[CoreDataHelper sharedInstance] removeFromFavoriteMapPrice:[self->_prices objectAtIndex:index]];
 //
 //		}];
-//	} else {
-//		favoriteAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"add_to_favorite", "") style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-//
-//			// Add MapPrice to Favorite
-//			[[CoreDataHelper sharedInstance] addToFavoriteMapPrice: [self->_prices objectAtIndex:index]];
-//
-//
-//			// Get IATA from annotation title text
-//			NSArray *words = [view.annotation.title componentsSeparatedByCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
-//			NSMutableArray *iata = [NSMutableArray new];
-//			for (NSString * word in words){
-//				if ([word length] > 1 && [word characterAtIndex:0] == '('){
-//					NSString * editedWord = [word substringFromIndex:1];
-//					[iata addObject:editedWord];
-//				}
-//			}
-//
-//			//Set arrival button title
-//			[self->_arrivalButton setTitle: view.annotation.title forState: UIControlStateNormal];
-//
-//			//Set searchrequest from IATA
-//			self->_searchRequest.destination = iata[0];
-//
-//		}];
 //	}
-//}
+
+	//- (void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control {
+	//
+	//	NSUInteger index = [mapView.annotations indexOfObject:view.annotation];
+	//
+	//	UIAlertController *alertController = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"actions_with_tickets", "") message:NSLocalizedString(@"actions_with_tickets_describe", "") preferredStyle:UIAlertControllerStyleActionSheet];
+	//
+	//	UIAlertAction *favoriteAction;
+	//
+	//	if ([[CoreDataHelper sharedInstance] isFavoriteMapPrice: [_prices objectAtIndex:index]]) {
+	//		favoriteAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"remove_from_favorite", "") style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
+	//
+	//			[[CoreDataHelper sharedInstance] removeFromFavoriteMapPrice:[self->_prices objectAtIndex:index]];
+	//
+	//		}];
+	//	} else {
+	//		favoriteAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"add_to_favorite", "") style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+	//
+	//			// Add MapPrice to Favorite
+	//			[[CoreDataHelper sharedInstance] addToFavoriteMapPrice: [self->_prices objectAtIndex:index]];
+	//
+	//
+	//			// Get IATA from annotation title text
+	//			NSArray *words = [view.annotation.title componentsSeparatedByCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+	//			NSMutableArray *iata = [NSMutableArray new];
+	//			for (NSString * word in words){
+	//				if ([word length] > 1 && [word characterAtIndex:0] == '('){
+	//					NSString * editedWord = [word substringFromIndex:1];
+	//					[iata addObject:editedWord];
+	//				}
+	//			}
+	//
+	//			//Set arrival button title
+	//			[self->_arrivalButton setTitle: view.annotation.title forState: UIControlStateNormal];
+	//
+	//			//Set searchrequest from IATA
+	//			self->_searchRequest.destination = iata[0];
+	//
+	//		}];
+	//	}
+	//}
 
 
-@end
+	@end

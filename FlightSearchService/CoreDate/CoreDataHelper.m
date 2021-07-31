@@ -62,6 +62,12 @@
 	return [[_managedObjectContext executeFetchRequest:request error:nil] firstObject];
 }
 
+//- (favoritesMapWithPrices *)favoritesMapWithPrices:(MapPrice *)price {
+//	NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"FavoriteMapPrice"];
+//	request.predicate = [NSPredicate predicateWithFormat:@"price == %ld AND from == %@ AND to == %@ AND departure == %@", (long)price.price, price.from.name, price.to.name, price.departure];
+//	return [[_managedObjectContext executeFetchRequest:request error:nil] firstObject];
+//}
+
 - (BOOL)isFavorite:(Ticket *)ticket {
 	return [self favoriteFromTicket:ticket] != nil;
 }
