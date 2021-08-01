@@ -148,7 +148,11 @@
 	NSDateComponents* comp1 = [calendar components: unitFlags fromDate: date1];
 	NSDateComponents* comp2 = [calendar components: unitFlags fromDate: date2];
 
-	if ((comp1.year >= comp2.year) && (comp1.month >= comp2.month) && (comp1.day >= comp2.day)) {
+	if (comp1.year < comp2.year) {
+		return YES;
+	} else if (comp1.year > comp2.year) {
+		return NO;
+	} else if ((comp1.month >= comp2.month) && (comp1.day >= comp2.day)) {
 		return NO;
 	} else {
 		return YES;
@@ -174,7 +178,7 @@
 
 	NSString *title;
 	NSString *iata;
-	
+
 	if (dataType == DataSourceTypeCity) {
 		City *city = (City *)place;
 		title = city.name;
@@ -185,7 +189,6 @@
 		iata = airport.cityCode;
 	}
 
-	
 	if (placeType == PlaceTypeDeparture) {
 		_searchRequest.origin = iata;
 	} else {
