@@ -10,16 +10,19 @@
 #import "DataManager.h"
 #import "ApiManager.h"
 #import "TicketsTableViewController.h"
+#import <UIKit/UIKit.h>
 
 @interface MainViewController () <PlaceViewControllerDelegate>
 
-	@property (nonatomic, strong) UIButton *departureButton;
-	@property (nonatomic, strong) UIButton *arrivalButton;
-	@property (nonatomic) SearchRequest searchRequest;
-	@property (nonatomic, strong) UIView *placeContainerView;
-	@property (nonatomic, strong) UIButton *searchButton;
-	@property (nonatomic, strong) UIImageView *backgroundImage;
-	@property (nonatomic, strong) UIImageView *logoImage;
+@property (nonatomic, strong) UIButton *departureButton;
+@property (nonatomic, strong) UIButton *arrivalButton;
+@property (nonatomic) SearchRequest searchRequest;
+@property (nonatomic, strong) UIView *placeContainerView;
+@property (nonatomic, strong) UIButton *searchButton;
+@property (nonatomic, strong) UIImageView *backgroundImage;
+@property (nonatomic, strong) UIImageView *logoImage;
+@property (nonatomic, strong) UIDatePicker *datePicker;
+@property (nonatomic, strong) UITextField *datePickerTextField;
 
 @end
 
@@ -30,7 +33,6 @@
 	[[DataManager sharedInstance] loadData];
 	[self createSubViews];
 	self.navigationController.navigationBar.hidden = YES;
-
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(dataLoadedSuccessfully) name:kDataManagerLoadDataDidComplete object:nil];
 }
 
@@ -53,7 +55,7 @@
 	self.logoImage.image = [UIImage imageNamed:@"logo"];
 	[self.view addSubview:self.logoImage];
 
-	self.placeContainerView = [[UIView alloc] initWithFrame: CGRectMake(20.0, 200.0, [UIScreen mainScreen].bounds.size.width - 40.0, 170.0)];
+	self.placeContainerView = [[UIView alloc] initWithFrame: CGRectMake(20.0, 200.0, [UIScreen mainScreen].bounds.size.width - 40.0, 230.0)];
 	self.placeContainerView.backgroundColor = [[UIColor whiteColor] colorWithAlphaComponent:0.3];
 	self.placeContainerView.layer.shadowColor = [[[UIColor blackColor] colorWithAlphaComponent:0.1] CGColor];
 	self.placeContainerView.layer.shadowOffset = CGSizeZero;
@@ -78,6 +80,19 @@
 	[self.arrivalButton addTarget:self action:@selector(placeButtonDidTap:) forControlEvents:UIControlEventTouchUpInside];
 	[self.placeContainerView addSubview:self.arrivalButton];
 
+	self.datePickerTextField = [[UITextField alloc] initWithFrame:CGRectMake(10.0, CGRectGetMaxY(self.arrivalButton.frame) + 10.0, self.placeContainerView.frame.size.width - 20.0, 60.0)];
+	self.datePickerTextField.text = @"Дата вылета";
+	self.datePickerTextField.textAlignment = NSTextAlignmentCenter;
+	self.datePickerTextField.backgroundColor = [[UIColor lightGrayColor] colorWithAlphaComponent:0.2];
+	self.datePickerTextField.tintColor = [UIColor clearColor];
+	[self.placeContainerView addSubview:self.datePickerTextField];
+
+	self.datePicker = [[UIDatePicker alloc] initWithFrame:CGRectZero];
+	[self.datePicker setDatePickerMode:UIDatePickerModeDate];
+	[self.datePicker setPreferredDatePickerStyle:UIDatePickerStyleWheels];
+	[self.datePicker addTarget:self action:@selector(onDatePickerValueChanged:) forControlEvents:UIControlEventValueChanged];
+	self.datePickerTextField.inputView = self.datePicker;
+
 	self.searchButton = [UIButton buttonWithType:UIButtonTypeSystem];
 	[self.searchButton setTitle:@"Search" forState:UIControlStateNormal];
 	self.searchButton.tintColor = [UIColor whiteColor];
@@ -88,17 +103,56 @@
 	[self.view addSubview:self.searchButton];
 }
 
+- (void)onDatePickerValueChanged:(UIDatePicker *)datePicker {
+	NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+	dateFormatter.dateFormat = @"dd-MM-yyyy";
+	self.datePickerTextField.text = [dateFormatter stringFromDate:datePicker.date];
+}
+
+-(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
+	[self.view endEditing:YES];
+}
+
 - (void)searchButtonDidTap:(UIButton *)sender {
-	[[ApiManager sharedInstance] ticketsWithRequest:self.searchRequest withCompletion:^(NSArray *tickets) {
-		if (tickets.count > 0) {
-			TicketsTableViewController *ticketsVC = [[TicketsTableViewController alloc] initWithTickets:tickets];
-			[self.navigationController showViewController:ticketsVC sender:self];
-		} else {
-			UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Sorry!" message:@"No tickets" preferredStyle:UIAlertControllerStyleAlert];
-			[alertController addAction:[UIAlertAction actionWithTitle:@"close" style:UIAlertActionStyleDefault handler:nil]];
-			[self presentViewController:alertController animated:YES completion:nil];
-		}
-	}];
+	_searchRequest.departDate = self.datePicker.date;
+
+	if ([self.departureButton.titleLabel.text isEqual: @"From"]) {
+		UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Sorry!" message:@"Введите пункт отправления" preferredStyle:UIAlertControllerStyleAlert];
+		[alertController addAction:[UIAlertAction actionWithTitle:@"close" style:UIAlertActionStyleDefault handler:nil]];
+		[self presentViewController:alertController animated:YES completion:nil];
+	} else if ([self.arrivalButton.titleLabel.text isEqual:@"Where"]) {
+		UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Sorry!" message:@"Выедите пункт назначения" preferredStyle:UIAlertControllerStyleAlert];
+		[alertController addAction:[UIAlertAction actionWithTitle:@"close" style:UIAlertActionStyleDefault handler:nil]];
+		[self presentViewController:alertController animated:YES completion:nil];
+	} else if ([self dateComparision:_datePicker.date andDate2:[NSDate date]]) {
+		UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Sorry!" message:@"Укажите дату поездки" preferredStyle:UIAlertControllerStyleAlert];
+		[alertController addAction:[UIAlertAction actionWithTitle:@"close" style:UIAlertActionStyleDefault handler:nil]];
+		[self presentViewController:alertController animated:YES completion:nil];
+	} else {
+		[[ApiManager sharedInstance] ticketsWithRequest:self.searchRequest withCompletion:^(NSArray *tickets) {
+			if (tickets.count > 0) {
+				TicketsTableViewController *ticketsVC = [[TicketsTableViewController alloc] initWithTickets:tickets];
+				[self.navigationController showViewController:ticketsVC sender:self];
+			} else {
+				UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Sorry!" message:@"No tickets" preferredStyle:UIAlertControllerStyleAlert];
+				[alertController addAction:[UIAlertAction actionWithTitle:@"close" style:UIAlertActionStyleDefault handler:nil]];
+				[self presentViewController:alertController animated:YES completion:nil];
+			}
+		}];
+	}
+}
+
+- (BOOL)dateComparision:(NSDate*)date1 andDate2:(NSDate*)date2 {
+	NSCalendar* calendar = [NSCalendar currentCalendar];
+	unsigned unitFlags = NSCalendarUnitYear | NSCalendarUnitMonth |  NSCalendarUnitDay;
+	NSDateComponents* comp1 = [calendar components: unitFlags fromDate: date1];
+	NSDateComponents* comp2 = [calendar components: unitFlags fromDate: date2];
+
+	if ((comp1.year >= comp2.year) && (comp1.month >= comp2.month) && (comp1.day >= comp2.day)) {
+		return NO;
+	} else {
+		return YES;
+	}
 }
 
 - (void)placeButtonDidTap:(UIButton *)sender {
@@ -120,7 +174,7 @@
 
 	NSString *title;
 	NSString *iata;
-
+	
 	if (dataType == DataSourceTypeCity) {
 		City *city = (City *)place;
 		title = city.name;
@@ -133,24 +187,8 @@
 
 	
 	if (placeType == PlaceTypeDeparture) {
-		NSString *departDateString = @"2021-11";
-		NSString *returnDateString = @"2021-12";
-		NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-		dateFormatter.dateFormat = @"yyyy-MM";
-		NSDate *departDate = [dateFormatter dateFromString:departDateString];
-		NSDate *returnDate = [dateFormatter dateFromString:returnDateString];
-		_searchRequest.departDate = departDate;
-		_searchRequest.returnDate = returnDate;
 		_searchRequest.origin = iata;
 	} else {
-		NSString *departDateString = @"2021-11";
-		NSString *returnDateString = @"2021-12";
-		NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-		dateFormatter.dateFormat = @"yyyy-MM";
-		NSDate *departDate = [dateFormatter dateFromString:departDateString];
-		NSDate *returnDate = [dateFormatter dateFromString:returnDateString];
-		_searchRequest.departDate = departDate;
-		_searchRequest.returnDate = returnDate;
 		_searchRequest.destination = iata;
 	}
 	[button setTitle:title forState:UIControlStateNormal];

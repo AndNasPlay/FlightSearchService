@@ -62,15 +62,19 @@
 	return [[_managedObjectContext executeFetchRequest:request error:nil] firstObject];
 }
 
-//- (favoritesMapWithPrices *)favoritesMapWithPrices:(MapPrice *)price {
-//	NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"FavoriteMapPrice"];
-//	request.predicate = [NSPredicate predicateWithFormat:@"price == %ld AND from == %@ AND to == %@ AND departure == %@", (long)price.price, price.from.name, price.to.name, price.departure];
-//	return [[_managedObjectContext executeFetchRequest:request error:nil] firstObject];
-//}
+- (FavoriteTicket *)favoriteFromMapPrice:(MapWithPrice *)price {
+	NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"FavoriteTicket"];
+	request.predicate = [NSPredicate predicateWithFormat:@"price == %ld AND from == %@ AND to == %@ AND departure == %@", (long)price.value, price.origin.name, price.destination.name, price.departure];
+	return [[_managedObjectContext executeFetchRequest:request error:nil] firstObject];
+}
 
 - (BOOL)isFavorite:(Ticket *)ticket {
 	return [self favoriteFromTicket:ticket] != nil;
 }
+
+//- (BOOL)isFavoriteMapWithPrice:(MapWithPrice *)price {
+//	return [self favoriteFromTicket:ticket] != nil;
+//}
 
 - (void)addToFavorite:(Ticket *)ticket {
 
@@ -94,6 +98,26 @@
 		[_managedObjectContext deleteObject:favorite];
 		[self save];
 	}
+}
+
+- (void)removeFromFavoriteMapWithPrice:(MapWithPrice *)ticket {
+	FavoriteTicket *favorite = [self favoriteFromMapPrice:ticket];
+	if (favorite) {
+		[_managedObjectContext deleteObject:favorite];
+		[self save];
+	}
+}
+
+- (void)addToFavoriteMapWithPrice:(MapWithPrice *)price {
+	FavoriteTicket *mapPriceFavorite = [NSEntityDescription insertNewObjectForEntityForName:@"FavoriteTicket" inManagedObjectContext:_managedObjectContext];
+
+	mapPriceFavorite.price = price.value;
+	mapPriceFavorite.departure = price.departure;
+	mapPriceFavorite.from = price.origin.name;
+	mapPriceFavorite.to = price.destination.name;
+	mapPriceFavorite.created = [NSDate date];
+
+	[self save];
 }
 
 - (NSArray *)favorites {

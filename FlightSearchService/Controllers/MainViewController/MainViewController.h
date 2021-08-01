@@ -10,6 +10,8 @@
 
 @interface MainViewController : UIViewController <PlaceViewControllerDelegate>
 
+- (BOOL)dateComparision:(NSDate*)date1 andDate2:(NSDate*)date2;
+
 
 @end
 
