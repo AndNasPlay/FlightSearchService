@@ -32,7 +32,7 @@
 	self.mapView = [[MKMapView alloc] initWithFrame:self.view.bounds];
 	self.mapView.showsUserLocation = YES;
 	[self.view addSubview:_mapView];
-	[self.mapView setDelegate: self];
+	[_mapView setDelegate: self];
 
 	[[DataManager sharedInstance] loadData];
 
@@ -94,7 +94,6 @@
 
 - (void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control {
 	NSUInteger index = [mapView.annotations indexOfObject:view.annotation];
-	NSLog(@"%lu", (unsigned long)index);
 
 	UIAlertController *alertController = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"actions_with_tickets", "") message:NSLocalizedString(@"actions_with_tickets_describe", "") preferredStyle:UIAlertControllerStyleActionSheet];
 

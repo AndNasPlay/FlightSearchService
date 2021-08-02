@@ -11,10 +11,10 @@
 
 #define API_TOKEN @"TOKEN"
 #define API_URL_IP_ADDRESS @"https://api.ipify.org/?format=json"
-#define API_URL_CHEAP @"https://api.travelpayouts.com/v1/prices/cheap"
+//#define API_URL_CHEAP @"https://api.travelpayouts.com/v1/prices/cheap"
+#define API_URL_CHEAP @"https://api.travelpayouts.com/v1/prices/direct"
 #define API_URL_CITY_FROM_IP @"https://www.travelpayouts.com/whereami?ip="
 #define API_URL_MAP_PRICE @"https://map.aviasales.ru/prices.json?origin_iata="
-
 
 @implementation ApiManager
 
@@ -82,10 +82,10 @@
 
 NSString *SearchRequestQuery(SearchRequest request) {
 	NSString *result = [NSString stringWithFormat:@"origin=%@&destination=%@", request.origin, request.destination];
-	if (request.departDate && request.returnDate) {
+	if (request.departDate) {
 		NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-		dateFormatter.dateFormat = @"yyyy-MM";
-		result = [NSString stringWithFormat:@"%@&depart_date=%@&return_date=%@", result, [dateFormatter stringFromDate:request.departDate ], [dateFormatter stringFromDate:request.returnDate]];
+		dateFormatter.dateFormat = @"yyyy-MM-dd";
+		result = [NSString stringWithFormat:@"%@&depart_date=%@", result, [dateFormatter stringFromDate:request.departDate ]];
 	}
 	return result;
 }

@@ -65,9 +65,9 @@
 
 	self.priceLable.text = [NSString stringWithFormat:@"%@ руб.", ticket.price];
 	self.placesLable.text = [NSString stringWithFormat:@"%@ - %@", ticket.from, ticket.to];
-
+	NSLog(@"Сохраняем в массив тикет - %@, %@, %@, %@, %@, %@, %@, %@", ticket.airline, ticket.departure, ticket.expires, ticket.flightNumber, ticket.from, ticket.price, ticket.returnDate, ticket.to);
 	NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-	dateFormatter.dateFormat = @"dd MMMM yyyy hh:mm";
+	dateFormatter.dateFormat = @"dd MMMM yyyy";
 	self.dateLable.text = [dateFormatter stringFromDate:ticket.departure];
 	self.airlineLogoView.image = [UIImage imageNamed:@"Ducati"];
 }

@@ -16,6 +16,7 @@
 @interface TicketsTableViewController ()
 
 @property(nonatomic, strong) NSArray *ticketsArray;
+@property(nonatomic, strong) Ticket *ticketToDelete;
 
 @end
 
@@ -80,7 +81,6 @@
 	return self.ticketsArray.count;
 }
 
-
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
 	TicketsTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:TicketsCellReuseIdentifier forIndexPath:indexPath];
 	if (isFavorite) {
@@ -118,14 +118,38 @@
 }
 
 - (BOOL) tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-	return YES;
+	if ([self.title isEqual:@"Tickets"]) {
+		return NO;
+	} else {
+		return YES;
+	}
 }
 
 - (void) tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *) indexPath {
 	if(editingStyle == UITableViewCellEditingStyleDelete) {
-//		[[CoreDataHelper sharedInstance] removeFromFavorite:[_ticketsArray objectAtIndex:indexPath.row]];
-//		[tableView deleteRowsAtIndexPaths: @[indexPath] withRowAnimation: UITableViewRowAnimationLeft];
-//		[self.tableView reloadData];
+		_ticketToDelete = [_ticketsArray objectAtIndex:indexPath.row];
+//		_ticketToDelete.price = [[_ticketsArray objectAtIndex:indexPath.row] valueForKeyPath:@"price"];
+//		_ticketToDelete.flightNumber = [[_ticketsArray objectAtIndex:indexPath.row] valueForKey:@"flightNumber"];
+//		_ticketToDelete.airline = [[_ticketsArray objectAtIndex:indexPath.row] valueForKey:@"airline"];
+//		_ticketToDelete.departure = [[_ticketsArray objectAtIndex:indexPath.row] valueForKey:@"departure"];
+//		_ticketToDelete.expires = [[_ticketsArray objectAtIndex:indexPath.row] valueForKey:@"expires"];
+//		_ticketToDelete.from = [[_ticketsArray objectAtIndex:indexPath.row] valueForKey:@"from"];
+//		_ticketToDelete.returnDate = [[_ticketsArray objectAtIndex:indexPath.row] valueForKey:@"returnDate"];
+//		_ticketToDelete.to = [[_ticketsArray objectAtIndex:indexPath.row] valueForKey:@"to"];
+
+		NSLog(@"весь массив - %@", [_ticketsArray objectAtIndex:indexPath.row]);
+		NSLog(@"ticketToDelete весь - %@", _ticketToDelete);
+		NSLog(@"airline - %@", [[_ticketsArray objectAtIndex:indexPath.row] valueForKey:@"airline"]);
+		NSLog(@"flightNumber - %@", [[_ticketsArray objectAtIndex:indexPath.row] valueForKey:@"flightNumber"]);
+		NSLog(@"price - %@", [[self->_ticketsArray objectAtIndex:indexPath.row] valueForKey:@"price"]);
+		NSLog(@"ticketToDelete.flightNumber - %ld", (long)_ticketToDelete.flightNumber.integerValue);
+//		NSLog(@"ticketToDelete.flightNumber - %@", _ticketToDelete.departure);
+//		NSLog(@"ticketToDelete.price - %@", _ticketToDelete.price);
+//		NSLog(@"ticketToDelete.flightNumber - %@", _ticketToDelete.flightNumber);
+//		[[CoreDataHelper sharedInstance] removeFromFavorite:[self->_ticketsArray objectAtIndex:indexPath.row]];
+		[[CoreDataHelper sharedInstance] removeFromFavorite:_ticketToDelete];
+		[tableView deleteRowsAtIndexPaths: @[indexPath] withRowAnimation: UITableViewRowAnimationLeft];
+		[self.tableView reloadData];
 	}
 }
 

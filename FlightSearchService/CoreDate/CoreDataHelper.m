@@ -77,7 +77,6 @@
 //}
 
 - (void)addToFavorite:(Ticket *)ticket {
-
 	FavoriteTicket *favorite = [NSEntityDescription insertNewObjectForEntityForName:@"FavoriteTicket" inManagedObjectContext:_managedObjectContext];
 	favorite.price = ticket.price.intValue;
 	favorite.airline = ticket.airline;
@@ -88,6 +87,7 @@
 	favorite.from = ticket.from;
 	favorite.to = ticket.to;
 	favorite.created = [NSDate date];
+	NSLog(@"Сохраняем в coredata - %@, %@, %@, %hd, %@, %lld, %@, %@", favorite.airline, favorite.departure, favorite.expires, favorite.flightNumber, favorite.from, favorite.price, favorite.returnDate, favorite.to);
 
 	[self save];
 }

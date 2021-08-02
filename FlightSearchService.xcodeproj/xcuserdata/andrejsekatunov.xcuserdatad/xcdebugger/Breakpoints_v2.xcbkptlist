@@ -7,47 +7,63 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "3F579C3E-B012-408C-8946-3681B2E19CF9"
-            shouldBeEnabled = "Yes"
+            uuid = "2B6245C3-3AD2-4856-A85C-065D6179E113"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "FlightSearchService/Controllers/MapViewController/MapViewController.m"
+            filePath = "FlightSearchService/Managers/ApiManager.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "95"
-            endingLineNumber = "95"
-            landmarkName = "-mapView:annotationView:calloutAccessoryControlTapped:"
+            startingLineNumber = "60"
+            endingLineNumber = "60"
+            landmarkName = "-ticketsWithRequest:withCompletion:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "F102ECEE-42B3-453B-982B-F547B90437AB"
-            shouldBeEnabled = "Yes"
+            uuid = "4316BE4A-2A58-466A-AD68-B73806BAC095"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "FlightSearchService/Controllers/MapViewController/MapViewController.m"
+            filePath = "FlightSearchService/Managers/ApiManager.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "103"
-            endingLineNumber = "103"
-            landmarkName = "-mapView:annotationView:calloutAccessoryControlTapped:"
+            startingLineNumber = "83"
+            endingLineNumber = "83"
+            landmarkName = "SearchRequestQuery(request)"
+            landmarkType = "9">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "43E72106-0B98-4501-9524-3D3DAA69EFE3"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "FlightSearchService/Managers/ApiManager.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "93"
+            endingLineNumber = "93"
+            landmarkName = "-mapPricesFor:withCompletion:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "19288D77-C53D-40C2-B1C6-4024C957C89B"
+            uuid = "FDA11FA4-5A2D-445C-B7DF-9FA7AD3A6E7B"
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FlightSearchService/Controllers/MainViewController/MainViewController.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "116"
-            endingLineNumber = "116"
+            startingLineNumber = "117"
+            endingLineNumber = "117"
             landmarkName = "-searchButtonDidTap:"
             landmarkType = "7">
          </BreakpointContent>
@@ -55,16 +71,144 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "473288A5-3BC7-4E1F-9451-FC895610EBC0"
+            uuid = "D46D602B-1ED5-425F-87C5-2F0C258282DD"
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FlightSearchService/Controllers/MainViewController/MainViewController.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "145"
-            endingLineNumber = "145"
-            landmarkName = "-dateComparision:andDate2:"
+            startingLineNumber = "132"
+            endingLineNumber = "132"
+            landmarkName = "-searchButtonDidTap:"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "D46D602B-1ED5-425F-87C5-2F0C258282DD - 244820f0a510d2ed"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[MainViewController searchButtonDidTap:]"
+                  moduleName = "FlightSearchService"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/andrejsekatunov/Desktop/GitHubs/FlightSearchService/FlightSearchService/Controllers/MainViewController/MainViewController.m"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "133"
+                  endingLineNumber = "133"
+                  offsetFromSymbolStart = "1478">
+               </Location>
+               <Location
+                  uuid = "D46D602B-1ED5-425F-87C5-2F0C258282DD - b1857c83865c6807"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__41-[MainViewController searchButtonDidTap:]_block_invoke"
+                  moduleName = "FlightSearchService"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/andrejsekatunov/Desktop/GitHubs/FlightSearchService/FlightSearchService/Controllers/MainViewController/MainViewController.m"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "134"
+                  endingLineNumber = "134"
+                  offsetFromSymbolStart = "44">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "0A790873-8EA4-454D-8892-4B13132C8A55"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "FlightSearchService/Controllers/TicketsViewController/Cell/TicketsTableViewCell.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "63"
+            endingLineNumber = "63"
+            landmarkName = "-setTicket:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "BDA3E32F-A907-4084-B9B6-CE6A6037FE2B"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "FlightSearchService/Controllers/TicketsViewController/TicketsTableViewController.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "104"
+            endingLineNumber = "104"
+            landmarkName = "-tableView:didSelectRowAtIndexPath:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "0BC5B172-9474-4FA1-9D6E-DF14359D265E"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "FlightSearchService/Controllers/TicketsViewController/TicketsTableViewController.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "105"
+            endingLineNumber = "105"
+            landmarkName = "-tableView:didSelectRowAtIndexPath:"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "0BC5B172-9474-4FA1-9D6E-DF14359D265E - c8491ff86160e441"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[TicketsTableViewController tableView:didSelectRowAtIndexPath:]"
+                  moduleName = "FlightSearchService"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/andrejsekatunov/Desktop/GitHubs/FlightSearchService/FlightSearchService/Controllers/TicketsViewController/TicketsTableViewController.m"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "104"
+                  endingLineNumber = "104"
+                  offsetFromSymbolStart = "445">
+               </Location>
+               <Location
+                  uuid = "0BC5B172-9474-4FA1-9D6E-DF14359D265E - 45e722188395290"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__64-[TicketsTableViewController tableView:didSelectRowAtIndexPath:]_block_invoke"
+                  moduleName = "FlightSearchService"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/andrejsekatunov/Desktop/GitHubs/FlightSearchService/FlightSearchService/Controllers/TicketsViewController/TicketsTableViewController.m"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "104"
+                  endingLineNumber = "104"
+                  offsetFromSymbolStart = "12">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "7A910A81-C723-4390-B468-FA6241163F86"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "FlightSearchService/Controllers/TicketsViewController/TicketsTableViewController.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "128"
+            endingLineNumber = "128"
+            landmarkName = "-tableView:commitEditingStyle:forRowAtIndexPath:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

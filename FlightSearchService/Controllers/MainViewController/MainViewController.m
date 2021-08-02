@@ -125,11 +125,11 @@
 		[alertController addAction:[UIAlertAction actionWithTitle:@"close" style:UIAlertActionStyleDefault handler:nil]];
 		[self presentViewController:alertController animated:YES completion:nil];
 	} else if ([self dateComparision:_datePicker.date andDate2:[NSDate date]]) {
-		UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Sorry!" message:@"Укажите дату поездки" preferredStyle:UIAlertControllerStyleAlert];
+		UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Sorry!" message:@"Укажите актуальную дату поездки" preferredStyle:UIAlertControllerStyleAlert];
 		[alertController addAction:[UIAlertAction actionWithTitle:@"close" style:UIAlertActionStyleDefault handler:nil]];
 		[self presentViewController:alertController animated:YES completion:nil];
 	} else {
-		[[ApiManager sharedInstance] ticketsWithRequest:self.searchRequest withCompletion:^(NSArray *tickets) {
+		[[ApiManager sharedInstance] ticketsWithRequest:_searchRequest withCompletion:^(NSArray *tickets) {
 			if (tickets.count > 0) {
 				TicketsTableViewController *ticketsVC = [[TicketsTableViewController alloc] initWithTickets:tickets];
 				[self.navigationController showViewController:ticketsVC sender:self];
@@ -146,13 +146,21 @@
 	NSCalendar* calendar = [NSCalendar currentCalendar];
 	unsigned unitFlags = NSCalendarUnitYear | NSCalendarUnitMonth |  NSCalendarUnitDay;
 	NSDateComponents* comp1 = [calendar components: unitFlags fromDate: date1];
-	NSDateComponents* comp2 = [calendar components: unitFlags fromDate: date2];
+	NSDateComponents* nowDate = [calendar components: unitFlags fromDate: date2];
 
-	if (comp1.year < comp2.year) {
+	if (comp1.year < nowDate.year) {
 		return YES;
-	} else if (comp1.year > comp2.year) {
+	} else if (comp1.year > nowDate.year) {
 		return NO;
-	} else if ((comp1.month >= comp2.month) && (comp1.day >= comp2.day)) {
+	} else if (comp1.month < nowDate.month) {
+		return YES;
+	} else if (comp1.month > nowDate.month) {
+		return NO;
+	} else if (comp1.day > nowDate.day) {
+		return NO;
+	} else if (comp1.day < nowDate.day) {
+		return YES;
+	} else if (comp1.day == nowDate.day) {
 		return NO;
 	} else {
 		return YES;
