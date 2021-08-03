@@ -58,7 +58,7 @@
 
 - (FavoriteTicket *)favoriteFromTicket:(Ticket *)ticket {
 	NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"FavoriteTicket"];
-	request.predicate = [NSPredicate predicateWithFormat:@"price == %ld AND airline == %@ AND from == %@ AND to == %@ AND departure == %@ AND expires == %@ AND flightNumber == %ld", (long)ticket.price.integerValue, ticket.airline, ticket.from, ticket.to, ticket.departure, ticket.expires, (long)ticket.flightNumber.integerValue];
+	request.predicate = [NSPredicate predicateWithFormat:@"price == %ld AND airline == %@ AND from == %@ AND to == %@ AND departure == %@ AND expires == %@ AND flightNumber == %ld", [[ticket valueForKey:@"price"] integerValue], ticket.airline, ticket.from, ticket.to, ticket.departure, ticket.expires, [[ticket valueForKey:@"flightNumber"] integerValue]];
 	return [[_managedObjectContext executeFetchRequest:request error:nil] firstObject];
 }
 
