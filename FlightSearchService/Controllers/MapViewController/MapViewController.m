@@ -71,7 +71,7 @@
 
 			MKPointAnnotation *annotation = [[MKPointAnnotation alloc] init];
 			annotation.title = [NSString stringWithFormat:@"%@ (%@)", price.destination.name, price.destination.code];
-			annotation.subtitle = [NSString stringWithFormat:@"%ld руб.", (long)price.value];
+			annotation.subtitle = [NSString stringWithFormat:@"%ld руб.", (long)price.price];
 			annotation.coordinate = price.destination.coordinate;
 			[self->_mapView addAnnotation:annotation];
 		});
@@ -86,6 +86,7 @@
 		annotationView.canShowCallout = YES;
 		annotationView.calloutOffset = CGPointMake(-5.0, 5.0);
 		annotationView.rightCalloutAccessoryView = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
+		annotationView.rightCalloutAccessoryView.tintColor = [UIColor clearColor];
 		annotationView.glyphImage = [UIImage imageNamed:@"MapMarker"];
 	}
 	annotationView.annotation = annotation;
@@ -102,7 +103,7 @@
 	if ([[CoreDataHelper sharedInstance] isFavoriteMapWithPrice: [_prices objectAtIndex:index]]) {
 		favoriteAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"remove_from_favorite", "") style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
 
-			[[CoreDataHelper sharedInstance] removeFromFavorite:[self->_prices objectAtIndex:index]];
+			[[CoreDataHelper sharedInstance] removeFromFavoriteMapWithPrice:[self->_prices objectAtIndex:index]];
 
 		}];
 	} else {
@@ -120,6 +121,7 @@
 			}
 		}];
 	}
+
 	UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"close", "") style:UIAlertActionStyleCancel handler:nil];
 	[alertController addAction:favoriteAction];
 	[alertController addAction:cancelAction];

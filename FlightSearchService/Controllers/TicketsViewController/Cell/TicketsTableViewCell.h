@@ -9,7 +9,8 @@
 #import "DataManager.h"
 #import "ApiManager.h"
 #import "Ticket.h"
-#import "FlightSearchService-Swift.h"
+#import "FavoriteTicket+CoreDataClass.h"
+#import "FavoriteMapPriceTicket+CoreDataClass.h"
 
 
 @interface TicketsTableViewCell : UITableViewCell

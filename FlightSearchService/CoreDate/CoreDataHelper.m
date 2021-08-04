@@ -6,7 +6,6 @@
 //
 
 #import "CoreDataHelper.h"
-#import "FlightSearchService-Swift.h"
 
 @interface CoreDataHelper ()
 
@@ -29,14 +28,12 @@
 }
 
 - (void)setup {
-
-	NSURL *modelURL = [[NSBundle mainBundle] URLForResource:@"Model" withExtension:@"momd"];
+	NSURL *modelURL = [[NSBundle mainBundle] URLForResource:@"FavoriteTicket" withExtension:@"momd"];
 	_managedObjectModel = [[NSManagedObjectModel alloc] initWithContentsOfURL:modelURL];
-
-	_persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:_managedObjectModel];
 
 	NSURL *docsURL = [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
 	NSURL *storeURL = [docsURL URLByAppendingPathComponent:@"base.sqlite"];
+	_persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:_managedObjectModel];
 
 	NSPersistentStore* store = [_persistentStoreCoordinator addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:storeURL options:nil error:nil];
 
@@ -62,9 +59,9 @@
 	return [[_managedObjectContext executeFetchRequest:request error:nil] firstObject];
 }
 
-- (FavoriteTicket *)favoriteFromMapPrice:(MapWithPrice *)price {
-	NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"FavoriteTicket"];
-	request.predicate = [NSPredicate predicateWithFormat:@"price == %ld AND from == %@ AND to == %@ AND departure == %@", (long)price.value, price.origin.name, price.destination.name, price.departure];
+- (FavoriteMapPriceTicket *)favoriteMapWithPrice:(MapWithPrice *)price {
+	NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"FavoriteMapPriceTicket"];
+	request.predicate = [NSPredicate predicateWithFormat:@"price == %ld AND from == %@ AND to == %@ AND departure == %@", (long)price.price, price.origin.name, price.destination.name, price.departure];
 	return [[_managedObjectContext executeFetchRequest:request error:nil] firstObject];
 }
 
@@ -72,9 +69,9 @@
 	return [self favoriteFromTicket:ticket] != nil;
 }
 
-//- (BOOL)isFavoriteMapWithPrice:(MapWithPrice *)price {
-//	return [self favoriteFromTicket:ticket] != nil;
-//}
+- (BOOL)isFavoriteMapWithPrice:(MapWithPrice *)price {
+	return [self favoriteMapWithPrice:price] != nil;
+}
 
 - (void)addToFavorite:(Ticket *)ticket {
 	FavoriteTicket *favorite = [NSEntityDescription insertNewObjectForEntityForName:@"FavoriteTicket" inManagedObjectContext:_managedObjectContext];
@@ -100,29 +97,35 @@
 	}
 }
 
-- (void)removeFromFavoriteMapWithPrice:(MapWithPrice *)ticket {
-	FavoriteTicket *favorite = [self favoriteFromMapPrice:ticket];
-	if (favorite) {
-		[_managedObjectContext deleteObject:favorite];
-		[self save];
-	}
-}
-
 - (void)addToFavoriteMapWithPrice:(MapWithPrice *)price {
-	FavoriteTicket *mapPriceFavorite = [NSEntityDescription insertNewObjectForEntityForName:@"FavoriteTicket" inManagedObjectContext:_managedObjectContext];
-
-	mapPriceFavorite.price = price.value;
+	FavoriteMapPriceTicket *mapPriceFavorite = [NSEntityDescription insertNewObjectForEntityForName:@"FavoriteMapPriceTicket" inManagedObjectContext:_managedObjectContext];
+	mapPriceFavorite.price = price.price;
 	mapPriceFavorite.departure = price.departure;
 	mapPriceFavorite.from = price.origin.name;
 	mapPriceFavorite.to = price.destination.name;
+//	mapPriceFavorite.airline = @"test";
 	mapPriceFavorite.created = [NSDate date];
 
 	[self save];
 }
 
+- (void)removeFromFavoriteMapWithPrice:(MapWithPrice *)price {
+	FavoriteMapPriceTicket *mapPrice = [self favoriteMapWithPrice:price];
+	if (mapPrice) {
+		[_managedObjectContext deleteObject:mapPrice];
+		[self save];
+	}
+}
+
 - (NSArray *)favorites {
 	NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"FavoriteTicket"];
 	request.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"created" ascending:NO]];
+	return [_managedObjectContext executeFetchRequest:request error:nil];
+}
+
+- (NSArray *)favoritesMapWithPrices {
+	NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"FavoriteMapPriceTicket"];
+	request.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"departure" ascending:NO]];
 	return [_managedObjectContext executeFetchRequest:request error:nil];
 }
 

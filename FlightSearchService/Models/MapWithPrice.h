@@ -16,7 +16,7 @@
 	@property (nonatomic, strong) NSDate *departure;
 	@property (nonatomic, strong) NSDate *returnDate;
 	@property (nonatomic) NSInteger numberOfchanges;
-	@property (nonatomic) NSInteger value;
+	@property (nonatomic) NSInteger price;
 	@property (nonatomic) NSInteger distance;
 	@property (nonatomic) BOOL actual;
 

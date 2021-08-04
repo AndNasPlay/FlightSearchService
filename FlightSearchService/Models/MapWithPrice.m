@@ -19,7 +19,7 @@
 		self.departure = [self dateFromString:[dictionary valueForKey:@"depart_date"]];
 		self.returnDate = [self dateFromString:[dictionary valueForKey:@"return_date"]];
 		self.numberOfchanges = [[dictionary valueForKey:@"number_of_changes"] integerValue];
-		self.value = [[dictionary valueForKey:@"value"]integerValue];
+		self.price = [[dictionary valueForKey:@"value"]integerValue];
 		self.distance = [[dictionary valueForKey:@"distance"]integerValue];
 		self.actual = [[dictionary valueForKey:@"actual"]boolValue];
 	}

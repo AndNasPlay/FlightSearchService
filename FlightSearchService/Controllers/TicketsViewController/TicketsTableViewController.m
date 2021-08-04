@@ -8,7 +8,6 @@
 #import "TicketsTableViewController.h"
 #import "TicketsTableViewCell.h"
 #import "CoreDataHelper.h"
-#import "FlightSearchService-Swift.h"
 #import "Ticket.h"
 
 #define TicketsCellReuseIdentifier @"TicketsCellReuseIdentifier"
@@ -17,6 +16,7 @@
 
 @property(nonatomic, strong) NSArray *ticketsArray;
 @property(nonatomic, strong) Ticket *ticketToDelete;
+@property (nonatomic, strong) UISegmentedControl *segmentControl;
 
 @end
 
@@ -38,6 +38,18 @@
 }
 
 - (instancetype)initFavoriteTicketsController {
+	self = [super init];
+	if (self) {
+		isFavorite = YES;
+		self.ticketsArray = [NSArray new];
+		self.title = @"Избранное";
+		self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+		[self.tableView registerClass:[TicketsTableViewCell class] forCellReuseIdentifier:TicketsCellReuseIdentifier];
+	}
+	return self;
+}
+
+- (instancetype)initFavoriteTicketsControllerFromMap {
 	self = [super init];
 	if (self) {
 		isFavorite = YES;

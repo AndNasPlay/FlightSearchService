@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:/Users/andrejsekatunov/Desktop/GitHubs/FlightSearchService/FlightSearchService/CoreDate/Model.xcdatamodeld">
+   </FileRef>
+   <FileRef
       location = "self:">
    </FileRef>
 </Workspace>
