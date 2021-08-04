@@ -40,7 +40,7 @@
 	UINavigationController *mapNavigationController = [[UINavigationController alloc] initWithRootViewController:mapViewController];
 	[viewControllers addObject:mapNavigationController];
 
-	TicketsTableViewController *ticketsViewController = [[TicketsTableViewController alloc] initFavoriteTicketsController];
+	TicketsTableViewController *ticketsViewController = [[TicketsTableViewController alloc] initFavoriteTicketsControllerFromMap];
 	ticketsViewController.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"Favorite Tickets" image:[UIImage systemImageNamed:@"star"] selectedImage:[UIImage imageNamed:@"star_fill"]];
 	UINavigationController *ticketsNavigationController = [[UINavigationController alloc] initWithRootViewController:ticketsViewController];
 	[viewControllers addObject:ticketsNavigationController];

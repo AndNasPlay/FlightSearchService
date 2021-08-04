@@ -58,7 +58,29 @@
 		self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
 		[self.tableView registerClass:[TicketsTableViewCell class] forCellReuseIdentifier:TicketsCellReuseIdentifier];
 	}
+	_segmentControl = [[UISegmentedControl alloc] initWithItems:@[@"Searched", @"From map"]];
+	[_segmentControl addTarget:self action:@selector(changeSource) forControlEvents:UIControlEventValueChanged];
+	_segmentControl.tintColor = [UIColor blackColor];
+	self.navigationItem.titleView = _segmentControl;
+	_segmentControl.selectedSegmentIndex = 0;
+	[self changeSource];
 	return self;
+}
+
+- (void)changeSource {
+	switch (_segmentControl.selectedSegmentIndex) {
+		case 0:
+			_ticketsArray = [[CoreDataHelper sharedInstance] favorites];
+			[self.tableView reloadData];
+			break;
+		case 1:
+			_ticketsArray = [[CoreDataHelper sharedInstance] favoritesMapWithPrices];
+			[self.tableView reloadData];
+			break;
+		default:
+			break;
+	}
+	[self.tableView reloadData];
 }
 
 - (void)viewDidLoad {
@@ -92,10 +114,20 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
 	TicketsTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:TicketsCellReuseIdentifier forIndexPath:indexPath];
 	if (isFavorite) {
-		cell.favoriteTicket = [self.ticketsArray objectAtIndex:indexPath.row];
+		switch (_segmentControl.selectedSegmentIndex) {
+			case 0:
+				cell.favoriteTicket = [_ticketsArray objectAtIndex:indexPath.row];
+				break;
+			case 1:
+				cell.favoriteMapPriceTicket = [_ticketsArray objectAtIndex:indexPath.row];
+				break;
+			default:
+				break;
+		}
 	} else {
-		cell.ticket = [self.ticketsArray objectAtIndex:indexPath.row];
+		cell.ticket = [_ticketsArray objectAtIndex:indexPath.row];
 	}
+	cell.selectionStyle = UITableViewCellSelectionStyleNone;
 	return cell;
 }
 
@@ -135,10 +167,24 @@
 
 - (void) tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *) indexPath {
 	if(editingStyle == UITableViewCellEditingStyleDelete) {
-		[[CoreDataHelper sharedInstance] removeFromFavorite:[self->_ticketsArray objectAtIndex:indexPath.row]];
-		self.ticketsArray = [[CoreDataHelper sharedInstance] favorites];
-		[tableView deleteRowsAtIndexPaths: @[indexPath] withRowAnimation: UITableViewRowAnimationFade];
-		[tableView reloadData];
+		switch (_segmentControl.selectedSegmentIndex) {
+			case 0:
+				[[CoreDataHelper sharedInstance] removeFromFavorite:[self->_ticketsArray objectAtIndex:indexPath.row]];
+				self.ticketsArray = [[CoreDataHelper sharedInstance] favorites];
+				[tableView deleteRowsAtIndexPaths: @[indexPath] withRowAnimation: UITableViewRowAnimationFade];
+				[tableView reloadData];
+				break;
+			case 1:
+				NSLog(@"%@", [self->_ticketsArray objectAtIndex:indexPath.row]);
+				[[CoreDataHelper sharedInstance] removeFromFavoriteMapWithPrice:[self->_ticketsArray objectAtIndex:indexPath.row]];
+				self.ticketsArray = [[CoreDataHelper sharedInstance] favoritesMapWithPrices];
+				[tableView deleteRowsAtIndexPaths: @[indexPath] withRowAnimation: UITableViewRowAnimationFade];
+				[tableView reloadData];
+				break;
+			default:
+				break;
+		}
+
 	}
 }
 

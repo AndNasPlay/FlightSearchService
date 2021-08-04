@@ -59,9 +59,13 @@
 	return [[_managedObjectContext executeFetchRequest:request error:nil] firstObject];
 }
 
-- (FavoriteMapPriceTicket *)favoriteMapWithPrice:(MapWithPrice *)price {
+- (FavoriteMapPriceTicket *)favoriteMapWithPrice:(FavoriteMapPriceTicket *)price {
 	NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"FavoriteMapPriceTicket"];
-	request.predicate = [NSPredicate predicateWithFormat:@"price == %ld AND from == %@ AND to == %@ AND departure == %@", (long)price.price, price.origin.name, price.destination.name, price.departure];
+	NSLog(@"price == %ld", (long)price.price);
+	NSLog(@"from == %@", price.from);
+	NSLog(@"to == %@", price.to);
+	NSLog(@"departure == %@", price.departure);
+	request.predicate = [NSPredicate predicateWithFormat:@"price == %ld AND from == %@ AND to == %@ AND departure == %@", (long)price.price, price.from, price.to, price.departure];
 	return [[_managedObjectContext executeFetchRequest:request error:nil] firstObject];
 }
 
@@ -69,7 +73,7 @@
 	return [self favoriteFromTicket:ticket] != nil;
 }
 
-- (BOOL)isFavoriteMapWithPrice:(MapWithPrice *)price {
+- (BOOL)isFavoriteMapWithPrice:(FavoriteMapPriceTicket *)price {
 	return [self favoriteMapWithPrice:price] != nil;
 }
 
@@ -97,12 +101,12 @@
 	}
 }
 
-- (void)addToFavoriteMapWithPrice:(MapWithPrice *)price {
+- (void)addToFavoriteMapWithPrice:(FavoriteMapPriceTicket *)price {
 	FavoriteMapPriceTicket *mapPriceFavorite = [NSEntityDescription insertNewObjectForEntityForName:@"FavoriteMapPriceTicket" inManagedObjectContext:_managedObjectContext];
 	mapPriceFavorite.price = price.price;
 	mapPriceFavorite.departure = price.departure;
-	mapPriceFavorite.from = price.origin.name;
-	mapPriceFavorite.to = price.destination.name;
+	mapPriceFavorite.from = price.from;
+	mapPriceFavorite.to = price.to;
 //	mapPriceFavorite.airline = @"test";
 	mapPriceFavorite.created = [NSDate date];
 
