@@ -19,13 +19,14 @@
 + (instancetype)sharedInstance;
 
 	- (BOOL)isFavorite:(Ticket *)ticket;
-	- (BOOL)isFavoriteMapWithPrice:(FavoriteMapPriceTicket *)price;
+	- (BOOL)isFavoriteMapWithPrice:(MapWithPrice *)price;
 	- (NSArray *)favorites;
 	- (NSArray *)favoritesMapWithPrices;
 	- (void)addToFavorite:(Ticket *)ticket;
 	- (void)removeFromFavorite:(Ticket *)ticket;
-	- (void)addToFavoriteMapWithPrice:(FavoriteMapPriceTicket *)price;
-	- (void)removeFromFavoriteMapWithPrice:(FavoriteMapPriceTicket *)price;
+	- (void)addToFavoriteMapWithPrice:(MapWithPrice *)price;
+	- (void)removeFromFavoriteMapWithPrice:(MapWithPrice *)price;
+	- (void)removeFromFavoriteMapWithPriceFromTable:(FavoriteMapPriceTicket *)price;
 
 @end
 

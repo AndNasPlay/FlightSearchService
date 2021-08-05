@@ -59,13 +59,9 @@
 	return [[_managedObjectContext executeFetchRequest:request error:nil] firstObject];
 }
 
-- (FavoriteMapPriceTicket *)favoriteMapWithPrice:(FavoriteMapPriceTicket *)price {
+- (FavoriteMapPriceTicket *)favoriteMapWithPrice:(MapWithPrice *)price {
 	NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"FavoriteMapPriceTicket"];
-	NSLog(@"price == %ld", (long)price.price);
-	NSLog(@"from == %@", price.from);
-	NSLog(@"to == %@", price.to);
-	NSLog(@"departure == %@", price.departure);
-	request.predicate = [NSPredicate predicateWithFormat:@"price == %ld AND from == %@ AND to == %@ AND departure == %@", (long)price.price, price.from, price.to, price.departure];
+	request.predicate = [NSPredicate predicateWithFormat:@"price == %ld AND from == %@ AND to == %@ AND departure == %@", (long)price.price, price.origin.name, price.destination.name, price.departure];
 	return [[_managedObjectContext executeFetchRequest:request error:nil] firstObject];
 }
 
@@ -73,7 +69,7 @@
 	return [self favoriteFromTicket:ticket] != nil;
 }
 
-- (BOOL)isFavoriteMapWithPrice:(FavoriteMapPriceTicket *)price {
+- (BOOL)isFavoriteMapWithPrice:(MapWithPrice *)price {
 	return [self favoriteMapWithPrice:price] != nil;
 }
 
@@ -101,13 +97,12 @@
 	}
 }
 
-- (void)addToFavoriteMapWithPrice:(FavoriteMapPriceTicket *)price {
+- (void)addToFavoriteMapWithPrice:(MapWithPrice *)price {
 	FavoriteMapPriceTicket *mapPriceFavorite = [NSEntityDescription insertNewObjectForEntityForName:@"FavoriteMapPriceTicket" inManagedObjectContext:_managedObjectContext];
 	mapPriceFavorite.price = price.price;
 	mapPriceFavorite.departure = price.departure;
-	mapPriceFavorite.from = price.from;
-	mapPriceFavorite.to = price.to;
-//	mapPriceFavorite.airline = @"test";
+	mapPriceFavorite.from = price.origin.name;
+	mapPriceFavorite.to = price.destination.name;
 	mapPriceFavorite.created = [NSDate date];
 
 	[self save];
@@ -117,6 +112,13 @@
 	FavoriteMapPriceTicket *mapPrice = [self favoriteMapWithPrice:price];
 	if (mapPrice) {
 		[_managedObjectContext deleteObject:mapPrice];
+		[self save];
+	}
+}
+
+- (void)removeFromFavoriteMapWithPriceFromTable:(FavoriteMapPriceTicket *)price {
+	if (price) {
+		[_managedObjectContext deleteObject:price];
 		[self save];
 	}
 }

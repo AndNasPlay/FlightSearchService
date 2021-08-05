@@ -41,7 +41,7 @@
 	self = [super init];
 	if (self) {
 		isFavorite = YES;
-		self.ticketsArray = [NSArray new];
+		self.ticketsArray = [NSMutableArray new];
 		self.title = @"Избранное";
 		self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
 		[self.tableView registerClass:[TicketsTableViewCell class] forCellReuseIdentifier:TicketsCellReuseIdentifier];
@@ -53,7 +53,7 @@
 	self = [super init];
 	if (self) {
 		isFavorite = YES;
-		self.ticketsArray = [NSArray new];
+		self.ticketsArray = [NSMutableArray new];
 		self.title = @"Избранное";
 		self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
 		[self.tableView registerClass:[TicketsTableViewCell class] forCellReuseIdentifier:TicketsCellReuseIdentifier];
@@ -172,20 +172,19 @@
 				[[CoreDataHelper sharedInstance] removeFromFavorite:[self->_ticketsArray objectAtIndex:indexPath.row]];
 				self.ticketsArray = [[CoreDataHelper sharedInstance] favorites];
 				[tableView deleteRowsAtIndexPaths: @[indexPath] withRowAnimation: UITableViewRowAnimationFade];
-				[tableView reloadData];
+				[self.tableView reloadData];
 				break;
 			case 1:
-				NSLog(@"%@", [self->_ticketsArray objectAtIndex:indexPath.row]);
-				[[CoreDataHelper sharedInstance] removeFromFavoriteMapWithPrice:[self->_ticketsArray objectAtIndex:indexPath.row]];
-				self.ticketsArray = [[CoreDataHelper sharedInstance] favoritesMapWithPrices];
-				[tableView deleteRowsAtIndexPaths: @[indexPath] withRowAnimation: UITableViewRowAnimationFade];
-				[tableView reloadData];
+				[[CoreDataHelper sharedInstance] removeFromFavoriteMapWithPriceFromTable:[self->_ticketsArray objectAtIndex:indexPath.row]];
+				_ticketsArray = [[CoreDataHelper sharedInstance] favoritesMapWithPrices];
+				[self.tableView reloadData];
 				break;
 			default:
 				break;
 		}
-
+		[self.tableView reloadData];
 	}
+	[self.tableView reloadData];
 }
 
 @end

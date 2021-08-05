@@ -104,7 +104,6 @@
 		favoriteAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"remove_from_favorite", "") style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
 
 			[[CoreDataHelper sharedInstance] removeFromFavoriteMapWithPrice:[self->_prices objectAtIndex:index]];
-
 		}];
 	} else {
 		favoriteAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"add_to_favorite", "") style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
