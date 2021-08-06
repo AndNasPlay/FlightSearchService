@@ -14,7 +14,7 @@
 #import <CoreLocation/CoreLocation.h>
 #import "CoreDataHelper.h"
 
-@interface MapViewController ()
+@interface MapViewController () <MKMapViewDelegate>
 
 @property (nonatomic, strong) MKMapView *mapView;
 @property (nonatomic, strong) LocationService *locationService;
@@ -68,11 +68,11 @@
 
 	for (MapWithPrice *price in prices) {
 		dispatch_async(dispatch_get_main_queue(), ^{
-
 			MKPointAnnotation *annotation = [[MKPointAnnotation alloc] init];
 			annotation.title = [NSString stringWithFormat:@"%@ (%@)", price.destination.name, price.destination.code];
 			annotation.subtitle = [NSString stringWithFormat:@"%ld руб.", (long)price.price];
 			annotation.coordinate = price.destination.coordinate;
+
 			[self->_mapView addAnnotation:annotation];
 		});
 	}
@@ -86,7 +86,7 @@
 		annotationView.canShowCallout = YES;
 		annotationView.calloutOffset = CGPointMake(-5.0, 5.0);
 		annotationView.rightCalloutAccessoryView = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
-		annotationView.rightCalloutAccessoryView.tintColor = [UIColor clearColor];
+		annotationView.rightCalloutAccessoryView.tintColor = UIColor.clearColor;
 		annotationView.glyphImage = [UIImage imageNamed:@"MapMarker"];
 	}
 	annotationView.annotation = annotation;
@@ -95,33 +95,33 @@
 
 - (void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control {
 	NSUInteger index = [mapView.annotations indexOfObject:view.annotation];
-
+	CLLocationCoordinate2D  testCoord = [[mapView.annotations objectAtIndex:index] coordinate];
+	NSUInteger count = 0;
+	for (MapWithPrice *price in _prices) {
+		if ((round(1000*testCoord.latitude)/1000) == (round(1000*price.destination.coordinate.latitude)/1000)) {
+			count = [_prices indexOfObject:price];
+			break;
+		}
+	}
 	UIAlertController *alertController = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"actions_with_tickets", "") message:NSLocalizedString(@"actions_with_tickets_describe", "") preferredStyle:UIAlertControllerStyleActionSheet];
 
 	UIAlertAction *favoriteAction;
 
-	if ([[CoreDataHelper sharedInstance] isFavoriteMapWithPrice: [_prices objectAtIndex:index]]) {
+	if ([[CoreDataHelper sharedInstance] isFavoriteMapWithPrice: [_prices objectAtIndex:count]]) {
 		favoriteAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"remove_from_favorite", "") style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
 
-			[[CoreDataHelper sharedInstance] removeFromFavoriteMapWithPrice:[self->_prices objectAtIndex:index]];
+			[[CoreDataHelper sharedInstance] removeFromFavoriteMapWithPrice:[self->_prices objectAtIndex:count]];
 		}];
 	} else {
 		favoriteAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"add_to_favorite", "") style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
 
-			[[CoreDataHelper sharedInstance] addToFavoriteMapWithPrice: [self->_prices objectAtIndex:index]];
-
-			NSArray *words = [view.annotation.title componentsSeparatedByCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
-			NSMutableArray *iata = [NSMutableArray new];
-			for (NSString * word in words){
-				if ([word length] > 1 && [word characterAtIndex:0] == '('){
-					NSString * editedWord = [word substringFromIndex:1];
-					[iata addObject:editedWord];
-				}
-			}
+			[[CoreDataHelper sharedInstance] addToFavoriteMapWithPrice: [self->_prices objectAtIndex:count]];
 		}];
 	}
 
-	UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"close", "") style:UIAlertActionStyleCancel handler:nil];
+	UIAlertAction *cancelAction = [UIAlertAction
+								   actionWithTitle:NSLocalizedString(@"close", "")
+								   style:UIAlertActionStyleCancel handler:nil];
 	[alertController addAction:favoriteAction];
 	[alertController addAction:cancelAction];
 	[self presentViewController:alertController animated:YES completion:nil];

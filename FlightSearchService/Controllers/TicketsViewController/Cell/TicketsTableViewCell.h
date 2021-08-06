@@ -15,9 +15,9 @@
 
 @interface TicketsTableViewCell : UITableViewCell
 
-@property (nonatomic, strong) Ticket *ticket;
-@property (nonatomic, strong) FavoriteTicket *favoriteTicket;
-@property (nonatomic, strong) FavoriteMapPriceTicket *favoriteMapPriceTicket;
+	@property (nonatomic, strong) Ticket *ticket;
+	@property (nonatomic, strong) FavoriteTicket *favoriteTicket;
+	@property (nonatomic, strong) FavoriteMapPriceTicket *favoriteMapPriceTicket;
 
 @end
 

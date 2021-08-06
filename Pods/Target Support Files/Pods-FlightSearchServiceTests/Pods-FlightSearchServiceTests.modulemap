@@ -1,0 +1,6 @@
+framework module Pods_FlightSearchServiceTests {
+  umbrella header "Pods-FlightSearchServiceTests-umbrella.h"
+
+  export *
+  module * { export * }
+}

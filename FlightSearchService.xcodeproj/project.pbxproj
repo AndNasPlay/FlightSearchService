@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		161DC51B26BD739800586A57 /* BuildFile in Embed Frameworks */ = {isa = PBXBuildFile; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		1626206526BAC874004B6F61 /* FavoriteTicket.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1626206326BAC874004B6F61 /* FavoriteTicket.xcdatamodeld */; };
 		1626206E26BAC981004B6F61 /* FavoriteMapPriceTicket+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 1626206826BAC981004B6F61 /* FavoriteMapPriceTicket+CoreDataClass.m */; };
 		1626206F26BAC981004B6F61 /* FavoriteMapPriceTicket+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 1626206926BAC981004B6F61 /* FavoriteMapPriceTicket+CoreDataProperties.m */; };
@@ -38,6 +39,9 @@
 		16BA767B26A8BBB000E269B2 /* cities.json in Resources */ = {isa = PBXBuildFile; fileRef = 16BA767826A8BBAF00E269B2 /* cities.json */; };
 		16BA767C26A8BBB000E269B2 /* countries.json in Resources */ = {isa = PBXBuildFile; fileRef = 16BA767926A8BBB000E269B2 /* countries.json */; };
 		16BA767D26A8BBB000E269B2 /* airports.json in Resources */ = {isa = PBXBuildFile; fileRef = 16BA767A26A8BBB000E269B2 /* airports.json */; };
+		76C1676B927603C34EE79FB3 /* Pods_FlightSearchService.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A89EF025FB99C23F214704F /* Pods_FlightSearchService.framework */; };
+		D7B278F090B4F53465418E30 /* Pods_FlightSearchServiceTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B7FB2991913D3C795E3B74F /* Pods_FlightSearchServiceTests.framework */; };
+		EB1766AFBC82431CC40B886B /* Pods_FlightSearchService_FlightSearchServiceUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63A7B743DCBFEE11850E813F /* Pods_FlightSearchService_FlightSearchServiceUITests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,6 +60,20 @@
 			remoteInfo = FlightSearchService;
 		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		161DC51C26BD739800586A57 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				161DC51B26BD739800586A57 /* BuildFile in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		1626206426BAC874004B6F61 /* FavoriteTicket.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FavoriteTicket.xcdatamodel; sourceTree = "<group>"; };
@@ -116,6 +134,15 @@
 		16BA767826A8BBAF00E269B2 /* cities.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = cities.json; sourceTree = "<group>"; };
 		16BA767926A8BBB000E269B2 /* countries.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = countries.json; sourceTree = "<group>"; };
 		16BA767A26A8BBB000E269B2 /* airports.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = airports.json; sourceTree = "<group>"; };
+		1A89EF025FB99C23F214704F /* Pods_FlightSearchService.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FlightSearchService.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5533E1DCCCF48949876C32F9 /* Pods-FlightSearchServiceTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FlightSearchServiceTests.release.xcconfig"; path = "Target Support Files/Pods-FlightSearchServiceTests/Pods-FlightSearchServiceTests.release.xcconfig"; sourceTree = "<group>"; };
+		606139D9769953B153D6E132 /* Pods-FlightSearchService-FlightSearchServiceUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FlightSearchService-FlightSearchServiceUITests.release.xcconfig"; path = "Target Support Files/Pods-FlightSearchService-FlightSearchServiceUITests/Pods-FlightSearchService-FlightSearchServiceUITests.release.xcconfig"; sourceTree = "<group>"; };
+		63A7B743DCBFEE11850E813F /* Pods_FlightSearchService_FlightSearchServiceUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FlightSearchService_FlightSearchServiceUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6F6662CDFE28BD5EBBA6ABF4 /* Pods-FlightSearchService.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FlightSearchService.debug.xcconfig"; path = "Target Support Files/Pods-FlightSearchService/Pods-FlightSearchService.debug.xcconfig"; sourceTree = "<group>"; };
+		9B7FB2991913D3C795E3B74F /* Pods_FlightSearchServiceTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FlightSearchServiceTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		ADA74406EBE9E83E651EDB89 /* Pods-FlightSearchService-FlightSearchServiceUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FlightSearchService-FlightSearchServiceUITests.debug.xcconfig"; path = "Target Support Files/Pods-FlightSearchService-FlightSearchServiceUITests/Pods-FlightSearchService-FlightSearchServiceUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		BC9AA742BA0D3DE0E72FDDAD /* Pods-FlightSearchServiceTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FlightSearchServiceTests.debug.xcconfig"; path = "Target Support Files/Pods-FlightSearchServiceTests/Pods-FlightSearchServiceTests.debug.xcconfig"; sourceTree = "<group>"; };
+		CC2B0647C521715769270A2B /* Pods-FlightSearchService.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FlightSearchService.release.xcconfig"; path = "Target Support Files/Pods-FlightSearchService/Pods-FlightSearchService.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -123,6 +150,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				76C1676B927603C34EE79FB3 /* Pods_FlightSearchService.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -130,6 +158,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D7B278F090B4F53465418E30 /* Pods_FlightSearchServiceTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -137,6 +166,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EB1766AFBC82431CC40B886B /* Pods_FlightSearchService_FlightSearchServiceUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -182,6 +212,8 @@
 				1627FC2026A86668001385FE /* FlightSearchServiceTests */,
 				1627FC2B26A86668001385FE /* FlightSearchServiceUITests */,
 				1627FC0326A86663001385FE /* Products */,
+				A7D15C93FA2290AA27DFC0AB /* Pods */,
+				293434F59BA4E75A6990B926 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -343,6 +375,30 @@
 			path = JSON;
 			sourceTree = "<group>";
 		};
+		293434F59BA4E75A6990B926 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1A89EF025FB99C23F214704F /* Pods_FlightSearchService.framework */,
+				63A7B743DCBFEE11850E813F /* Pods_FlightSearchService_FlightSearchServiceUITests.framework */,
+				9B7FB2991913D3C795E3B74F /* Pods_FlightSearchServiceTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A7D15C93FA2290AA27DFC0AB /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				6F6662CDFE28BD5EBBA6ABF4 /* Pods-FlightSearchService.debug.xcconfig */,
+				CC2B0647C521715769270A2B /* Pods-FlightSearchService.release.xcconfig */,
+				ADA74406EBE9E83E651EDB89 /* Pods-FlightSearchService-FlightSearchServiceUITests.debug.xcconfig */,
+				606139D9769953B153D6E132 /* Pods-FlightSearchService-FlightSearchServiceUITests.release.xcconfig */,
+				BC9AA742BA0D3DE0E72FDDAD /* Pods-FlightSearchServiceTests.debug.xcconfig */,
+				5533E1DCCCF48949876C32F9 /* Pods-FlightSearchServiceTests.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -350,9 +406,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 1627FC3126A86668001385FE /* Build configuration list for PBXNativeTarget "FlightSearchService" */;
 			buildPhases = (
+				6AFFC5D2302D6FEC040CE637 /* [CP] Check Pods Manifest.lock */,
 				1627FBFE26A86663001385FE /* Sources */,
 				1627FBFF26A86663001385FE /* Frameworks */,
 				1627FC0026A86663001385FE /* Resources */,
+				161DC51C26BD739800586A57 /* Embed Frameworks */,
+				38E48C9DFEA3B621F0ADFD53 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -367,6 +426,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 1627FC3426A86668001385FE /* Build configuration list for PBXNativeTarget "FlightSearchServiceTests" */;
 			buildPhases = (
+				E59D10A2511B0657F1340015 /* [CP] Check Pods Manifest.lock */,
 				1627FC1926A86668001385FE /* Sources */,
 				1627FC1A26A86668001385FE /* Frameworks */,
 				1627FC1B26A86668001385FE /* Resources */,
@@ -385,9 +445,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 1627FC3726A86668001385FE /* Build configuration list for PBXNativeTarget "FlightSearchServiceUITests" */;
 			buildPhases = (
+				4576AB17C2AEC6E591B7325A /* [CP] Check Pods Manifest.lock */,
 				1627FC2426A86668001385FE /* Sources */,
 				1627FC2526A86668001385FE /* Frameworks */,
 				1627FC2626A86668001385FE /* Resources */,
+				125F14B314C6C6F8DA7786A1 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -470,6 +532,109 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		125F14B314C6C6F8DA7786A1 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-FlightSearchService-FlightSearchServiceUITests/Pods-FlightSearchService-FlightSearchServiceUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-FlightSearchService-FlightSearchServiceUITests/Pods-FlightSearchService-FlightSearchServiceUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-FlightSearchService-FlightSearchServiceUITests/Pods-FlightSearchService-FlightSearchServiceUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		38E48C9DFEA3B621F0ADFD53 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-FlightSearchService/Pods-FlightSearchService-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-FlightSearchService/Pods-FlightSearchService-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-FlightSearchService/Pods-FlightSearchService-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		4576AB17C2AEC6E591B7325A /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-FlightSearchService-FlightSearchServiceUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		6AFFC5D2302D6FEC040CE637 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-FlightSearchService-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E59D10A2511B0657F1340015 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-FlightSearchServiceTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		1627FBFE26A86663001385FE /* Sources */ = {
@@ -659,6 +824,7 @@
 		};
 		1627FC3226A86668001385FE /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6F6662CDFE28BD5EBBA6ABF4 /* Pods-FlightSearchService.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -681,6 +847,7 @@
 		};
 		1627FC3326A86668001385FE /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = CC2B0647C521715769270A2B /* Pods-FlightSearchService.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -702,6 +869,7 @@
 		};
 		1627FC3526A86668001385FE /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = BC9AA742BA0D3DE0E72FDDAD /* Pods-FlightSearchServiceTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
@@ -722,6 +890,7 @@
 		};
 		1627FC3626A86668001385FE /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5533E1DCCCF48949876C32F9 /* Pods-FlightSearchServiceTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
@@ -742,6 +911,7 @@
 		};
 		1627FC3826A86668001385FE /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = ADA74406EBE9E83E651EDB89 /* Pods-FlightSearchService-FlightSearchServiceUITests.debug.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 97WCP8NGSS;
@@ -760,6 +930,7 @@
 		};
 		1627FC3926A86668001385FE /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 606139D9769953B153D6E132 /* Pods-FlightSearchService-FlightSearchServiceUITests.release.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 97WCP8NGSS;

@@ -9,9 +9,9 @@
 
 @interface CoreDataHelper ()
 
-@property (nonatomic, strong) NSPersistentStoreCoordinator *persistentStoreCoordinator;
-@property (nonatomic, strong) NSManagedObjectContext *managedObjectContext;
-@property (nonatomic, strong) NSManagedObjectModel *managedObjectModel;
+	@property (nonatomic, strong) NSPersistentStoreCoordinator *persistentStoreCoordinator;
+	@property (nonatomic, strong) NSManagedObjectContext *managedObjectContext;
+	@property (nonatomic, strong) NSManagedObjectModel *managedObjectModel;
 
 @end
 
@@ -40,7 +40,6 @@
 	if (!store) {
 		abort();
 	}
-
 	_managedObjectContext = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSMainQueueConcurrencyType];
 	_managedObjectContext.persistentStoreCoordinator = _persistentStoreCoordinator;
 }
@@ -55,13 +54,26 @@
 
 - (FavoriteTicket *)favoriteFromTicket:(Ticket *)ticket {
 	NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"FavoriteTicket"];
-	request.predicate = [NSPredicate predicateWithFormat:@"price == %ld AND airline == %@ AND from == %@ AND to == %@ AND departure == %@ AND expires == %@ AND flightNumber == %ld", [[ticket valueForKey:@"price"] integerValue], ticket.airline, ticket.from, ticket.to, ticket.departure, ticket.expires, [[ticket valueForKey:@"flightNumber"] integerValue]];
+	request.predicate = [NSPredicate
+						 predicateWithFormat:@"price == %ld AND airline == %@ AND from == %@ AND to == %@ AND departure == %@ AND expires == %@ AND flightNumber == %ld",
+						 [[ticket valueForKey:@"price"] integerValue],
+						 ticket.airline,
+						 ticket.from,
+						 ticket.to,
+						 ticket.departure,
+						 ticket.expires,
+						 [[ticket valueForKey:@"flightNumber"] integerValue]];
 	return [[_managedObjectContext executeFetchRequest:request error:nil] firstObject];
 }
 
 - (FavoriteMapPriceTicket *)favoriteMapWithPrice:(MapWithPrice *)price {
 	NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"FavoriteMapPriceTicket"];
-	request.predicate = [NSPredicate predicateWithFormat:@"price == %ld AND from == %@ AND to == %@ AND departure == %@", (long)price.price, price.origin.name, price.destination.name, price.departure];
+	request.predicate = [NSPredicate
+						 predicateWithFormat:@"price == %ld AND from == %@ AND to == %@ AND departure == %@",
+						 (long)price.price,
+						 price.origin.name,
+						 price.destination.name,
+						 price.departure];
 	return [[_managedObjectContext executeFetchRequest:request error:nil] firstObject];
 }
 
@@ -74,7 +86,9 @@
 }
 
 - (void)addToFavorite:(Ticket *)ticket {
-	FavoriteTicket *favorite = [NSEntityDescription insertNewObjectForEntityForName:@"FavoriteTicket" inManagedObjectContext:_managedObjectContext];
+	FavoriteTicket *favorite = [NSEntityDescription
+								insertNewObjectForEntityForName:@"FavoriteTicket"
+								inManagedObjectContext:_managedObjectContext];
 	favorite.price = ticket.price.intValue;
 	favorite.airline = ticket.airline;
 	favorite.departure = ticket.departure;
@@ -84,7 +98,6 @@
 	favorite.from = ticket.from;
 	favorite.to = ticket.to;
 	favorite.created = [NSDate date];
-	NSLog(@"Сохраняем в coredata - %@, %@, %@, %hd, %@, %lld, %@, %@", favorite.airline, favorite.departure, favorite.expires, favorite.flightNumber, favorite.from, favorite.price, favorite.returnDate, favorite.to);
 
 	[self save];
 }

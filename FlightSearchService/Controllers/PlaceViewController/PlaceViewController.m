@@ -11,12 +11,12 @@
 
 @interface PlaceViewController () <UISearchResultsUpdating>
 
-@property (nonatomic) PlaceType placeType;
-@property (nonatomic, strong) UITableView *tableView;
-@property (nonatomic, strong) UISegmentedControl *segmentControl;
-@property (nonatomic, strong) NSArray *currentArray;
-@property (nonatomic, strong) NSArray *searchArray;
-@property (nonatomic, strong) UISearchController *searchController;
+	@property (nonatomic) PlaceType placeType;
+	@property (nonatomic, strong) UITableView *tableView;
+	@property (nonatomic, strong) UISegmentedControl *segmentControl;
+	@property (nonatomic, strong) NSArray *currentArray;
+	@property (nonatomic, strong) NSArray *searchArray;
+	@property (nonatomic, strong) UISearchController *searchController;
 
 @end
 
@@ -32,7 +32,7 @@
 
 - (void)viewDidLoad {
 	[super viewDidLoad];
-	self.navigationController.navigationBar.tintColor = [UIColor blackColor];
+	self.navigationController.navigationBar.tintColor = UIColor.blackColor;
 	self.navigationController.navigationBar.hidden = NO;
 
 	self.searchController = [[UISearchController alloc] initWithSearchResultsController:nil];
@@ -48,7 +48,7 @@
 
 	self.segmentControl = [[UISegmentedControl alloc] initWithItems:@[@"Cities", @"Airports"]];
 	[self.segmentControl addTarget:self action:@selector(changeSource) forControlEvents:UIControlEventValueChanged];
-	self.segmentControl.tintColor = [UIColor blackColor];
+	self.segmentControl.tintColor = UIColor.blackColor;
 	self.navigationItem.titleView = self.segmentControl;
 	self.segmentControl.selectedSegmentIndex = 0;
 	[self changeSource];

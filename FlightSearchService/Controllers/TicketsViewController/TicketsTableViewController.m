@@ -14,9 +14,9 @@
 
 @interface TicketsTableViewController ()
 
-@property(nonatomic, strong) NSArray *ticketsArray;
-@property(nonatomic, strong) Ticket *ticketToDelete;
-@property (nonatomic, strong) UISegmentedControl *segmentControl;
+	@property(nonatomic, strong) NSArray *ticketsArray;
+	@property(nonatomic, strong) Ticket *ticketToDelete;
+	@property (nonatomic, strong) UISegmentedControl *segmentControl;
 
 @end
 
@@ -41,10 +41,16 @@
 	self = [super init];
 	if (self) {
 		isFavorite = YES;
-		self.ticketsArray = [NSMutableArray new];
+		self.ticketsArray = [NSArray new];
 		self.title = @"Избранное";
 		self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
 		[self.tableView registerClass:[TicketsTableViewCell class] forCellReuseIdentifier:TicketsCellReuseIdentifier];
+		_segmentControl = [[UISegmentedControl alloc] initWithItems:@[@"Searched", @"From map"]];
+		[_segmentControl addTarget:self action:@selector(changeSource) forControlEvents:UIControlEventValueChanged];
+		_segmentControl.tintColor = UIColor.blackColor;
+		self.navigationItem.titleView = _segmentControl;
+		_segmentControl.selectedSegmentIndex = 0;
+		[self changeSource];
 	}
 	return self;
 }
@@ -53,14 +59,14 @@
 	self = [super init];
 	if (self) {
 		isFavorite = YES;
-		self.ticketsArray = [NSMutableArray new];
+		self.ticketsArray = [NSArray new];
 		self.title = @"Избранное";
 		self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
 		[self.tableView registerClass:[TicketsTableViewCell class] forCellReuseIdentifier:TicketsCellReuseIdentifier];
 	}
 	_segmentControl = [[UISegmentedControl alloc] initWithItems:@[@"Searched", @"From map"]];
 	[_segmentControl addTarget:self action:@selector(changeSource) forControlEvents:UIControlEventValueChanged];
-	_segmentControl.tintColor = [UIColor blackColor];
+	_segmentControl.tintColor = UIColor.blackColor;
 	self.navigationItem.titleView = _segmentControl;
 	_segmentControl.selectedSegmentIndex = 0;
 	[self changeSource];
@@ -94,7 +100,6 @@
 		self.ticketsArray = [[CoreDataHelper sharedInstance] favorites];
 		[self.tableView reloadData];
 	}
-
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -177,6 +182,7 @@
 			case 1:
 				[[CoreDataHelper sharedInstance] removeFromFavoriteMapWithPriceFromTable:[self->_ticketsArray objectAtIndex:indexPath.row]];
 				_ticketsArray = [[CoreDataHelper sharedInstance] favoritesMapWithPrices];
+				[tableView deleteRowsAtIndexPaths: @[indexPath] withRowAnimation: UITableViewRowAnimationFade];
 				[self.tableView reloadData];
 				break;
 			default:

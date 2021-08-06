@@ -21,8 +21,8 @@
 	self = [super initWithNibName:nil bundle:nil];
 	if (self) {
 		self.viewControllers = [self createViewControllers];
-		self.tabBar.tintColor = [UIColor blackColor];
-		self.tabBar.backgroundColor = [[UIColor lightGrayColor] colorWithAlphaComponent:0.2];
+		self.tabBar.tintColor = UIColor.blackColor;
+		self.tabBar.backgroundColor = [UIColor.lightGrayColor colorWithAlphaComponent:0.2];
 	}
 	return self;
 }
@@ -40,7 +40,7 @@
 	UINavigationController *mapNavigationController = [[UINavigationController alloc] initWithRootViewController:mapViewController];
 	[viewControllers addObject:mapNavigationController];
 
-	TicketsTableViewController *ticketsViewController = [[TicketsTableViewController alloc] initFavoriteTicketsControllerFromMap];
+	TicketsTableViewController *ticketsViewController = [[TicketsTableViewController alloc] initFavoriteTicketsController];
 	ticketsViewController.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"Favorite Tickets" image:[UIImage systemImageNamed:@"star"] selectedImage:[UIImage imageNamed:@"star_fill"]];
 	UINavigationController *ticketsNavigationController = [[UINavigationController alloc] initWithRootViewController:ticketsViewController];
 	[viewControllers addObject:ticketsNavigationController];

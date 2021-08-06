@@ -11,7 +11,6 @@
 
 #define API_TOKEN @"TOKEN"
 #define API_URL_IP_ADDRESS @"https://api.ipify.org/?format=json"
-//#define API_URL_CHEAP @"https://api.travelpayouts.com/v1/prices/cheap"
 #define API_URL_CHEAP @"https://api.travelpayouts.com/v1/prices/direct"
 #define API_URL_CITY_FROM_IP @"https://www.travelpayouts.com/whereami?ip="
 #define API_URL_MAP_PRICE @"https://map.aviasales.ru/prices.json?origin_iata="
@@ -90,7 +89,7 @@ NSString *SearchRequestQuery(SearchRequest request) {
 	return result;
 }
 
--(void)mapPricesFor:(City *)origin withCompletion:(void (^)(NSArray *prices))completion {
+- (void)mapPricesFor:(City *)origin withCompletion:(void (^)(NSArray *prices))completion {
 	static BOOL isLoading;
 	if (isLoading) {
 		return;

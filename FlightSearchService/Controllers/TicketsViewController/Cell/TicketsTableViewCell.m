@@ -7,13 +7,14 @@
 
 #import "TicketsTableViewCell.h"
 #import "Ticket.h"
+#import <SDWebImage/SDWebImage.h>
 
 @interface TicketsTableViewCell()
 
-@property (nonatomic, strong) UIImageView *airlineLogoView;
-@property (nonatomic, strong) UILabel *priceLable;
-@property (nonatomic, strong) UILabel *placesLable;
-@property (nonatomic, strong) UILabel *dateLable;
+	@property (nonatomic, strong) UIImageView *airlineLogoView;
+	@property (nonatomic, strong) UILabel *priceLable;
+	@property (nonatomic, strong) UILabel *placesLable;
+	@property (nonatomic, strong) UILabel *dateLable;
 
 @end
 
@@ -22,7 +23,7 @@
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
 	self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
 	if (self) {
-		self.contentView.layer.shadowColor = [[[UIColor blackColor] colorWithAlphaComponent:0.2] CGColor];
+		self.contentView.layer.shadowColor = [[UIColor.blackColor colorWithAlphaComponent:0.2] CGColor];
 		self.contentView.layer.shadowOffset = CGSizeMake(1.0, 1.0);
 		self.contentView.layer.shadowRadius = 10.0;
 		self.contentView.layer.shadowOpacity = 1.0;
@@ -39,7 +40,7 @@
 
 		self.placesLable = [[UILabel alloc] initWithFrame:self.bounds];
 		self.placesLable.font = [UIFont systemFontOfSize:15.0 weight:UIFontWeightLight];
-		self.placesLable.textColor = [UIColor grayColor];
+		self.placesLable.textColor = UIColor.grayColor;
 		[self.contentView addSubview:self.placesLable];
 
 		self.dateLable = [[UILabel alloc] initWithFrame:self.bounds];
@@ -55,7 +56,7 @@
 
 	self.contentView.frame = CGRectMake(10.0, 10.0, [UIScreen mainScreen].bounds.size.width - 20.0, self.frame.size.height - 20.0);
 	self.priceLable.frame = CGRectMake(10.0, 10.0, self.contentView.frame.size.width - 100.0, 40.0);
-	self.airlineLogoView.frame = CGRectMake(CGRectGetMaxX(self.priceLable.frame) + 10.0, 10.0, 80.0, 80.0);
+	self.airlineLogoView.frame = CGRectMake(self.contentView.frame.size.width - 140.0, (self.contentView.frame.size.height / 2) - 60.0, 120.0, 120.0);
 	self.placesLable.frame = CGRectMake(10.0, CGRectGetMaxY(self.priceLable.frame) + 16.0, 150.0, 20.0);
 	self.dateLable.frame = CGRectMake(10.0, CGRectGetMaxY(self.placesLable.frame) + 8.0, self.contentView.frame.size.width - 20.0, 20.0);
 }
@@ -69,7 +70,7 @@
 	NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
 	dateFormatter.dateFormat = @"dd MMMM yyyy";
 	self.dateLable.text = [dateFormatter stringFromDate:ticket.departure];
-	self.airlineLogoView.image = [UIImage imageNamed:@"Ducati"];
+	[self.airlineLogoView sd_setImageWithURL:[NSURL URLWithString: [NSString stringWithFormat:@"https://pics.avs.io/120/120/%@.png", ticket.airline.uppercaseString]] placeholderImage:[UIImage imageNamed:@"Ducati.png"]];
 }
 
 - (void)setFavoriteTicket:(FavoriteTicket *)favoriteTicket {
@@ -81,6 +82,7 @@
 	NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
 	dateFormatter.dateFormat = @"dd MMMM yyyy hh:mm";
 	self.dateLable.text = [dateFormatter stringFromDate:favoriteTicket.departure];
+	[self.airlineLogoView sd_setImageWithURL:[NSURL URLWithString: [NSString stringWithFormat:@"https://pics.avs.io/120/120/%@.png", favoriteTicket.airline.uppercaseString]] placeholderImage:[UIImage imageNamed:@"Ducati.png"]];
 }
 
 - (void)setFavoriteMapPriceTicket:(FavoriteMapPriceTicket *)favoriteMapPrice {
@@ -88,6 +90,8 @@
 
 	_priceLable.text = [NSString stringWithFormat:@"%lld руб.",_favoriteMapPriceTicket.price];
 	_placesLable.text = [NSString stringWithFormat:@"%@ - %@",_favoriteMapPriceTicket.from, _favoriteMapPriceTicket.to];
+
+	[self.airlineLogoView sd_setImageWithURL:[NSURL URLWithString: [NSString stringWithFormat:@"https://pics.avs.io/120/120/%@.png", _favoriteMapPriceTicket.airline]] placeholderImage:[UIImage imageNamed:@"Ducati.png"]];
 
 	NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
 	dateFormatter.dateFormat = @"dd MMMM yyyy hh:mm";
