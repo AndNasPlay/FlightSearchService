@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
-    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <device id="retina6_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -16,22 +16,28 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg_launch" translatesAutoresizingMaskIntoConstraints="NO" id="Eyd-E3-Htz">
-                                <rect key="frame" x="-5" y="0.0" width="424" height="896"/>
+                                <rect key="frame" x="-130" y="0.0" width="674" height="1125"/>
                             </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
                             <constraint firstItem="Eyd-E3-Htz" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="5N6-NM-LXa"/>
-                            <constraint firstAttribute="trailing" secondItem="Eyd-E3-Htz" secondAttribute="trailing" constant="-5" id="WWe-zu-jZM"/>
-                            <constraint firstItem="Eyd-E3-Htz" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" constant="-5" id="hLk-b5-gUj"/>
-                            <constraint firstAttribute="bottom" secondItem="Eyd-E3-Htz" secondAttribute="bottom" id="qfr-ty-1Nu"/>
+                            <constraint firstAttribute="trailing" secondItem="Eyd-E3-Htz" secondAttribute="trailing" constant="-5" id="WWe-zu-jZM">
+                                <variation key="heightClass=regular-widthClass=compact" constant="-130"/>
+                            </constraint>
+                            <constraint firstItem="Eyd-E3-Htz" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" constant="-5" id="hLk-b5-gUj">
+                                <variation key="heightClass=regular-widthClass=compact" constant="-130"/>
+                            </constraint>
+                            <constraint firstAttribute="bottom" secondItem="Eyd-E3-Htz" secondAttribute="bottom" id="qfr-ty-1Nu">
+                                <variation key="heightClass=regular-widthClass=compact" constant="-229"/>
+                            </constraint>
                         </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="52.173913043478265" y="375"/>
+            <point key="canvasLocation" x="50.625" y="375"/>
         </scene>
     </scenes>
     <resources>

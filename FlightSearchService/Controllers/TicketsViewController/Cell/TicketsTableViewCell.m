@@ -56,7 +56,7 @@
 
 	self.contentView.frame = CGRectMake(10.0, 10.0, [UIScreen mainScreen].bounds.size.width - 20.0, self.frame.size.height - 20.0);
 	self.priceLable.frame = CGRectMake(10.0, 10.0, self.contentView.frame.size.width - 100.0, 40.0);
-	self.airlineLogoView.frame = CGRectMake(self.contentView.frame.size.width - 140.0, (self.contentView.frame.size.height / 2) - 60.0, 120.0, 120.0);
+	self.airlineLogoView.frame = CGRectMake(self.contentView.frame.size.width - 120.0, (self.contentView.frame.size.height / 2) - 50.0, 100.0, 100.0);
 	self.placesLable.frame = CGRectMake(10.0, CGRectGetMaxY(self.priceLable.frame) + 16.0, 150.0, 20.0);
 	self.dateLable.frame = CGRectMake(10.0, CGRectGetMaxY(self.placesLable.frame) + 8.0, self.contentView.frame.size.width - 20.0, 20.0);
 }
@@ -66,11 +66,10 @@
 
 	self.priceLable.text = [NSString stringWithFormat:@"%@ руб.", ticket.price];
 	self.placesLable.text = [NSString stringWithFormat:@"%@ - %@", ticket.from, ticket.to];
-	NSLog(@"Сохраняем в массив тикет - %@, %@, %@, %@, %@, %@, %@, %@", ticket.airline, ticket.departure, ticket.expires, ticket.flightNumber, ticket.from, ticket.price, ticket.returnDate, ticket.to);
 	NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
 	dateFormatter.dateFormat = @"dd MMMM yyyy";
 	self.dateLable.text = [dateFormatter stringFromDate:ticket.departure];
-	[self.airlineLogoView sd_setImageWithURL:[NSURL URLWithString: [NSString stringWithFormat:@"https://pics.avs.io/120/120/%@.png", ticket.airline.uppercaseString]] placeholderImage:[UIImage imageNamed:@"Ducati.png"]];
+	[self.airlineLogoView sd_setImageWithURL:[NSURL URLWithString: [NSString stringWithFormat:@"https://pics.avs.io/120/120/%@.png", ticket.airline.uppercaseString]] placeholderImage:[UIImage imageNamed:@"airLineLogo.png"]];
 }
 
 - (void)setFavoriteTicket:(FavoriteTicket *)favoriteTicket {
@@ -82,7 +81,7 @@
 	NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
 	dateFormatter.dateFormat = @"dd MMMM yyyy hh:mm";
 	self.dateLable.text = [dateFormatter stringFromDate:favoriteTicket.departure];
-	[self.airlineLogoView sd_setImageWithURL:[NSURL URLWithString: [NSString stringWithFormat:@"https://pics.avs.io/120/120/%@.png", favoriteTicket.airline.uppercaseString]] placeholderImage:[UIImage imageNamed:@"Ducati.png"]];
+	[self.airlineLogoView sd_setImageWithURL:[NSURL URLWithString: [NSString stringWithFormat:@"https://pics.avs.io/120/120/%@.png", favoriteTicket.airline.uppercaseString]] placeholderImage:[UIImage imageNamed:@"airLineLogo.png"]];
 }
 
 - (void)setFavoriteMapPriceTicket:(FavoriteMapPriceTicket *)favoriteMapPrice {
@@ -91,7 +90,7 @@
 	_priceLable.text = [NSString stringWithFormat:@"%lld руб.",_favoriteMapPriceTicket.price];
 	_placesLable.text = [NSString stringWithFormat:@"%@ - %@",_favoriteMapPriceTicket.from, _favoriteMapPriceTicket.to];
 
-	[self.airlineLogoView sd_setImageWithURL:[NSURL URLWithString: [NSString stringWithFormat:@"https://pics.avs.io/120/120/%@.png", _favoriteMapPriceTicket.airline]] placeholderImage:[UIImage imageNamed:@"Ducati.png"]];
+	[self.airlineLogoView sd_setImageWithURL:[NSURL URLWithString: [NSString stringWithFormat:@"https://pics.avs.io/120/120/%@.png", _favoriteMapPriceTicket.airline]] placeholderImage:[UIImage imageNamed:@"airLineLogo.png"]];
 
 	NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
 	dateFormatter.dateFormat = @"dd MMMM yyyy hh:mm";

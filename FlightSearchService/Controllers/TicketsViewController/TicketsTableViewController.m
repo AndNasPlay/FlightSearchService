@@ -55,24 +55,6 @@
 	return self;
 }
 
-- (instancetype)initFavoriteTicketsControllerFromMap {
-	self = [super init];
-	if (self) {
-		isFavorite = YES;
-		self.ticketsArray = [NSArray new];
-		self.title = @"Избранное";
-		self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-		[self.tableView registerClass:[TicketsTableViewCell class] forCellReuseIdentifier:TicketsCellReuseIdentifier];
-	}
-	_segmentControl = [[UISegmentedControl alloc] initWithItems:@[@"Searched", @"From map"]];
-	[_segmentControl addTarget:self action:@selector(changeSource) forControlEvents:UIControlEventValueChanged];
-	_segmentControl.tintColor = UIColor.blackColor;
-	self.navigationItem.titleView = _segmentControl;
-	_segmentControl.selectedSegmentIndex = 0;
-	[self changeSource];
-	return self;
-}
-
 - (void)changeSource {
 	switch (_segmentControl.selectedSegmentIndex) {
 		case 0:
