@@ -12,9 +12,9 @@
 
 @interface DataManager()
 
-@property (nonatomic, strong) NSMutableArray *countriesArray;
-@property (nonatomic, strong) NSMutableArray *citiesArray;
-@property (nonatomic, strong) NSMutableArray *airportsArray;
+	@property (nonatomic, strong) NSMutableArray *countriesArray;
+	@property (nonatomic, strong) NSMutableArray *citiesArray;
+	@property (nonatomic, strong) NSMutableArray *airportsArray;
 
 @end
 

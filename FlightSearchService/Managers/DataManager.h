@@ -27,14 +27,14 @@ typedef struct SearchRequest {
 
 @interface DataManager : NSObject
 
-+ (instancetype)sharedInstance;
-- (void)loadData;
-- (City *)cityForIata:(NSString *)iata;
-- (City *)cityForLocation:(CLLocation *)location;
+	+ (instancetype)sharedInstance;
+	- (void)loadData;
+	- (City *)cityForIata:(NSString *)iata;
+	- (City *)cityForLocation:(CLLocation *)location;
 
-@property (nonatomic, strong, readonly) NSArray *countries;
-@property (nonatomic, strong, readonly) NSArray *cities;
-@property (nonatomic, strong, readonly) NSArray *airports;
+	@property (nonatomic, strong, readonly) NSArray *countries;
+	@property (nonatomic, strong, readonly) NSArray *cities;
+	@property (nonatomic, strong, readonly) NSArray *airports;
 
 @end
 

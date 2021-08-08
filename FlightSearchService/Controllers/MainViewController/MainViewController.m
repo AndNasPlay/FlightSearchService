@@ -11,18 +11,19 @@
 #import "ApiManager.h"
 #import "TicketsTableViewController.h"
 #import <UIKit/UIKit.h>
+#import "ProgressView.h"
 
 @interface MainViewController () <PlaceViewControllerDelegate>
 
-	@property (nonatomic, strong) UIButton *departureButton;
-	@property (nonatomic, strong) UIButton *arrivalButton;
-	@property (nonatomic) SearchRequest searchRequest;
-	@property (nonatomic, strong) UIView *placeContainerView;
-	@property (nonatomic, strong) UIButton *searchButton;
-	@property (nonatomic, strong) UIImageView *backgroundImage;
-	@property (nonatomic, strong) UIImageView *logoImage;
-	@property (nonatomic, strong) UIDatePicker *datePicker;
-	@property (nonatomic, strong) UITextField *datePickerTextField;
+@property (nonatomic, strong) UIButton *departureButton;
+@property (nonatomic, strong) UIButton *arrivalButton;
+@property (nonatomic) SearchRequest searchRequest;
+@property (nonatomic, strong) UIView *placeContainerView;
+@property (nonatomic, strong) UIButton *searchButton;
+@property (nonatomic, strong) UIImageView *backgroundImage;
+@property (nonatomic, strong) UIImageView *logoImage;
+@property (nonatomic, strong) UIDatePicker *datePicker;
+@property (nonatomic, strong) UITextField *datePickerTextField;
 
 @end
 
@@ -47,15 +48,23 @@
 }
 
 - (void)createSubViews {
-	self.backgroundImage = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height)];
+	double constantHeight = 0;
+	self.backgroundImage = [[UIImageView alloc] initWithFrame:CGRectMake(0.0, 0.0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height)];
 	self.backgroundImage.image = [UIImage imageNamed:@"bigBG"];
 	[self.view addSubview:self.backgroundImage];
+	if ([UIScreen mainScreen].bounds.size.width > 350.0) {
+		constantHeight = 80.0;
+		self.logoImage = [[UIImageView alloc] initWithFrame:CGRectMake(60.0, constantHeight, [UIScreen mainScreen].bounds.size.width - 120.0, 80.0)];
+		self.logoImage.image = [UIImage imageNamed:@"logo"];
+		[self.view addSubview:self.logoImage];
+	} else {
+		constantHeight = 60.0;
+		self.logoImage = [[UIImageView alloc] initWithFrame:CGRectMake([UIScreen mainScreen].bounds.size.width / 4, constantHeight, [UIScreen mainScreen].bounds.size.width / 2, 60.0)];
+		self.logoImage.image = [UIImage imageNamed:@"logo"];
+		[self.view addSubview:self.logoImage];
+	}
 
-	self.logoImage = [[UIImageView alloc] initWithFrame:CGRectMake(60, 80, [UIScreen mainScreen].bounds.size.width - 120, 80)];
-	self.logoImage.image = [UIImage imageNamed:@"logo"];
-	[self.view addSubview:self.logoImage];
-
-	self.placeContainerView = [[UIView alloc] initWithFrame: CGRectMake(20.0, 200.0, [UIScreen mainScreen].bounds.size.width - 40.0, 230.0)];
+	self.placeContainerView = [[UIView alloc] initWithFrame: CGRectMake(20.0, self.logoImage.frame.size.height + constantHeight + 40.0, [UIScreen mainScreen].bounds.size.width - 40.0, 230.0)];
 	self.placeContainerView.backgroundColor = [UIColor.whiteColor colorWithAlphaComponent:0.3];
 	self.placeContainerView.layer.shadowColor = [[UIColor.blackColor colorWithAlphaComponent:0.1] CGColor];
 	self.placeContainerView.layer.shadowOffset = CGSizeZero;
@@ -129,15 +138,19 @@
 		[alertController addAction:[UIAlertAction actionWithTitle:@"close" style:UIAlertActionStyleDefault handler:nil]];
 		[self presentViewController:alertController animated:YES completion:nil];
 	} else {
-		[[ApiManager sharedInstance] ticketsWithRequest:_searchRequest withCompletion:^(NSArray *tickets) {
-			if (tickets.count > 0) {
-				TicketsTableViewController *ticketsVC = [[TicketsTableViewController alloc] initWithTickets:tickets];
-				[self.navigationController showViewController:ticketsVC sender:self];
-			} else {
-				UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Sorry!" message:@"No tickets" preferredStyle:UIAlertControllerStyleAlert];
-				[alertController addAction:[UIAlertAction actionWithTitle:@"close" style:UIAlertActionStyleDefault handler:nil]];
-				[self presentViewController:alertController animated:YES completion:nil];
-			}
+		[[ProgressView sharedInstance] show:^{
+			[[ApiManager sharedInstance] ticketsWithRequest:self->_searchRequest withCompletion:^(NSArray *tickets) {
+				[[ProgressView sharedInstance] dismiss:^{
+					if (tickets.count > 0) {
+						TicketsTableViewController *ticketsVC = [[TicketsTableViewController alloc] initWithTickets:tickets];
+						[self.navigationController showViewController:ticketsVC sender:self];
+					} else {
+						UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Sorry!" message:@"No tickets" preferredStyle:UIAlertControllerStyleAlert];
+						[alertController addAction:[UIAlertAction actionWithTitle:@"close" style:UIAlertActionStyleDefault handler:nil]];
+						[self presentViewController:alertController animated:YES completion:nil];
+					}
+				}];
+			}];
 		}];
 	}
 }
@@ -186,7 +199,7 @@
 
 	NSString *title;
 	NSString *iata;
-
+	
 	if (dataType == DataSourceTypeCity) {
 		City *city = (City *)place;
 		title = city.name;

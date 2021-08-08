@@ -3,17 +3,18 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
-		161DC51B26BD739800586A57 /* BuildFile in Embed Frameworks */ = {isa = PBXBuildFile; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		161DC51B26BD739800586A57 /* (null) in Embed Frameworks */ = {isa = PBXBuildFile; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		1626206526BAC874004B6F61 /* FavoriteTicket.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1626206326BAC874004B6F61 /* FavoriteTicket.xcdatamodeld */; };
 		1626206E26BAC981004B6F61 /* FavoriteMapPriceTicket+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 1626206826BAC981004B6F61 /* FavoriteMapPriceTicket+CoreDataClass.m */; };
 		1626206F26BAC981004B6F61 /* FavoriteMapPriceTicket+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 1626206926BAC981004B6F61 /* FavoriteMapPriceTicket+CoreDataProperties.m */; };
 		1626207026BAC981004B6F61 /* FavoriteTicket+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 1626206C26BAC981004B6F61 /* FavoriteTicket+CoreDataClass.m */; };
 		1626207126BAC981004B6F61 /* FavoriteTicket+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 1626206D26BAC981004B6F61 /* FavoriteTicket+CoreDataProperties.m */; };
 		1627CA9926AC9F0700D64136 /* TicketsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1627CA9826AC9F0700D64136 /* TicketsTableViewController.m */; };
+		1627F38526BEE7FD007D76FD /* ProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1627F38426BEE7FD007D76FD /* ProgressView.m */; };
 		1627FC0726A86663001385FE /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1627FC0626A86663001385FE /* AppDelegate.m */; };
 		1627FC0A26A86663001385FE /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1627FC0926A86663001385FE /* SceneDelegate.m */; };
 		1627FC0D26A86663001385FE /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1627FC0C26A86663001385FE /* MainViewController.m */; };
@@ -68,7 +69,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				161DC51B26BD739800586A57 /* BuildFile in Embed Frameworks */,
+				161DC51B26BD739800586A57 /* (null) in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -87,6 +88,8 @@
 		1626206D26BAC981004B6F61 /* FavoriteTicket+CoreDataProperties.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "FavoriteTicket+CoreDataProperties.m"; sourceTree = "<group>"; };
 		1627CA9726AC9F0700D64136 /* TicketsTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TicketsTableViewController.h; sourceTree = "<group>"; };
 		1627CA9826AC9F0700D64136 /* TicketsTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TicketsTableViewController.m; sourceTree = "<group>"; };
+		1627F38326BEE7FD007D76FD /* ProgressView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProgressView.h; sourceTree = "<group>"; };
+		1627F38426BEE7FD007D76FD /* ProgressView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProgressView.m; sourceTree = "<group>"; };
 		1627FC0226A86663001385FE /* FlightSearchService.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FlightSearchService.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1627FC0526A86663001385FE /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		1627FC0626A86663001385FE /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -205,6 +208,15 @@
 			path = TicketsViewController;
 			sourceTree = "<group>";
 		};
+		1627F38626BEE8A8007D76FD /* Animation */ = {
+			isa = PBXGroup;
+			children = (
+				1627F38326BEE7FD007D76FD /* ProgressView.h */,
+				1627F38426BEE7FD007D76FD /* ProgressView.m */,
+			);
+			path = Animation;
+			sourceTree = "<group>";
+		};
 		1627FBF926A86663001385FE = {
 			isa = PBXGroup;
 			children = (
@@ -230,6 +242,7 @@
 		1627FC0426A86663001385FE /* FlightSearchService */ = {
 			isa = PBXGroup;
 			children = (
+				1627F38626BEE8A8007D76FD /* Animation */,
 				16AB05A826B1ACB800C1864A /* CoreDate */,
 				1637256126AD826F00F05D8B /* Service */,
 				164311DB26AAFD24004E7B6A /* Managers */,
@@ -395,7 +408,6 @@
 				BC9AA742BA0D3DE0E72FDDAD /* Pods-FlightSearchServiceTests.debug.xcconfig */,
 				5533E1DCCCF48949876C32F9 /* Pods-FlightSearchServiceTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -658,6 +670,7 @@
 				1626207026BAC981004B6F61 /* FavoriteTicket+CoreDataClass.m in Sources */,
 				16B2750A26A8905A004B89A7 /* DataManager.m in Sources */,
 				1637256B26ADAE5100F05D8B /* MapViewController.m in Sources */,
+				1627F38526BEE7FD007D76FD /* ProgressView.m in Sources */,
 				1627CA9926AC9F0700D64136 /* TicketsTableViewController.m in Sources */,
 				1627FC0A26A86663001385FE /* SceneDelegate.m in Sources */,
 				166085AB26AF366F00375847 /* TabBarController.m in Sources */,

@@ -14,7 +14,7 @@ typedef enum FavoriteTicketType {
 
 @interface TicketsTableViewController : UITableViewController
 
-- (instancetype)initWithTickets:(NSArray *)tickets;
-- (instancetype)initFavoriteTicketsController;
+	- (instancetype)initWithTickets:(NSArray *)tickets;
+	- (instancetype)initFavoriteTicketsController;
 
 @end

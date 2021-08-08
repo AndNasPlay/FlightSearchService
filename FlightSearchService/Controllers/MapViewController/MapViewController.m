@@ -16,10 +16,10 @@
 
 @interface MapViewController () <MKMapViewDelegate>
 
-@property (nonatomic, strong) MKMapView *mapView;
-@property (nonatomic, strong) LocationService *locationService;
-@property (nonatomic, strong) City *origin;
-@property (nonatomic, strong) NSArray *prices;
+	@property (nonatomic, strong) MKMapView *mapView;
+	@property (nonatomic, strong) LocationService *locationService;
+	@property (nonatomic, strong) City *origin;
+	@property (nonatomic, strong) NSArray *prices;
 
 @end
 
