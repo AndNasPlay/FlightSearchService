@@ -15,6 +15,8 @@
 		1626207126BAC981004B6F61 /* FavoriteTicket+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 1626206D26BAC981004B6F61 /* FavoriteTicket+CoreDataProperties.m */; };
 		1627CA9926AC9F0700D64136 /* TicketsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1627CA9826AC9F0700D64136 /* TicketsTableViewController.m */; };
 		1627F38526BEE7FD007D76FD /* ProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1627F38426BEE7FD007D76FD /* ProgressView.m */; };
+		1627F38A26C16C8E007D76FD /* ContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1627F38926C16C8E007D76FD /* ContentViewController.m */; };
+		1627F38E26C17964007D76FD /* FirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1627F38D26C17964007D76FD /* FirstViewController.m */; };
 		1627FC0726A86663001385FE /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1627FC0626A86663001385FE /* AppDelegate.m */; };
 		1627FC0A26A86663001385FE /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1627FC0926A86663001385FE /* SceneDelegate.m */; };
 		1627FC0D26A86663001385FE /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1627FC0C26A86663001385FE /* MainViewController.m */; };
@@ -90,6 +92,10 @@
 		1627CA9826AC9F0700D64136 /* TicketsTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TicketsTableViewController.m; sourceTree = "<group>"; };
 		1627F38326BEE7FD007D76FD /* ProgressView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProgressView.h; sourceTree = "<group>"; };
 		1627F38426BEE7FD007D76FD /* ProgressView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProgressView.m; sourceTree = "<group>"; };
+		1627F38826C16C8E007D76FD /* ContentViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ContentViewController.h; sourceTree = "<group>"; };
+		1627F38926C16C8E007D76FD /* ContentViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ContentViewController.m; sourceTree = "<group>"; };
+		1627F38C26C17964007D76FD /* FirstViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FirstViewController.h; sourceTree = "<group>"; };
+		1627F38D26C17964007D76FD /* FirstViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FirstViewController.m; sourceTree = "<group>"; };
 		1627FC0226A86663001385FE /* FlightSearchService.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FlightSearchService.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1627FC0526A86663001385FE /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		1627FC0626A86663001385FE /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -215,6 +221,33 @@
 				1627F38426BEE7FD007D76FD /* ProgressView.m */,
 			);
 			path = Animation;
+			sourceTree = "<group>";
+		};
+		1627F38726C16C58007D76FD /* PageViewController */ = {
+			isa = PBXGroup;
+			children = (
+				1627F38826C16C8E007D76FD /* ContentViewController.h */,
+				1627F38926C16C8E007D76FD /* ContentViewController.m */,
+			);
+			path = PageViewController;
+			sourceTree = "<group>";
+		};
+		1627F38B26C17946007D76FD /* FirstViewController */ = {
+			isa = PBXGroup;
+			children = (
+				1627F38C26C17964007D76FD /* FirstViewController.h */,
+				1627F38D26C17964007D76FD /* FirstViewController.m */,
+			);
+			path = FirstViewController;
+			sourceTree = "<group>";
+		};
+		1627F38F26C17971007D76FD /* TabBarController */ = {
+			isa = PBXGroup;
+			children = (
+				166085A926AF366F00375847 /* TabBarController.h */,
+				166085AA26AF366F00375847 /* TabBarController.m */,
+			);
+			name = TabBarController;
 			sourceTree = "<group>";
 		};
 		1627FBF926A86663001385FE = {
@@ -350,8 +383,9 @@
 		16B274FD26A873E2004B89A7 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				166085A926AF366F00375847 /* TabBarController.h */,
-				166085AA26AF366F00375847 /* TabBarController.m */,
+				1627F38F26C17971007D76FD /* TabBarController */,
+				1627F38B26C17946007D76FD /* FirstViewController */,
+				1627F38726C16C58007D76FD /* PageViewController */,
 				1637256826ADAE3500F05D8B /* MapViewController */,
 				164311D926AAEECE004E7B6A /* MainViewController */,
 				1627CA9626AC9ED700D64136 /* TicketsViewController */,
@@ -660,7 +694,9 @@
 				164311D826A9BFD3004E7B6A /* TicketsTableViewCell.m in Sources */,
 				1627FC0726A86663001385FE /* AppDelegate.m in Sources */,
 				16AB05AB26B1AD0200C1864A /* CoreDataHelper.m in Sources */,
+				1627F38E26C17964007D76FD /* FirstViewController.m in Sources */,
 				16B2750126A889B6004B89A7 /* Country.m in Sources */,
+				1627F38A26C16C8E007D76FD /* ContentViewController.m in Sources */,
 				1626207126BAC981004B6F61 /* FavoriteTicket+CoreDataProperties.m in Sources */,
 				1627FC1826A86668001385FE /* main.m in Sources */,
 				16B2750426A88B47004B89A7 /* City.m in Sources */,

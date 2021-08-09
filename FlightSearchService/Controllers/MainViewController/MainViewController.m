@@ -12,18 +12,19 @@
 #import "TicketsTableViewController.h"
 #import <UIKit/UIKit.h>
 #import "ProgressView.h"
+#import "FirstViewController.h"
 
 @interface MainViewController () <PlaceViewControllerDelegate>
 
-@property (nonatomic, strong) UIButton *departureButton;
-@property (nonatomic, strong) UIButton *arrivalButton;
-@property (nonatomic) SearchRequest searchRequest;
-@property (nonatomic, strong) UIView *placeContainerView;
-@property (nonatomic, strong) UIButton *searchButton;
-@property (nonatomic, strong) UIImageView *backgroundImage;
-@property (nonatomic, strong) UIImageView *logoImage;
-@property (nonatomic, strong) UIDatePicker *datePicker;
-@property (nonatomic, strong) UITextField *datePickerTextField;
+	@property (nonatomic, strong) UIButton *departureButton;
+	@property (nonatomic, strong) UIButton *arrivalButton;
+	@property (nonatomic) SearchRequest searchRequest;
+	@property (nonatomic, strong) UIView *placeContainerView;
+	@property (nonatomic, strong) UIButton *searchButton;
+	@property (nonatomic, strong) UIImageView *backgroundImage;
+	@property (nonatomic, strong) UIImageView *logoImage;
+	@property (nonatomic, strong) UIDatePicker *datePicker;
+	@property (nonatomic, strong) UITextField *datePickerTextField;
 
 @end
 
@@ -35,6 +36,19 @@
 	[self createSubViews];
 	self.navigationController.navigationBar.hidden = YES;
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(dataLoadedSuccessfully) name:kDataManagerLoadDataDidComplete object:nil];
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+	[super viewDidAppear:animated];
+	[self presentFirstViewControllerIfNeeded];
+}
+
+-(void)presentFirstViewControllerIfNeeded {
+	BOOL isFirstStart = [[NSUserDefaults standardUserDefaults] boolForKey:@"first_start"];
+	if (!isFirstStart) {
+		FirstViewController *firstViewController = [[FirstViewController alloc] initWithTransitionStyle:UIPageViewControllerTransitionStyleScroll navigationOrientation:UIPageViewControllerNavigationOrientationHorizontal options:nil];
+		[self presentViewController:firstViewController animated:YES completion:nil];
+	}
 }
 
 - (void)dealloc {
@@ -124,7 +138,7 @@
 
 - (void)searchButtonDidTap:(UIButton *)sender {
 	_searchRequest.departDate = self.datePicker.date;
-
+	[self.view endEditing:YES];
 	if ([self.departureButton.titleLabel.text isEqual: @"From"]) {
 		UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Sorry!" message:@"Введите пункт отправления" preferredStyle:UIAlertControllerStyleAlert];
 		[alertController addAction:[UIAlertAction actionWithTitle:@"close" style:UIAlertActionStyleDefault handler:nil]];
@@ -199,7 +213,7 @@
 
 	NSString *title;
 	NSString *iata;
-	
+
 	if (dataType == DataSourceTypeCity) {
 		City *city = (City *)place;
 		title = city.name;
