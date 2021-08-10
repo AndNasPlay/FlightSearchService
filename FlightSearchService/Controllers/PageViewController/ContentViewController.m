@@ -11,8 +11,7 @@
 
 	@property (nonatomic, strong) UIImageView *imageView;
 	@property (nonatomic, strong) UILabel *titleLable;
-	@property (nonatomic, strong) UILabel *contantLable;
-
+	@property (nonatomic, strong) UILabel *contentLable;
 
 @end
 
@@ -34,11 +33,11 @@
 		self.titleLable.textAlignment = NSTextAlignmentCenter;
 		[self.view addSubview:self.titleLable];
 
-		self.contantLable = [[UILabel alloc] initWithFrame:CGRectMake([UIScreen mainScreen].bounds.size.width / 2 - 100.0, CGRectGetMaxY(self.imageView.frame) + 20.0, 200.0, 21.0)];
-		self.contantLable.font = [UIFont systemFontOfSize:17.0 weight:UIFontWeightSemibold];
-		self.contantLable.numberOfLines = 0;
-		self.contantLable.textAlignment = NSTextAlignmentCenter;
-		[self.view addSubview:self.contantLable];
+		self.contentLable = [[UILabel alloc] initWithFrame:CGRectMake([UIScreen mainScreen].bounds.size.width / 2 - 100.0, CGRectGetMaxY(self.imageView.frame) + 20.0, 200.0, 21.0)];
+		self.contentLable.font = [UIFont systemFontOfSize:17.0 weight:UIFontWeightSemibold];
+		self.contentLable.numberOfLines = 0;
+		self.contentLable.textAlignment = NSTextAlignmentCenter;
+		[self.view addSubview:self.contentLable];
 	}
 	return self;
 }
@@ -50,16 +49,23 @@
 }
 
 - (void)setImage:(UIImage *)image {
-	self.image = image;
+	_image = image;
 	self.imageView.image = image;
 	self.imageView.backgroundColor = UIColor.purpleColor;
+}
+
+- (void)setContentText:(NSString *)contentText {
+	_contentText = contentText;
+	self.contentLable.text = contentText;
+	float height = heightForText(contentText, self.contentLable.font, 200.0);
+	self.contentLable.frame = CGRectMake([UIScreen mainScreen].bounds.size.width/2 - 100.0, CGRectGetMaxY(_imageView.frame) + 20.0, 200.0, height);
 }
 
 float heightForText(NSString *text, UIFont *font, float width) {
 	if (text && [text isKindOfClass:[NSString class]]) {
 		CGSize size = CGSizeMake(width, FLT_MAX);
-		CGRect needLable = [text boundingRectWithSize:size options:(NSStringDrawingUsesLineFragmentOrigin|NSStringDrawingUsesFontLeading) attributes:@{NSFontAttributeName:font} context:nil];
-		return ceilf(needLable.size.height);
+		CGRect needLabel = [text boundingRectWithSize:size options:(NSStringDrawingUsesLineFragmentOrigin|NSStringDrawingUsesFontLeading) attributes:@{NSFontAttributeName:font} context:nil];
+		return ceilf(needLabel.size.height);
 	}
 	return 0.0;
 }

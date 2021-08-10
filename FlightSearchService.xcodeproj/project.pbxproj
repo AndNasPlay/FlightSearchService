@@ -28,6 +28,7 @@
 		1637256426AD82B600F05D8B /* LocationService.m in Sources */ = {isa = PBXBuildFile; fileRef = 1637256326AD82B600F05D8B /* LocationService.m */; };
 		1637256726AD897E00F05D8B /* MapWithPrice.m in Sources */ = {isa = PBXBuildFile; fileRef = 1637256626AD897E00F05D8B /* MapWithPrice.m */; };
 		1637256B26ADAE5100F05D8B /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1637256A26ADAE5100F05D8B /* MapViewController.m */; };
+		163C155C26C2C2CE00FFEF0A /* NotificationCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 163C155B26C2C2CE00FFEF0A /* NotificationCenter.m */; };
 		164311D826A9BFD3004E7B6A /* TicketsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 164311D726A9BFD3004E7B6A /* TicketsTableViewCell.m */; };
 		164311DE26AAFE4E004E7B6A /* ApiManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 164311DD26AAFE4E004E7B6A /* ApiManager.m */; };
 		164311E126AB4CAF004E7B6A /* Ticket.m in Sources */ = {isa = PBXBuildFile; fileRef = 164311E026AB4CAF004E7B6A /* Ticket.m */; };
@@ -119,6 +120,8 @@
 		1637256626AD897E00F05D8B /* MapWithPrice.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MapWithPrice.m; sourceTree = "<group>"; };
 		1637256926ADAE5100F05D8B /* MapViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
 		1637256A26ADAE5100F05D8B /* MapViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
+		163C155A26C2C2CE00FFEF0A /* NotificationCenter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NotificationCenter.h; sourceTree = "<group>"; };
+		163C155B26C2C2CE00FFEF0A /* NotificationCenter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NotificationCenter.m; sourceTree = "<group>"; };
 		164311D626A9BFD3004E7B6A /* TicketsTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TicketsTableViewCell.h; sourceTree = "<group>"; };
 		164311D726A9BFD3004E7B6A /* TicketsTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TicketsTableViewCell.m; sourceTree = "<group>"; };
 		164311DC26AAFE4E004E7B6A /* ApiManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ApiManager.h; sourceTree = "<group>"; };
@@ -275,6 +278,7 @@
 		1627FC0426A86663001385FE /* FlightSearchService */ = {
 			isa = PBXGroup;
 			children = (
+				163C155826C2C2AA00FFEF0A /* Notofication */,
 				1627F38626BEE8A8007D76FD /* Animation */,
 				16AB05A826B1ACB800C1864A /* CoreDate */,
 				1637256126AD826F00F05D8B /* Service */,
@@ -329,6 +333,15 @@
 				1637256A26ADAE5100F05D8B /* MapViewController.m */,
 			);
 			path = MapViewController;
+			sourceTree = "<group>";
+		};
+		163C155826C2C2AA00FFEF0A /* Notofication */ = {
+			isa = PBXGroup;
+			children = (
+				163C155A26C2C2CE00FFEF0A /* NotificationCenter.h */,
+				163C155B26C2C2CE00FFEF0A /* NotificationCenter.m */,
+			);
+			path = Notofication;
 			sourceTree = "<group>";
 		};
 		164311D526A9BFB9004E7B6A /* Cell */ = {
@@ -701,6 +714,7 @@
 				1627FC1826A86668001385FE /* main.m in Sources */,
 				16B2750426A88B47004B89A7 /* City.m in Sources */,
 				164311DE26AAFE4E004E7B6A /* ApiManager.m in Sources */,
+				163C155C26C2C2CE00FFEF0A /* NotificationCenter.m in Sources */,
 				1626206F26BAC981004B6F61 /* FavoriteMapPriceTicket+CoreDataProperties.m in Sources */,
 				1637256726AD897E00F05D8B /* MapWithPrice.m in Sources */,
 				1626207026BAC981004B6F61 /* FavoriteTicket+CoreDataClass.m in Sources */,

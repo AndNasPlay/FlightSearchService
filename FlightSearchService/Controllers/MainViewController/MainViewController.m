@@ -28,7 +28,12 @@
 
 @end
 
-@implementation MainViewController 
+@implementation MainViewController
+
+- (void)viewDidAppear:(BOOL)animated {
+	[super viewDidAppear:animated];
+	[self presentFirstViewControllerIfNeeded];
+}
 
 - (void)viewDidLoad {
 	[super viewDidLoad];
@@ -38,12 +43,7 @@
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(dataLoadedSuccessfully) name:kDataManagerLoadDataDidComplete object:nil];
 }
 
-- (void)viewDidAppear:(BOOL)animated {
-	[super viewDidAppear:animated];
-	[self presentFirstViewControllerIfNeeded];
-}
-
--(void)presentFirstViewControllerIfNeeded {
+- (void)presentFirstViewControllerIfNeeded {
 	BOOL isFirstStart = [[NSUserDefaults standardUserDefaults] boolForKey:@"first_start"];
 	if (!isFirstStart) {
 		FirstViewController *firstViewController = [[FirstViewController alloc] initWithTransitionStyle:UIPageViewControllerTransitionStyleScroll navigationOrientation:UIPageViewControllerNavigationOrientationHorizontal options:nil];

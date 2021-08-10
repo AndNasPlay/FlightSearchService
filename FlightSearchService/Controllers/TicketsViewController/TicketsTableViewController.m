@@ -9,6 +9,7 @@
 #import "TicketsTableViewCell.h"
 #import "CoreDataHelper.h"
 #import "Ticket.h"
+#import "NotificationCenter.h"
 
 #define TicketsCellReuseIdentifier @"TicketsCellReuseIdentifier"
 
