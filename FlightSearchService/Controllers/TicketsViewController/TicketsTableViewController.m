@@ -15,14 +15,17 @@
 
 @interface TicketsTableViewController ()
 
-	@property(nonatomic, strong) NSArray *ticketsArray;
-	@property(nonatomic, strong) Ticket *ticketToDelete;
+	@property (nonatomic, strong) NSArray *ticketsArray;
+	@property (nonatomic, strong) Ticket *ticketToDelete;
 	@property (nonatomic, strong) UISegmentedControl *segmentControl;
+	@property (nonatomic, strong) UIDatePicker *datePicker;
+	@property (nonatomic, strong) UITextField *dateTextField;
 
 @end
 
 @implementation TicketsTableViewController {
 	BOOL isFavorite;
+	TicketsTableViewCell *notificationCell;
 }
 
 
@@ -34,6 +37,23 @@
 		self.title = @"Tickets";
 		self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
 		[self.tableView registerClass:[TicketsTableViewCell class] forCellReuseIdentifier:TicketsCellReuseIdentifier];
+
+		self.datePicker = [[UIDatePicker alloc] init];
+		self.datePicker.datePickerMode = UIDatePickerModeDateAndTime;
+		self.datePicker.minimumDate = [NSDate date];
+
+		self.dateTextField = [[UITextField alloc] initWithFrame:self.view.bounds];
+		self.dateTextField.hidden = YES;
+		self.dateTextField.inputView = self.datePicker;
+
+		UIToolbar *keyboardToolbar = [[UIToolbar alloc] init];
+		[keyboardToolbar sizeToFit];
+		UIBarButtonItem *flexBarBatton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
+		UIBarButtonItem *doneBarBatton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:nil action:@selector(doneButtonDidTap:)];
+		keyboardToolbar.items = @[flexBarBatton, doneBarBatton];
+
+		self.dateTextField.inputAccessoryView = keyboardToolbar;
+		[self.view addSubview:self.dateTextField];
 	}
 	return self;
 }
@@ -95,6 +115,36 @@
 	self.navigationController.navigationBar.hidden = YES;
 }
 
+- (void)doneButtonDidTap:(UIBarButtonItem *)sender
+{
+	if (_datePicker.date && notificationCell) {
+		NSString *message = [NSString stringWithFormat:@"%@ - %@ за %@ руб.", notificationCell.ticket.from, notificationCell.ticket.to, notificationCell.ticket.price];
+
+		NSURL *imageURL;
+//        if (notificationCell.airlineLogoView.image) {
+//            NSString *path = [[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) firstObject] stringByAppendingString:[NSString stringWithFormat:@"/%@.png", notificationCell.ticket.airline]];
+//            if (![[NSFileManager defaultManager] fileExistsAtPath:path]) {
+//                UIImage *logo = notificationCell.airlineLogoView.image;
+//                NSData *pngData = UIImagePNGRepresentation(logo);
+//                [pngData writeToFile:path atomically:YES];
+//
+//            }
+//            imageURL = [NSURL fileURLWithPath:path];
+//        }
+
+		Notification notification = NotificationMake(@"Напоминание о билете", message, _datePicker.date, imageURL);
+		[[NotificationCenter sharedInstance] sendNotification:notification];
+
+		UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Успешно" message:[NSString stringWithFormat:@"Уведомление будет отправлено - %@", _datePicker.date] preferredStyle:(UIAlertControllerStyleAlert)];
+		UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Закрыть" style:UIAlertActionStyleCancel handler:nil];
+		[alertController addAction:cancelAction];
+		[self presentViewController:alertController animated:YES completion:nil];
+	}
+	_datePicker.date = [NSDate date];
+	notificationCell = nil;
+	[self.view endEditing:YES];
+}
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 	return _ticketsArray.count;
 }
@@ -139,8 +189,14 @@
 		}];
 	}
 
+	UIAlertAction *notificationAction = [UIAlertAction actionWithTitle:@"Напомнить" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+		self->notificationCell = [tableView cellForRowAtIndexPath:indexPath];
+		[self->_dateTextField becomeFirstResponder];
+	}];
+
 	UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Закрыть" style:UIAlertActionStyleCancel handler:nil];
 	[alertController addAction:favoriteAction];
+	[alertController addAction:notificationAction];
 	[alertController addAction:cancelAction];
 	[self presentViewController:alertController animated:YES completion:nil];
 }

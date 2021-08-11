@@ -29,7 +29,6 @@
 	return [[UISceneConfiguration alloc] initWithName:@"Default Configuration" sessionRole:connectingSceneSession.role];
 }
 
-
 - (void)application:(UIApplication *)application didDiscardSceneSessions:(NSSet<UISceneSession *> *)sceneSessions {
 	// Called when the user discards a scene session.
 	// If any sessions were discarded while the application was not running, this will be called shortly after application:didFinishLaunchingWithOptions.

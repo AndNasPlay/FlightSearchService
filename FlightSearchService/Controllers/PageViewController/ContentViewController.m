@@ -21,7 +21,7 @@
 
 	self = [super init];
 	if (self) {
-		self.imageView = [[UIImageView alloc] initWithFrame:CGRectMake([UIScreen mainScreen].bounds.size.width / 2 - 100.0, [UIScreen mainScreen].bounds.size.height / 2 - 100.0, 200.0, 200.0)];
+		self.imageView = [[UIImageView alloc] initWithFrame:CGRectMake([UIScreen mainScreen].bounds.size.width / 2 - 100.0, [UIScreen mainScreen].bounds.size.height / 2 - 200.0, 200.0, 200.0)];
 		self.imageView.contentMode = UIViewContentModeScaleAspectFill;
 		self.imageView.layer.cornerRadius = 8.0;
 		self.imageView.clipsToBounds = YES;
@@ -51,7 +51,7 @@
 - (void)setImage:(UIImage *)image {
 	_image = image;
 	self.imageView.image = image;
-	self.imageView.backgroundColor = UIColor.purpleColor;
+	self.imageView.backgroundColor = UIColor.clearColor;
 }
 
 - (void)setContentText:(NSString *)contentText {

@@ -8,12 +8,12 @@
 #import "FirstViewController.h"
 #import "ContentViewController.h"
 
-#define CONTENT_COUNT 4
+#define CONTENT_COUNT 3
 
 @interface FirstViewController ()
 
-	@property(nonatomic, strong) UIButton *nextButton;
-	@property(nonatomic, strong) UIPageControl *pageControl;
+	@property (nonatomic, strong) UIButton *nextButton;
+	@property (nonatomic, strong) UIPageControl *pageControl;
 
 @end
 
@@ -22,6 +22,7 @@
 		__unsafe_unretained NSString *title;
 		__unsafe_unretained NSString *contentText;
 		__unsafe_unretained NSString *imageName;
+		__unsafe_unretained NSString *bgImageName;
 	} contentData[CONTENT_COUNT];
 }
 
@@ -53,12 +54,13 @@
 }
 
 - (void)createContentDataArray {
-	NSArray *titles = [NSArray arrayWithObjects:@"О приложении", @"Авиабилеты", @"Карта цен", @"Избранное", nil];
-	NSArray *contents = [NSArray arrayWithObjects:@"Приложение для поиска авиабилетов", @"Находите самые дешевые авиабилеты", @"Просматривайте карту цен", @"Сохраняйте выбранные билеты в избранное", nil];
-	for (int i = 0; i < 4; i++) {
+	NSArray *titles = [NSArray arrayWithObjects:@"О приложении", @"Карта цен", @"Избранное", nil];
+	NSArray *contents = [NSArray arrayWithObjects:@"Приложение для поиска авиабилетов", @"Просматривайте карту цен", @"Сохраняйте выбранные билеты в избранное", nil];
+	for (int i = 0; i < 3; i++) {
 		contentData[i].title = [titles objectAtIndex:i];
 		contentData[i].contentText = [contents objectAtIndex:i];
 		contentData[i].imageName = [NSString stringWithFormat:@"first_%d", i + 1];
+		contentData[i].bgImageName = [NSString stringWithFormat:@"bgImage_%d", i + 1];
 	}
 }
 
@@ -70,6 +72,8 @@
 	contentViewController.title = contentData[index].title;
 	contentViewController.contentText = contentData[index].contentText;
 	contentViewController.image =  [UIImage imageNamed: contentData[index].imageName];
+	UIImage *img = [UIImage imageNamed:contentData[index].bgImageName];
+	contentViewController.view.layer.contents = CFBridgingRelease(img.CGImage);
 	contentViewController.index = index;
 	return contentViewController;
 }
@@ -78,11 +82,10 @@
 	switch (index) {
 		case 0:
 		case 1:
-		case 2:
 			[_nextButton setTitle:@"ДАЛЕЕ" forState:UIControlStateNormal];
 			_nextButton.tag = 0;
 			break;
-		case 3:;
+		case 2:
 			[_nextButton setTitle:@"ГОТОВО" forState:UIControlStateNormal];
 			_nextButton.tag = 1;
 			break;

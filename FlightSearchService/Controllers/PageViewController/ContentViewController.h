@@ -11,9 +11,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface ContentViewController : UIViewController
 
-	@property(nonatomic, strong) NSString *contentText;
-	@property(nonatomic, strong) UIImage *image;
-	@property(nonatomic) int index;
+	@property (nonatomic, strong) NSString *contentText;
+	@property (nonatomic, strong) UIImage *image;
+	@property (nonatomic) int index;
 
 @end
 

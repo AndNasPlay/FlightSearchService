@@ -12,8 +12,8 @@
 
 @interface LocationService() <CLLocationManagerDelegate>
 
-	@property(nonatomic, strong) CLLocationManager *locationManager;
-	@property(nonatomic, strong) CLLocation *currentLocation;
+	@property (nonatomic, strong) CLLocationManager *locationManager;
+	@property (nonatomic, strong) CLLocation *currentLocation;
 
 @end
 
