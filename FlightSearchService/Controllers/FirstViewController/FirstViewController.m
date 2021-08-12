@@ -36,17 +36,16 @@
 	self.delegate = self;
 	ContentViewController *startViewController = [self viewControllerAtIndex:0];
 	[self setViewControllers:@[startViewController] direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
-
 	self.pageControl = [[UIPageControl alloc] initWithFrame:CGRectMake(0, self.view.bounds.size.height - 150.0, self.view.bounds.size.width, 50.0)];
 	self.pageControl.numberOfPages = CONTENT_COUNT;
 	self.pageControl.currentPage = 0;
-	self.pageControl.pageIndicatorTintColor = UIColor.darkGrayColor;
+	self.pageControl.pageIndicatorTintColor = UIColor.whiteColor;
 	self.pageControl.currentPageIndicatorTintColor = UIColor.blackColor;
 	[self.view addSubview:self.pageControl];
 
 	self.nextButton = [UIButton buttonWithType:UIButtonTypeSystem];
 	self.nextButton.frame = CGRectMake(self.view.bounds.size.width - 100.0, self.view.bounds.size.height - 150.0, 100.0, 50.0);
-	[self.nextButton setTintColor:UIColor.blackColor];
+	[self.nextButton setTintColor:UIColor.whiteColor];
 	[self.nextButton addTarget:self action:@selector(nextButtonDidTap:) forControlEvents:UIControlEventTouchUpInside];
 	[self updateButtonWithIndex:0];
 	[self.view addSubview:self.nextButton];

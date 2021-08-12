@@ -21,7 +21,7 @@
 
 	self = [super init];
 	if (self) {
-		self.imageView = [[UIImageView alloc] initWithFrame:CGRectMake([UIScreen mainScreen].bounds.size.width / 2 - 100.0, [UIScreen mainScreen].bounds.size.height / 2 - 200.0, 200.0, 200.0)];
+		self.imageView = [[UIImageView alloc] initWithFrame:CGRectMake([UIScreen mainScreen].bounds.size.width / 2 - 150.0, [UIScreen mainScreen].bounds.size.height / 2 - 300.0, 300.0, 300.0)];
 		self.imageView.contentMode = UIViewContentModeScaleAspectFill;
 		self.imageView.layer.cornerRadius = 8.0;
 		self.imageView.clipsToBounds = YES;
@@ -36,6 +36,7 @@
 		self.contentLable = [[UILabel alloc] initWithFrame:CGRectMake([UIScreen mainScreen].bounds.size.width / 2 - 100.0, CGRectGetMaxY(self.imageView.frame) + 20.0, 200.0, 21.0)];
 		self.contentLable.font = [UIFont systemFontOfSize:17.0 weight:UIFontWeightSemibold];
 		self.contentLable.numberOfLines = 0;
+		self.contentLable.textColor = UIColor.whiteColor;
 		self.contentLable.textAlignment = NSTextAlignmentCenter;
 		[self.view addSubview:self.contentLable];
 	}
@@ -57,6 +58,7 @@
 - (void)setContentText:(NSString *)contentText {
 	_contentText = contentText;
 	self.contentLable.text = contentText;
+
 	float height = heightForText(contentText, self.contentLable.font, 200.0);
 	self.contentLable.frame = CGRectMake([UIScreen mainScreen].bounds.size.width/2 - 100.0, CGRectGetMaxY(_imageView.frame) + 20.0, 200.0, height);
 }

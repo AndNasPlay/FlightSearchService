@@ -6,7 +6,9 @@
 //
 
 #import "NotificationCenter.h"
+#import <UIKit/UIKit.h>
 #import <UserNotifications/UserNotifications.h>
+#import "TicketsTableViewController.h"
 
 @interface NotificationCenter () <UNUserNotificationCenterDelegate>
 
@@ -78,4 +80,5 @@ Notification NotificationMake(NSString* _Nullable title, NSString* _Nullable bod
 	completionHandler(UNAuthorizationOptionAlert | UNAuthorizationOptionBadge | UNAuthorizationOptionSound);
 	NSLog(@"notification recieved");
 }
+
 @end

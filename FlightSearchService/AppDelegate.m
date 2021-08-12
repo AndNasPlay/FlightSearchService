@@ -6,6 +6,7 @@
 //
 
 #import "AppDelegate.h"
+#import "TicketsTableViewController.h"
 
 @interface AppDelegate ()
 

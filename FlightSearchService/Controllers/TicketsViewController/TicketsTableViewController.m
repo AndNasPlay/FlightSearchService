@@ -10,6 +10,7 @@
 #import "CoreDataHelper.h"
 #import "Ticket.h"
 #import "NotificationCenter.h"
+#import <UIKit/UIKit.h>
 
 #define TicketsCellReuseIdentifier @"TicketsCellReuseIdentifier"
 
@@ -38,15 +39,29 @@
 		self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
 		[self.tableView registerClass:[TicketsTableViewCell class] forCellReuseIdentifier:TicketsCellReuseIdentifier];
 
-		self.datePicker = [[UIDatePicker alloc] init];
+//		self.datePickerTextField = [[UITextField alloc] initWithFrame:CGRectMake(10.0, CGRectGetMaxY(self.arrivalButton.frame) + 10.0, self.placeContainerView.frame.size.width - 20.0, 60.0)];
+//		self.datePickerTextField.text = @"Дата вылета";
+//		self.datePickerTextField.textAlignment = NSTextAlignmentCenter;
+//		self.datePickerTextField.backgroundColor = [UIColor.lightGrayColor colorWithAlphaComponent:0.2];
+//		self.datePickerTextField.tintColor = UIColor.clearColor;
+//		[self.placeContainerView addSubview:self.datePickerTextField];
+//
+//		self.datePicker = [[UIDatePicker alloc] initWithFrame:CGRectZero];
+//		[self.datePicker setDatePickerMode:UIDatePickerModeDate];
+//		[self.datePicker setPreferredDatePickerStyle:UIDatePickerStyleWheels];
+//		[self.datePicker addTarget:self action:@selector(onDatePickerValueChanged:) forControlEvents:UIControlEventValueChanged];
+//		self.datePickerTextField.inputView = self.datePicker;
+
+		self.datePicker = [[UIDatePicker alloc] initWithFrame:CGRectZero];
 		self.datePicker.datePickerMode = UIDatePickerModeDateAndTime;
+		self.datePicker.preferredDatePickerStyle = UIDatePickerStyleWheels;
 		self.datePicker.minimumDate = [NSDate date];
 
 		self.dateTextField = [[UITextField alloc] initWithFrame:self.view.bounds];
 		self.dateTextField.hidden = YES;
 		self.dateTextField.inputView = self.datePicker;
 
-		UIToolbar *keyboardToolbar = [[UIToolbar alloc] init];
+		UIToolbar *keyboardToolbar = [[UIToolbar alloc] initWithFrame:CGRectZero];
 		[keyboardToolbar sizeToFit];
 		UIBarButtonItem *flexBarBatton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
 		UIBarButtonItem *doneBarBatton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:nil action:@selector(doneButtonDidTap:)];
@@ -115,8 +130,7 @@
 	self.navigationController.navigationBar.hidden = YES;
 }
 
-- (void)doneButtonDidTap:(UIBarButtonItem *)sender
-{
+- (void)doneButtonDidTap:(UIBarButtonItem *)sender {
 	if (_datePicker.date && notificationCell) {
 		NSString *message = [NSString stringWithFormat:@"%@ - %@ за %@ руб.", notificationCell.ticket.from, notificationCell.ticket.to, notificationCell.ticket.price];
 
@@ -137,6 +151,7 @@
 
 		UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Успешно" message:[NSString stringWithFormat:@"Уведомление будет отправлено - %@", _datePicker.date] preferredStyle:(UIAlertControllerStyleAlert)];
 		UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Закрыть" style:UIAlertActionStyleCancel handler:nil];
+
 		[alertController addAction:cancelAction];
 		[self presentViewController:alertController animated:YES completion:nil];
 	}
@@ -190,6 +205,7 @@
 	}
 
 	UIAlertAction *notificationAction = [UIAlertAction actionWithTitle:@"Напомнить" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+		[[CoreDataHelper sharedInstance] addToFavorite:[self.ticketsArray objectAtIndex:indexPath.row]];
 		self->notificationCell = [tableView cellForRowAtIndexPath:indexPath];
 		[self->_dateTextField becomeFirstResponder];
 	}];
