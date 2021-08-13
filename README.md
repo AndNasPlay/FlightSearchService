@@ -10,7 +10,7 @@
 ## Features
 Objective-C Programming Language
 Custom UITableViewCell
-UIKit, Foundation, UserNotifications, CoreData, Core Location, MapKit, Animations
+UIKit, Foundation, UserNotifications, CoreData, Core Location, MapKit, SDWebImage, Animations
 
 ## Requirements
 
