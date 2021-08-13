@@ -27,7 +27,7 @@
 
 - (void)viewDidLoad {
 	[super viewDidLoad];
-	self.title = @"Map Prices";
+	self.title = NSLocalizedString(@"mapVCTitle", "");
 
 	self.mapView = [[MKMapView alloc] initWithFrame:self.view.bounds];
 	self.mapView.showsUserLocation = YES;
@@ -103,17 +103,17 @@
 			break;
 		}
 	}
-	UIAlertController *alertController = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"actions_with_tickets", "") message:NSLocalizedString(@"actions_with_tickets_describe", "") preferredStyle:UIAlertControllerStyleActionSheet];
+	UIAlertController *alertController = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"actionsWithTicket", "") message:NSLocalizedString(@"actionsWithTicketDescribe", "") preferredStyle:UIAlertControllerStyleActionSheet];
 
 	UIAlertAction *favoriteAction;
 
 	if ([[CoreDataHelper sharedInstance] isFavoriteMapWithPrice: [_prices objectAtIndex:count]]) {
-		favoriteAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"remove_from_favorite", "") style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
+		favoriteAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"removeFromFavorite", "") style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
 
 			[[CoreDataHelper sharedInstance] removeFromFavoriteMapWithPrice:[self->_prices objectAtIndex:count]];
 		}];
 	} else {
-		favoriteAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"add_to_favorite", "") style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+		favoriteAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"addToFavorite", "") style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
 
 			[[CoreDataHelper sharedInstance] addToFavoriteMapWithPrice: [self->_prices objectAtIndex:count]];
 		}];

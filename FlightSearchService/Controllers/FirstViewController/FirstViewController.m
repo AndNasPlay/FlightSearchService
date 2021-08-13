@@ -53,8 +53,16 @@
 }
 
 - (void)createContentDataArray {
-	NSArray *titles = [NSArray arrayWithObjects:@"О приложении", @"Карта цен", @"Избранное", nil];
-	NSArray *contents = [NSArray arrayWithObjects:@"Приложение для поиска авиабилетов", @"Просматривайте карту цен", @"Сохраняйте выбранные билеты в избранное", nil];
+	NSArray *titles = [NSArray arrayWithObjects:
+					   NSLocalizedString(@"aboutAppHeader", ""),
+					   NSLocalizedString(@"mapPriceHeader", ""),
+					   NSLocalizedString(@"favoritesHeader", ""),
+					   nil];
+	NSArray *contents = [NSArray arrayWithObjects:
+						 NSLocalizedString(@"aboutAppDescribe", ""),
+						 NSLocalizedString(@"mapPriceDescribe", ""),
+						 NSLocalizedString(@"favoritesDescribe", ""),
+						 nil];
 	for (int i = 0; i < 3; i++) {
 		contentData[i].title = [titles objectAtIndex:i];
 		contentData[i].contentText = [contents objectAtIndex:i];
@@ -81,11 +89,11 @@
 	switch (index) {
 		case 0:
 		case 1:
-			[_nextButton setTitle:@"ДАЛЕЕ" forState:UIControlStateNormal];
+			[_nextButton setTitle:NSLocalizedString(@"nextButton", "") forState:UIControlStateNormal];
 			_nextButton.tag = 0;
 			break;
 		case 2:
-			[_nextButton setTitle:@"ГОТОВО" forState:UIControlStateNormal];
+			[_nextButton setTitle:NSLocalizedString(@"doneButton", "") forState:UIControlStateNormal];
 			_nextButton.tag = 1;
 			break;
 		default:

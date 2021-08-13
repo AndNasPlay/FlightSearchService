@@ -62,6 +62,7 @@
 - (void)viewWillDisappear:(BOOL)animated {
 	[super viewWillDisappear:YES];
 	self.navigationController.navigationBar.hidden = YES;
+	self.searchController.searchBar.hidden = YES;
 }
 
 - (void)changeSource {

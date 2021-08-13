@@ -1,0 +1,59 @@
+/* 
+  Localizable.strings
+  FlightSearchService
+
+  Created by Андрей Щекатунов on 13.08.2021.
+  
+*/
+
+/// TabBarController
+"searchButton" = "Поиск";
+"mapButton" = "Карта цен";
+"favoritesButton" = "Избранное";
+
+// MainViewController
+"mainVCFromTextField" = "Откуда";
+"mainVCToTextField" = "Куда";
+"mainVCDateTextField" = "Дата вылета";
+"mainVCSearchButton" = "Поиск";
+
+// FirstViewController
+"aboutAppHeader" = "О ПРИЛОЖЕНИИ";
+"mapPriceHeader" = "КАРТА ЦЕН";
+"favoritesHeader" = "ИЗБРАННОЕ";
+
+"aboutAppDescribe" = "Приложение для поиска авиабилетов";
+"mapPriceDescribe" = "Просматривайте карту цен";
+"favoritesDescribe" = "Сохраняйте выбранные билеты в избранное";
+
+"nextButton" = "ДАЛЕЕ";
+"doneButton" = "ГОТОВО";
+
+// MapViewController
+"mapVCTitle" = "Карта цен";
+"actionsWithTicket" = "Действия с билетом";
+"actionsWithTicketDescribe" = "Что необходимо сделать с выбранным билетом?";
+"addToFavorite" = "Добавить в избранное";
+"femoveFromFavorite" = "Удалить из избранного";
+
+// TicketsViewController
+"ticketsTitle" = "Авиабилеты";
+"favoriteTicketsTitle" = "Избранные билеты";
+"addToFavorite" = "Добавить в избранное";
+"removeFromFavorite" = "Удалить из избранного";
+"remindMe" = "Напомнить";
+"ticketReminder" = "Напоминание о билете";
+"notificationWillBeSent" = "Уведомление будет отправлено";
+"success" = "Успешно";
+
+// Alerts
+"error" = "Ошибка";
+"ticketsNotFound" = "По данному направлению билетов не найдено";
+"ups" = "Упс!";
+"close" = "Закрыть";
+"notSetPlaceDeparture" = "Укажите пункт назначения";
+"notSetPlaceArrival" = "Укажите пункт отправления";
+"notSetDateArrival" = "Укажите актуальную дату поездки";
+"actionsWithTickets" = "Действия с билетом";
+"actionsWithTicketsDescribe" = "Что необходимо сделать с выбранным билетом?";
+"notDetermineCurrentCity" = "Не удалось определить текущий город!";

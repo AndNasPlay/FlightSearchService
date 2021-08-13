@@ -1,0 +1,59 @@
+/* 
+  Localizable.strings
+  FlightSearchService
+
+  Created by Андрей Щекатунов on 13.08.2021.
+  
+*/
+
+/// TabBarController
+"searchButton" = "Search";
+"mapButton" = "Map price";
+"favoritesButton" = "Favorite";
+
+// MainViewController
+"mainVCFromTextField" = "From";
+"mainVCToTextField" = "Where";
+"mainVCDateTextField" = "Departure date";
+"mainVCSearchButton" = "Search";
+
+// FirstViewController
+"aboutAppHeader" = "ABOUT APP";
+"mapPriceHeader" = "MAP PRICE";
+"favoritesHeader" = "FAVORITE";
+
+"aboutAppDescribe" = "Flight search application";
+"mapPriceDescribe" = "View the price map";
+"favoritesDescribe" = "Save selected tickets to favorites";
+
+"nextButton" = "NEXT";
+"doneButton" = "DONE";
+
+// MapViewController
+"mapVCTitle" = "Map price";
+"actionsWithTicket" = "Acrions with ticket";
+"actionsWithTicketDescribe" = "What needs to be done with the selected ticket?";
+"addToFavorite" = "Add to favorite";
+"femoveFromFavorite" = "Delete from favorite";
+
+// TicketsViewController
+"ticketsTitle" = "Air tickets";
+"favoriteTicketsTitle" = "Favorite tickets";
+"addToFavorite" = "Add to favorite";
+"removeFromFavorite" = "Delete from favorite";
+"remindMe" = "Remind me";
+"ticketReminder" = "Ticket reminder";
+"notificationWillBeSent" = "Notification will be sent";
+"success" = "Success";
+
+// Alerts
+"error" = "Error";
+"ticketsNotFound" = "No tickets found for this direction";
+"ups" = "Oops!";
+"close" = "Close";
+"notSetPlaceDeparture" = "Specify your destination";
+"notSetPlaceArrival" = "Indicate the point of departure";
+"notSetDateArrival" = "Specify the current date of travel";
+"actionsWithTickets" = "Ticket actions";
+"actionsWithTicketsDescribe" = "What should be done with the selected ticket?";
+"notDetermineCurrentCity" = "Could not determine the current city!";

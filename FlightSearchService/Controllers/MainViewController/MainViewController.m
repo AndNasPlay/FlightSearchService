@@ -90,7 +90,7 @@
 	[self.view addSubview:self.placeContainerView];
 
 	self.departureButton = [UIButton buttonWithType:UIButtonTypeSystem];
-	[self.departureButton setTitle:@"From" forState:UIControlStateNormal];
+	[self.departureButton setTitle:NSLocalizedString(@"mainVCFromTextField", "") forState:UIControlStateNormal];
 	self.departureButton.tintColor = UIColor.blackColor;
 	self.departureButton.frame = CGRectMake(10.0, 20.0, self.placeContainerView.frame.size.width - 20.0, 60.0);
 	self.departureButton.backgroundColor = [UIColor.lightGrayColor colorWithAlphaComponent:0.2];
@@ -98,7 +98,7 @@
 	[self.placeContainerView addSubview:self.departureButton];
 
 	self.arrivalButton = [UIButton buttonWithType:UIButtonTypeSystem];
-	[self.arrivalButton setTitle:@"Where" forState:UIControlStateNormal];
+	[self.arrivalButton setTitle:NSLocalizedString(@"mainVCToTextField", "") forState:UIControlStateNormal];
 	self.arrivalButton.tintColor = UIColor.blackColor;
 	self.arrivalButton.frame = CGRectMake(10.0, CGRectGetMaxY(self.departureButton.frame) + 10.0, self.placeContainerView.frame.size.width - 20.0, 60.0);
 	self.arrivalButton.backgroundColor = [UIColor.lightGrayColor colorWithAlphaComponent:0.2];
@@ -106,7 +106,7 @@
 	[self.placeContainerView addSubview:self.arrivalButton];
 
 	self.datePickerTextField = [[UITextField alloc] initWithFrame:CGRectMake(10.0, CGRectGetMaxY(self.arrivalButton.frame) + 10.0, self.placeContainerView.frame.size.width - 20.0, 60.0)];
-	self.datePickerTextField.text = @"Дата вылета";
+	self.datePickerTextField.text = NSLocalizedString(@"mainVCDateTextField", "");
 	self.datePickerTextField.textAlignment = NSTextAlignmentCenter;
 	self.datePickerTextField.backgroundColor = [UIColor.lightGrayColor colorWithAlphaComponent:0.2];
 	self.datePickerTextField.tintColor = UIColor.clearColor;
@@ -119,7 +119,7 @@
 	self.datePickerTextField.inputView = self.datePicker;
 
 	self.searchButton = [UIButton buttonWithType:UIButtonTypeSystem];
-	[self.searchButton setTitle:@"Search" forState:UIControlStateNormal];
+	[self.searchButton setTitle:NSLocalizedString(@"mainVCSearchButton", "") forState:UIControlStateNormal];
 	self.searchButton.tintColor = UIColor.whiteColor;
 	self.searchButton.frame = CGRectMake(30.0, CGRectGetMaxY(self.placeContainerView.frame) + 30.0, [UIScreen mainScreen].bounds.size.width - 60.0, 60.0);
 	self.searchButton.backgroundColor = [UIColor colorNamed:@"buttonColor"];
@@ -141,17 +141,17 @@
 - (void)searchButtonDidTap:(UIButton *)sender {
 	_searchRequest.departDate = self.datePicker.date;
 	[self.view endEditing:YES];
-	if ([self.departureButton.titleLabel.text isEqual: @"From"]) {
-		UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Sorry!" message:@"Введите пункт отправления" preferredStyle:UIAlertControllerStyleAlert];
-		[alertController addAction:[UIAlertAction actionWithTitle:@"close" style:UIAlertActionStyleDefault handler:nil]];
+	if ([self.departureButton.titleLabel.text isEqual:@"From" @"Откуда"]) {
+		UIAlertController *alertController = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"error", "") message:NSLocalizedString(@"notSetPlaceArrival", "") preferredStyle:UIAlertControllerStyleAlert];
+		[alertController addAction:[UIAlertAction actionWithTitle:NSLocalizedString(@"close", "")style:UIAlertActionStyleDefault handler:nil]];
 		[self presentViewController:alertController animated:YES completion:nil];
-	} else if ([self.arrivalButton.titleLabel.text isEqual:@"Where"]) {
-		UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Sorry!" message:@"Выедите пункт назначения" preferredStyle:UIAlertControllerStyleAlert];
-		[alertController addAction:[UIAlertAction actionWithTitle:@"close" style:UIAlertActionStyleDefault handler:nil]];
+	} else if ([self.arrivalButton.titleLabel.text isEqual:@"Where" @"Куда"]) {
+		UIAlertController *alertController = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"error", "") message:NSLocalizedString(@"notSetPlaceDeparture", "") preferredStyle:UIAlertControllerStyleAlert];
+		[alertController addAction:[UIAlertAction actionWithTitle:NSLocalizedString(@"close", "") style:UIAlertActionStyleDefault handler:nil]];
 		[self presentViewController:alertController animated:YES completion:nil];
 	} else if ([self dateComparision:_datePicker.date andDate2:[NSDate date]]) {
-		UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Sorry!" message:@"Укажите актуальную дату поездки" preferredStyle:UIAlertControllerStyleAlert];
-		[alertController addAction:[UIAlertAction actionWithTitle:@"close" style:UIAlertActionStyleDefault handler:nil]];
+		UIAlertController *alertController = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"error", "") message:NSLocalizedString(@"notSetDateArrival", "") preferredStyle:UIAlertControllerStyleAlert];
+		[alertController addAction:[UIAlertAction actionWithTitle:NSLocalizedString(@"close", "") style:UIAlertActionStyleDefault handler:nil]];
 		[self presentViewController:alertController animated:YES completion:nil];
 	} else {
 		[[ProgressView sharedInstance] show:^{
@@ -161,8 +161,8 @@
 						TicketsTableViewController *ticketsVC = [[TicketsTableViewController alloc] initWithTickets:tickets];
 						[self.navigationController showViewController:ticketsVC sender:self];
 					} else {
-						UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Sorry!" message:@"No tickets" preferredStyle:UIAlertControllerStyleAlert];
-						[alertController addAction:[UIAlertAction actionWithTitle:@"close" style:UIAlertActionStyleDefault handler:nil]];
+						UIAlertController *alertController = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"ups", "") message:NSLocalizedString(@"ticketsNotFound", "") preferredStyle:UIAlertControllerStyleAlert];
+						[alertController addAction:[UIAlertAction actionWithTitle:NSLocalizedString(@"close", "") style:UIAlertActionStyleDefault handler:nil]];
 						[self presentViewController:alertController animated:YES completion:nil];
 					}
 				}];
