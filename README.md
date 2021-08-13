@@ -7,9 +7,15 @@
 ## Screenshots
 
 
-## Применяемые технологии
+## Features
+Objective-C Programming Language
+Custom UITableViewCell
+UIKit, Foundation, UserNotifications, CoreData, Core Location, MapKit, Animations
 
+## Requirements
 
+Xcode 9.3
+iOS 14.5
 
 ## Author
 
