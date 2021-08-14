@@ -17,7 +17,6 @@
 @interface TicketsTableViewController ()
 
 	@property (nonatomic, strong) NSArray *ticketsArray;
-	@property (nonatomic, strong) Ticket *ticketToDelete;
 	@property (nonatomic, strong) UISegmentedControl *segmentControl;
 	@property (nonatomic, strong) UIDatePicker *datePicker;
 	@property (nonatomic, strong) UITextField *dateTextField;
