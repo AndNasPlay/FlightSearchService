@@ -17,6 +17,8 @@
 
 @implementation ApiManager
 
+//Singleton ApiManager
+
 + (instancetype)sharedInstance {
 	static ApiManager *instance; 
 	static dispatch_once_t onceToken;
@@ -25,6 +27,8 @@
 	});
 	return instance;
 }
+
+//Getting city from ip address
 
 - (void)cityForCurrentIP:(void (^)(City * _Nonnull))completion {
 	[self IPAdressWithCompletion:^(NSString *ipAdress) {
@@ -43,6 +47,8 @@
 	}];
 }
 
+//Getting ip address
+
 - (void)IPAdressWithCompletion:(void (^)(NSString *ipAdress))completion {
 	[self load:API_URL_IP_ADDRESS withCompletion:^(id _Nullable result) {
 		NSDictionary *json = result;
@@ -55,6 +61,8 @@
 		completion([NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil]);
 	}] resume];
 }
+
+//Getting Ticket
 
 - (void)ticketsWithRequest:(SearchRequest)request withCompletion:(void (^)(NSArray *tickets))completion {
 	NSString *urlString = [NSString stringWithFormat:@"%@?%@&token=%@", API_URL_CHEAP, SearchRequestQuery(request), API_TOKEN];

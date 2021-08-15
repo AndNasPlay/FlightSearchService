@@ -12,8 +12,8 @@
 
 @interface FirstViewController ()
 
-	@property (nonatomic, strong) UIButton *nextButton;
-	@property (nonatomic, strong) UIPageControl *pageControl;
+@property (nonatomic, strong) UIButton *nextButton;
+@property (nonatomic, strong) UIPageControl *pageControl;
 
 @end
 

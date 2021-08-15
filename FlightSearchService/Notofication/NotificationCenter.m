@@ -16,6 +16,8 @@
 
 @implementation NotificationCenter
 
+//Singleton NotificationCenter
+
 + (instancetype)sharedInstance {
 	static NotificationCenter *instance;
 	static dispatch_once_t onceToken;

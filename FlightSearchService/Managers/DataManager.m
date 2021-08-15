@@ -20,6 +20,8 @@
 
 @implementation DataManager
 
+//Singleton DataManager
+
 + (instancetype)sharedInstance {
 	static DataManager *instance;
 	static dispatch_once_t onceToken;
@@ -28,6 +30,8 @@
 	});
 	return instance;
 }
+
+//Reading JSON files countries, cities and airports
 
 - (void)loadData {
 	dispatch_async(dispatch_get_global_queue(QOS_CLASS_UTILITY, 0), ^{
@@ -48,6 +52,8 @@
 	});
 }
 
+//Create objects from array
+
 - (NSMutableArray *)createObjectsFromArray:(NSArray *)array withType:(DataSourceType)type {
 	NSMutableArray *results = [NSMutableArray new];
 	for (NSDictionary *jsonObject in array) {
@@ -66,7 +72,6 @@
 	}
 	return results;
 }
-
 
 - (NSArray *)arrayFromFileName:(NSString *)fileName ofType:(NSString *)type {
 	NSString *path = [[NSBundle mainBundle] pathForResource:fileName ofType:type];

@@ -17,6 +17,8 @@
 
 @implementation CoreDataHelper
 
+//Singleton CoreDataHelper
+
 + (instancetype)sharedInstance {
 	static CoreDataHelper *instance;
 	static dispatch_once_t onceToken;
