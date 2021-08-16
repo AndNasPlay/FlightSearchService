@@ -19,12 +19,11 @@ When you first start the app shows you a tutorial (UIPageViewController).
 
 ## Features
 Objective-C Programming Language
-Custom UITableViewCell
-UIKit, Foundation, UserNotifications, CoreData, Core Location, MapKit, SDWebImage, Animations
+Custom UITableViewCell, UIKit, Foundation, UserNotifications, CoreData, Core Location, MapKit, SDWebImage, Animations, application localization into English and Russian.
 
 ## Requirements
 
-Xcode 9.3
+Xcode 12.5
 iOS 14.5
 
 ## Author
