@@ -49,8 +49,6 @@
 		FirstViewController *firstViewController = [[FirstViewController alloc] initWithTransitionStyle:UIPageViewControllerTransitionStyleScroll navigationOrientation:UIPageViewControllerNavigationOrientationHorizontal options:nil];
 		[self presentViewController:firstViewController animated:YES completion:nil];
 	}
-//	FirstViewController *firstViewController = [[FirstViewController alloc] initWithTransitionStyle:UIPageViewControllerTransitionStyleScroll navigationOrientation:UIPageViewControllerNavigationOrientationHorizontal options:nil];
-//	[self presentViewController:firstViewController animated:YES completion:nil];
 }
 
 - (void)dealloc {
