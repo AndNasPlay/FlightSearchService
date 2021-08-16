@@ -2,6 +2,8 @@
 
 ## About
 
+![alt text](https://github.com/AndNasPlay/Objective-C-FlightSearchService/blob/main/Img%20presentation/FirstScreen.png "screen")
+
 Приложение для поиска авиабилетов написанное на языке программирования - Objective-C.
 
 ## Screenshots
