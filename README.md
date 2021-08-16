@@ -10,9 +10,11 @@ The application for searching airline tickets. Objective-C Programming Language.
 
 When you first start the app shows you a tutorial (UIPageViewController).
 
+![alt text](https://github.com/AndNasPlay/Objective-C-FlightSearchService/blob/main/Img%20presentation/TheThird%20screen.png "screen")
 
+![alt text](https://github.com/AndNasPlay/Objective-C-FlightSearchService/blob/main/Img%20presentation/fourth%20screen.png "screen")
 
-## Screenshots
+![alt text](https://github.com/AndNasPlay/Objective-C-FlightSearchService/blob/main/Img%20presentation/fifth%20screen.png "screen")
 
 
 ## Features
