@@ -36,7 +36,6 @@
 	[self createPlanes];
 }
 
-
 - (void)createPlanes {
 	for (int i = 1; i < 6; i++) {
 		UIImageView *plane = [[UIImageView alloc] initWithFrame:CGRectMake(-50.0, ((float)i * 50.0) + 100.0, 50.0, 50.0)];
@@ -45,7 +44,6 @@
 		[self addSubview:plane];
 	}
 }
-
 
 - (void)startAnimating:(NSInteger)planeId {
 	if (!isActive) return;
@@ -64,7 +62,6 @@
 	}
 }
 
-
 - (void)show:(void (^)(void))completion
 {
 	self.alpha = 0.0;
@@ -78,7 +75,6 @@
 	}];
 }
 
-
 - (void)dismiss:(void (^)(void))completion
 {
 	[UIView animateWithDuration:0.5 animations:^{
@@ -91,6 +87,5 @@
 		}
 	}];
 }
-
 
 @end
