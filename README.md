@@ -6,6 +6,10 @@
 
 Приложение для поиска авиабилетов написанное на языке программирования - Objective-C.
 
+![alt text](https://github.com/AndNasPlay/Objective-C-FlightSearchService/blob/main/Img%20presentation/SecondScreen.png "screen")
+
+
+
 ## Screenshots
 
 
