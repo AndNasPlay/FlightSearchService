@@ -32,5 +32,5 @@ Andrey Shchekatunov, <andnasgroup@gmail.com>
 
 ## License
 
-CustomFeedbackForm is available under the MIT license. See the LICENSE file for more info.
+Flight Search Service is available under the MIT license. See the LICENSE file for more info.
 
